@@ -1418,4 +1418,75 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+
+  // Action buttons styles
+  actionButtons: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 24,
+  },
+  actionButton: {
+    flex: 1,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#4CAF50',
+    gap: 8,
+  },
+  actionButtonText: {
+    color: '#4CAF50',
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+
+  // Scanned plants styles
+  scannedPlantCard: {
+    backgroundColor: '#1A1A1A',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 2,
+    borderColor: '#4CAF50',
+  },
+  confidenceText: {
+    fontSize: 12,
+    color: '#4CAF50',
+    fontWeight: '600',
+    marginTop: 4,
+  },
+  scannedInfo: {
+    marginBottom: 16,
+  },
+  scannedDate: {
+    fontSize: 12,
+    color: '#666',
+  },
+
+  // Empty state styles
+  emptyState: {
+    alignItems: 'center',
+    padding: 40,
+    marginTop: 60,
+  },
+  emptyStateText: {
+    fontSize: 18,
+    color: '#999',
+    textAlign: 'center',
+    marginTop: 16,
+  },
+  emptyStateSubtext: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+    marginTop: 8,
+  },
+
+  // Scanner container styles
+  scannerContainer: {
+    alignItems: 'center',
+    gap: 24,
+    paddingTop: 40,
+  },
 });
