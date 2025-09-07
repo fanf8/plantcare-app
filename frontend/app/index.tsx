@@ -890,90 +890,100 @@ export default function PlantWellnessApp() {
       }
 
       return (
-        <ScrollView style={styles.screen}>
-          <View style={styles.catalogHeader}>
-            <TouchableOpacity 
-              style={styles.backButton}
-              onPress={() => setCurrentTab('garden')}
-            >
-              <Ionicons name="arrow-back" size={24} color="#4CAF50" />
-              <Text style={styles.backText}>Retour</Text>
-            </TouchableOpacity>
-            <Text style={styles.screenTitle}>
-              {category === 'potager' ? 'Catalogue Potager' : 'Catalogue Ornement'}
-            </Text>
-          </View>
-
-          {/* Action buttons */}
-          <View style={styles.actionButtons}>
-            <TouchableOpacity 
-              style={styles.actionButton}
-              onPress={() => setShowScanner(true)}
-            >
-              <Ionicons name="camera" size={24} color="#4CAF50" />
-              <Text style={styles.actionButtonText}>Scanner IA</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={styles.actionButton}
-              onPress={() => setShowScannedMenu(true)}
-            >
-              <Ionicons name="list" size={24} color="#4CAF50" />
-              <Text style={styles.actionButtonText}>
-                Mes Scans ({scannedPlants.length})
+        <ImageBackground
+          source={{ 
+            uri: category === 'potager' 
+              ? 'https://images.unsplash.com/photo-1566281796817-93bc94d7dbd2?w=800&q=80' // Photo de légumes/potager
+              : 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80' // Photo de fleurs colorées
+          }}
+          style={styles.backgroundImage}
+          blurRadius={4}
+        >
+          <ScrollView style={styles.screen}>
+            <View style={styles.catalogHeader}>
+              <TouchableOpacity 
+                style={styles.backButton}
+                onPress={() => setCurrentTab('garden')}
+              >
+                <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+                <Text style={styles.backText}>Retour</Text>
+              </TouchableOpacity>
+              <Text style={styles.screenTitle}>
+                {category === 'potager' ? 'Catalogue Potager' : 'Catalogue Ornement'}
               </Text>
-            </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity 
-              style={styles.actionButton}
-              onPress={() => setShowAiPhotosDB(true)}
-            >
-              <Ionicons name="images" size={24} color="#9C27B0" />
-              <Text style={[styles.actionButtonText, { color: '#9C27B0' }]}>
-                Base Photos IA
-              </Text>
-            </TouchableOpacity>
-          </View>
+            {/* Action buttons */}
+            <View style={styles.actionButtons}>
+              <TouchableOpacity 
+                style={styles.actionButton}
+                onPress={() => setShowScanner(true)}
+              >
+                <Ionicons name="camera" size={24} color="#4CAF50" />
+                <Text style={styles.actionButtonText}>Scanner IA</Text>
+              </TouchableOpacity>
 
-          <View style={styles.plantGrid}>
-            {plants.map((plant: any) => (
-              <View key={plant.id} style={styles.plantCard}>
-                <View style={styles.plantCardHeader}>
-                  <Ionicons 
-                    name={category === 'potager' ? 'nutrition' : 'flower'} 
-                    size={32} 
-                    color={category === 'potager' ? '#FF6B35' : '#E91E63'} 
-                  />
-                  <Text style={styles.plantName}>{plant.name_fr}</Text>
-                  {plant.name_latin && (
-                    <Text style={styles.plantLatin}>{plant.name_latin}</Text>
-                  )}
+              <TouchableOpacity 
+                style={styles.actionButton}
+                onPress={() => setShowScannedMenu(true)}
+              >
+                <Ionicons name="list" size={24} color="#4CAF50" />
+                <Text style={styles.actionButtonText}>
+                  Mes Scans ({scannedPlants.length})
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                style={styles.actionButton}
+                onPress={() => setShowAiPhotosDB(true)}
+              >
+                <Ionicons name="images" size={24} color="#9C27B0" />
+                <Text style={[styles.actionButtonText, { color: '#9C27B0' }]}>
+                  Base Photos IA
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.plantGrid}>
+              {plants.map((plant: any) => (
+                <View key={plant.id} style={styles.plantCard}>
+                  <View style={styles.plantCardHeader}>
+                    <Ionicons 
+                      name={category === 'potager' ? 'nutrition' : 'flower'} 
+                      size={32} 
+                      color={category === 'potager' ? '#FF6B35' : '#E91E63'} 
+                    />
+                    <Text style={styles.plantName}>{plant.name_fr}</Text>
+                    {plant.name_latin && (
+                      <Text style={styles.plantLatin}>{plant.name_latin}</Text>
+                    )}
+                  </View>
+                  
+                  <Text style={styles.plantDescription}>{plant.description}</Text>
+                  
+                  <View style={styles.plantDetails}>
+                    <Text style={styles.plantDetail}>
+                      <Ionicons name="calendar" size={16} color="#999" /> 
+                      {plant.growing_season?.join(', ') || 'Toute saison'}
+                    </Text>
+                    <Text style={styles.plantDetail}>
+                      <Ionicons name="speedometer" size={16} color="#999" /> 
+                      Niveau: {plant.difficulty || 'Moyen'}
+                    </Text>
+                  </View>
+
+                  <TouchableOpacity 
+                    style={styles.addPlantButton}
+                    onPress={() => addPlantToGarden(plant)}
+                  >
+                    <Ionicons name="add-circle" size={20} color="#fff" />
+                    <Text style={styles.addPlantText}>Ajouter à mon jardin</Text>
+                  </TouchableOpacity>
                 </View>
-                
-                <Text style={styles.plantDescription}>{plant.description}</Text>
-                
-                <View style={styles.plantDetails}>
-                  <Text style={styles.plantDetail}>
-                    <Ionicons name="calendar" size={16} color="#999" /> 
-                    {plant.growing_season?.join(', ') || 'Toute saison'}
-                  </Text>
-                  <Text style={styles.plantDetail}>
-                    <Ionicons name="speedometer" size={16} color="#999" /> 
-                    Niveau: {plant.difficulty || 'Moyen'}
-                  </Text>
-                </View>
-
-                <TouchableOpacity 
-                  style={styles.addPlantButton}
-                  onPress={() => addPlantToGarden(plant)}
-                >
-                  <Ionicons name="add-circle" size={20} color="#fff" />
-                  <Text style={styles.addPlantText}>Ajouter à mon jardin</Text>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+              ))}
+            </View>
+          </ScrollView>
+        </ImageBackground>
       );
     };
 
