@@ -360,14 +360,107 @@ export default function PlantWellnessApp() {
     const PlantCatalog = () => {
       const [plants, setPlants] = React.useState([]);
       const [scannedPlants, setScannedPlants] = React.useState([]);
+      const [aiPhotosDB, setAiPhotosDB] = React.useState([]);
       const [loading, setLoading] = React.useState(true);
       const [showScanner, setShowScanner] = React.useState(false);
       const [showScannedMenu, setShowScannedMenu] = React.useState(false);
+      const [showAiPhotosDB, setShowAiPhotosDB] = React.useState(false);
+      const [selectedAiPlants, setSelectedAiPlants] = React.useState<string[]>([]);
 
       React.useEffect(() => {
         fetchPlants();
         fetchScannedPlants();
+        generateAiPhotosDB();
       }, []);
+
+      const generateAiPhotosDB = () => {
+        // Simulate AI photo database for each category
+        const aiPhotos = category === 'potager' ? [
+          {
+            id: 'ai-1',
+            name: 'Tomate Cerise',
+            category: 'potager',
+            confidence: 0.92,
+            description: 'Tomate cerise rouge, variété productive',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['rouge', 'petit', 'productif']
+          },
+          {
+            id: 'ai-2', 
+            name: 'Radis Rose',
+            category: 'potager',
+            confidence: 0.88,
+            description: 'Radis rose à croissance rapide',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['rose', 'rapide', 'croquant']
+          },
+          {
+            id: 'ai-3',
+            name: 'Courgette Verte',
+            category: 'potager', 
+            confidence: 0.85,
+            description: 'Courgette verte longue, très productive',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['vert', 'long', 'productif']
+          },
+          {
+            id: 'ai-4',
+            name: 'Basilic Genovese',
+            category: 'potager',
+            confidence: 0.90,
+            description: 'Basilic italien parfumé pour cuisine',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['parfumé', 'cuisine', 'vert']
+          }
+        ] : [
+          {
+            id: 'ai-5',
+            name: 'Rose Rouge Passion',
+            category: 'ornement',
+            confidence: 0.94,
+            description: 'Rose rouge intense très parfumée',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['rouge', 'parfumé', 'classique']
+          },
+          {
+            id: 'ai-6',
+            name: 'Lavande de Provence', 
+            category: 'ornement',
+            confidence: 0.91,
+            description: 'Lavande violette très aromatique',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['violet', 'aromatique', 'méditerranéen']
+          },
+          {
+            id: 'ai-7',
+            name: 'Géranium Rose',
+            category: 'ornement',
+            confidence: 0.87,
+            description: 'Géranium rose vif pour balcons',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['rose', 'balcon', 'résistant']
+          },
+          {
+            id: 'ai-8',
+            name: 'Hortensia Bleu',
+            category: 'ornement',
+            confidence: 0.89,
+            description: 'Hortensia bleu spectaculaire',
+            photo_base64: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABA...',
+            ai_generated: true,
+            tags: ['bleu', 'spectaculaire', 'ombre']
+          }
+        ];
+        
+        setAiPhotosDB(aiPhotos);
+      };
 
       const fetchPlants = async () => {
         try {
@@ -400,6 +493,63 @@ export default function PlantWellnessApp() {
           }
         } catch (error) {
           console.error('Error fetching scanned plants:', error);
+        }
+      };
+
+      const toggleAiPlantSelection = (plantId: string) => {
+        setSelectedAiPlants(prev => 
+          prev.includes(plantId) 
+            ? prev.filter(id => id !== plantId)
+            : [...prev, plantId]
+        );
+      };
+
+      const addSelectedAiPlantsToGarden = async () => {
+        if (selectedAiPlants.length === 0) {
+          Alert.alert('Aucune sélection', 'Veuillez sélectionner au moins une plante');
+          return;
+        }
+
+        try {
+          const token = await AsyncStorage.getItem('access_token');
+          let successCount = 0;
+
+          for (const plantId of selectedAiPlants) {
+            const aiPlant = aiPhotosDB.find((p: any) => p.id === plantId);
+            if (aiPlant) {
+              const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  plant_id: aiPlant.id,
+                  custom_name: aiPlant.name,
+                  location: 'extérieur',
+                  notes: `Photo IA - Confiance: ${(aiPlant.confidence * 100).toFixed(0)}% - Tags: ${aiPlant.tags.join(', ')}`,
+                  image_base64: aiPlant.photo_base64
+                }),
+              });
+
+              if (response.ok) {
+                successCount++;
+              }
+            }
+          }
+
+          Alert.alert(
+            'Plantes Ajoutées !', 
+            `${successCount} plante(s) de la base IA ajoutée(s) à votre jardin !`,
+            [{ text: 'OK', onPress: () => {
+              setSelectedAiPlants([]);
+              setShowAiPhotosDB(false);
+            }}]
+          );
+
+        } catch (error) {
+          console.error('Error adding AI plants:', error);
+          Alert.alert('Erreur', 'Erreur de connexion');
         }
       };
 
@@ -441,7 +591,7 @@ export default function PlantWellnessApp() {
               'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-              plant_id: scannedPlant.id, // Use analysis ID as plant reference
+              plant_id: scannedPlant.id,
               custom_name: scannedPlant.result.plant_name,
               location: 'extérieur',
               notes: `Plante scannée par IA - Confiance: ${(scannedPlant.confidence * 100).toFixed(0)}%`,
@@ -484,7 +634,7 @@ export default function PlantWellnessApp() {
               [
                 { text: 'OK', onPress: () => {
                   setShowScanner(false);
-                  fetchScannedPlants(); // Refresh scanned plants
+                  fetchScannedPlants();
                 }}
               ]
             );
@@ -536,8 +686,7 @@ export default function PlantWellnessApp() {
               <TouchableOpacity 
                 style={[styles.button, styles.primaryButton]}
                 onPress={() => {
-                  // Simulate taking a photo and scanning
-                  const mockImageBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."; // Mock base64
+                  const mockImageBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...";
                   handleScanPlant(mockImageBase64);
                 }}
               >
@@ -548,8 +697,7 @@ export default function PlantWellnessApp() {
               <TouchableOpacity 
                 style={[styles.button, styles.secondaryButton]}
                 onPress={() => {
-                  // Simulate selecting from gallery
-                  const mockImageBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."; // Mock base64
+                  const mockImageBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...";
                   handleScanPlant(mockImageBase64);
                 }}
               >
@@ -574,7 +722,7 @@ export default function PlantWellnessApp() {
                 <Ionicons name="arrow-back" size={24} color="#4CAF50" />
                 <Text style={styles.backText}>Retour</Text>
               </TouchableOpacity>
-              <Text style={styles.screenTitle}>Plantes Scannées IA</Text>
+              <Text style={styles.screenTitle}>Plantes Scannées</Text>
             </View>
 
             {scannedPlants.length === 0 ? (
@@ -622,6 +770,78 @@ export default function PlantWellnessApp() {
         );
       }
 
+      if (showAiPhotosDB) {
+        return (
+          <ScrollView style={styles.screen}>
+            <View style={styles.catalogHeader}>
+              <TouchableOpacity 
+                style={styles.backButton}
+                onPress={() => setShowAiPhotosDB(false)}
+              >
+                <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+                <Text style={styles.backText}>Retour</Text>
+              </TouchableOpacity>
+              <Text style={styles.screenTitle}>Base Photos IA</Text>
+            </View>
+
+            {selectedAiPlants.length > 0 && (
+              <View style={styles.selectionSummary}>
+                <Text style={styles.selectionText}>
+                  {selectedAiPlants.length} plante(s) sélectionnée(s)
+                </Text>
+                <TouchableOpacity 
+                  style={styles.addSelectedButton}
+                  onPress={addSelectedAiPlantsToGarden}
+                >
+                  <Ionicons name="checkmark-circle" size={20} color="#fff" />
+                  <Text style={styles.addSelectedText}>Ajouter la sélection</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+
+            <View style={styles.plantGrid}>
+              {aiPhotosDB.map((aiPlant: any) => (
+                <TouchableOpacity 
+                  key={aiPlant.id} 
+                  style={[
+                    styles.aiPlantCard,
+                    selectedAiPlants.includes(aiPlant.id) && styles.aiPlantCardSelected
+                  ]}
+                  onPress={() => toggleAiPlantSelection(aiPlant.id)}
+                >
+                  <View style={styles.plantCardHeader}>
+                    <View style={styles.aiPlantHeader}>
+                      <Ionicons name="image" size={32} color="#9C27B0" />
+                      <View style={styles.checkboxContainer}>
+                        <Ionicons 
+                          name={selectedAiPlants.includes(aiPlant.id) ? "checkbox" : "square-outline"} 
+                          size={24} 
+                          color={selectedAiPlants.includes(aiPlant.id) ? "#4CAF50" : "#666"} 
+                        />
+                      </View>
+                    </View>
+                    <Text style={styles.plantName}>{aiPlant.name}</Text>
+                    <Text style={styles.confidenceText}>
+                      IA • Confiance: {(aiPlant.confidence * 100).toFixed(0)}%
+                    </Text>
+                  </View>
+                  
+                  <Text style={styles.plantDescription}>{aiPlant.description}</Text>
+                  
+                  <View style={styles.aiPlantTags}>
+                    {aiPlant.tags.map((tag: string, index: number) => (
+                      <View key={index} style={styles.tagChip}>
+                        <Text style={styles.tagText}>{tag}</Text>
+                      </View>
+                    ))}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </ScrollView>
+        );
+      }
+
       return (
         <ScrollView style={styles.screen}>
           <View style={styles.catalogHeader}>
@@ -653,7 +873,17 @@ export default function PlantWellnessApp() {
             >
               <Ionicons name="list" size={24} color="#4CAF50" />
               <Text style={styles.actionButtonText}>
-                Plantes Scannées ({scannedPlants.length})
+                Mes Scans ({scannedPlants.length})
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={styles.actionButton}
+              onPress={() => setShowAiPhotosDB(true)}
+            >
+              <Ionicons name="images" size={24} color="#9C27B0" />
+              <Text style={[styles.actionButtonText, { color: '#9C27B0' }]}>
+                Base Photos IA
               </Text>
             </TouchableOpacity>
           </View>
