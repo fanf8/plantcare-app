@@ -639,6 +639,10 @@ export default function PlantWellnessApp() {
     switch (currentTab) {
       case 'garden':
         return renderGardenScreen();
+      case 'potager':
+        return renderPlantCatalog('potager');
+      case 'ornement':
+        return renderPlantCatalog('ornement');
       case 'scanner':
         return renderScannerScreen();
       case 'recommendations':
