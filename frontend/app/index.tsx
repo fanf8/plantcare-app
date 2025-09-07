@@ -1272,12 +1272,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   
+  // Background image
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+  
   // Auth styles
   authContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     padding: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    margin: 16,
+    borderRadius: 16,
   },
   header: {
     alignItems: 'center',
