@@ -1105,4 +1105,86 @@ const styles = StyleSheet.create({
     color: '#666',
     marginTop: 4,
   },
+
+  // Catalog styles
+  catalogHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 16,
+  },
+  backText: {
+    color: '#4CAF50',
+    fontSize: 16,
+    marginLeft: 8,
+  },
+  loadingText: {
+    color: '#999',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 50,
+  },
+  plantGrid: {
+    gap: 16,
+  },
+  plantCard: {
+    backgroundColor: '#1A1A1A',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: '#333',
+  },
+  plantCardHeader: {
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  plantName: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#fff',
+    marginTop: 8,
+    textAlign: 'center',
+  },
+  plantLatin: {
+    fontSize: 14,
+    color: '#999',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    marginTop: 4,
+  },
+  plantDescription: {
+    fontSize: 16,
+    color: '#ccc',
+    lineHeight: 24,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  plantDetails: {
+    gap: 8,
+    marginBottom: 20,
+  },
+  plantDetail: {
+    fontSize: 14,
+    color: '#999',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  addPlantButton: {
+    backgroundColor: '#4CAF50',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+    borderRadius: 12,
+    gap: 8,
+  },
+  addPlantText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });
