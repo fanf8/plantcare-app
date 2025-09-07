@@ -152,6 +152,57 @@ export default function PlantWellnessApp() {
     }
   };
 
+  const handleAdminLogin = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/auth/admin-login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data: AuthResponse = await response.json();
+
+      if (response.ok) {
+        await AsyncStorage.setItem('access_token', data.access_token);
+        await AsyncStorage.setItem('user_data', JSON.stringify(data.user));
+        
+        setUser(data.user);
+        setIsLoggedIn(true);
+        
+        Alert.alert('Connexion Admin', 'Connecté en tant qu\'administrateur avec accès premium !');
+      } else {
+        Alert.alert('Erreur', 'Erreur de connexion admin');
+      }
+    } catch (error) {
+      console.error('Admin login error:', error);
+      Alert.alert('Erreur', 'Erreur de connexion au serveur');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleTitleTap = () => {
+    setAdminTapCount(prev => {
+      const newCount = prev + 1;
+      if (newCount >= 5) {
+        Alert.alert(
+          'Connexion Administrateur', 
+          'Voulez-vous vous connecter en tant qu\'administrateur ?',
+          [
+            { text: 'Annuler', style: 'cancel', onPress: () => setAdminTapCount(0) },
+            { text: 'Admin Login', onPress: handleAdminLogin }
+          ]
+        );
+        return 0;
+      }
+      // Reset count after 3 seconds
+      setTimeout(() => setAdminTapCount(0), 3000);
+      return newCount;
+    });
+  };
+
   const handlePremiumAction = () => {
     if (!user?.is_premium) {
       Alert.alert(
