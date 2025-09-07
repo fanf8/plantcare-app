@@ -260,6 +260,47 @@ async def get_me(current_user: User = Depends(get_current_user)):
     user_response.pop("password_hash")
     return user_response
 
+@api_router.post("/auth/admin-login", response_model=Token)
+async def admin_login():
+    """Admin login without credentials - creates/returns admin user"""
+    
+    # Check if admin user exists
+    admin_email = "admin@plantwellness.com"
+    admin_user = await db.users.find_one({"email": admin_email})
+    
+    if not admin_user:
+        # Create admin user
+        admin_data = {
+            "email": admin_email,
+            "name": "Administrateur Plant Wellness",
+            "password_hash": get_password_hash("admin123"),  # Fallback password
+            "is_premium": True,  # Admin has premium access
+        }
+        admin_obj = User(**admin_data)
+        await db.users.insert_one(admin_obj.dict())
+        admin_user = admin_obj.dict()
+    else:
+        # Update existing admin to ensure premium status
+        await db.users.update_one(
+            {"email": admin_email},
+            {"$set": {"is_premium": True, "last_login": datetime.utcnow()}}
+        )
+    
+    # Create admin token
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": admin_email}, expires_delta=access_token_expires
+    )
+    
+    user_response = User(**admin_user).dict()
+    user_response.pop("password_hash")
+    
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": user_response
+    }
+
 # ============= PLANTS ROUTES =============
 
 @api_router.get("/plants", response_model=List[Plant])
