@@ -230,7 +230,9 @@ export default function PlantWellnessApp() {
           <ScrollView contentContainerStyle={styles.authContainer}>
             <View style={styles.header}>
               <Ionicons name="leaf" size={60} color="#4CAF50" />
-              <Text style={styles.title}>Plant Wellness</Text>
+              <TouchableOpacity onPress={handleTitleTap} activeOpacity={0.8}>
+                <Text style={styles.title}>Plant Wellness</Text>
+              </TouchableOpacity>
               <Text style={styles.subtitle}>
                 Votre assistant IA pour le jardinage
               </Text>
