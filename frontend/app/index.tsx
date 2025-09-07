@@ -316,8 +316,8 @@ export default function PlantWellnessApp() {
 
   // Main app screens
   const renderGardenScreen = () => (
-    <View style={[styles.screen, styles.gardenBackground]}>
-      <ScrollView>
+    <View style={[styles.container, styles.gardenBackground]}>
+      <ScrollView style={styles.screen}>
         <Text style={styles.screenTitle}>Mon Jardin</Text>
         
         <View style={styles.gardenSections}>
