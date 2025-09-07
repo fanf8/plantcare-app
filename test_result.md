@@ -107,75 +107,93 @@ user_problem_statement: "Créer une application Plant Wellness complète avec Ex
 backend:
   - task: "User Authentication System"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented JWT authentication with register/login endpoints, password hashing with bcrypt/passlib"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: All auth endpoints working correctly. User registration creates account with JWT token, login validates credentials and returns token, protected /auth/me endpoint properly validates JWT tokens. Password hashing with bcrypt working. Invalid login attempts correctly return 401 status."
 
   - task: "Plant Database with Sample Data"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created Plant model and initialize_plant_database function with sample potager and ornement plants"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Database initialized with 9 plants (5 potager + 4 ornement). GET /plants returns all plants, category filtering works for both potager and ornement. Individual plant retrieval by ID working. 404 properly returned for non-existent plants. Sample data includes Tomate, Courgette, Radis, Basilic, Laitue (potager) and Rose, Lavande, Géranium, Hortensia (ornement)."
 
   - task: "User Garden Management"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented CRUD operations for user plants in garden with UserPlant model"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Complete CRUD operations working. GET /my-garden returns user's plants (empty initially). POST /my-garden successfully adds plants with custom names, planting dates, locations, and notes. PUT /my-garden/{id} updates plant details correctly. DELETE /my-garden/{id} removes plants. Proper authentication required for all operations. 404 returned for non-existent plants."
 
   - task: "AI Analysis System (Premium)"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"  
         agent: "main"
         comment: "Created AI analysis endpoints with mock responses, requires premium subscription"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Premium paywall working correctly. POST /ai/analyze and GET /ai/history both return 403 Forbidden for non-premium users as expected. Mock AI responses implemented for identification, diagnostic, and care analysis types. Premium subscription requirement properly enforced."
 
   - task: "Community Features"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented community posts, likes, comments system"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Community system fully functional. GET /community/posts retrieves posts with optional category filtering. POST /community/posts creates posts with title, content, images, and plant categories. Like/unlike system working with POST /community/posts/{id}/like - toggles like status and updates like counts. Authentication required for posting and liking."
 
   - task: "Subscription Management"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created subscription plans endpoint and Stripe integration placeholder"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Subscription endpoints working. GET /subscription/plans returns Premium Plant Care plan at €9.99/month with correct features list. POST /subscription/create-checkout returns mock Stripe checkout URL and session ID. Webhook endpoint ready for Stripe integration."
 
 frontend:
   - task: "Authentication UI"
