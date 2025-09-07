@@ -1719,4 +1719,73 @@ const styles = StyleSheet.create({
     gap: 24,
     paddingTop: 40,
   },
+
+  // AI Photos DB styles
+  selectionSummary: {
+    backgroundColor: '#1A1A1A',
+    padding: 16,
+    marginBottom: 20,
+    borderRadius: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#4CAF50',
+  },
+  selectionText: {
+    color: '#4CAF50',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  addSelectedButton: {
+    backgroundColor: '#4CAF50',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 8,
+    borderRadius: 8,
+    gap: 6,
+  },
+  addSelectedText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  aiPlantCard: {
+    backgroundColor: '#1A1A1A',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 2,
+    borderColor: '#333',
+  },
+  aiPlantCardSelected: {
+    borderColor: '#4CAF50',
+    backgroundColor: '#1A2A1A',
+  },
+  aiPlantHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 8,
+  },
+  checkboxContainer: {
+    marginLeft: 'auto',
+  },
+  aiPlantTags: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 12,
+  },
+  tagChip: {
+    backgroundColor: '#9C27B0',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  tagText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '500',
+  },
 });
