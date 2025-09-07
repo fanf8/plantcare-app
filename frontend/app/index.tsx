@@ -1934,4 +1934,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
   },
+
+  // Plant image styles
+  plantImage: {
+    width: '100%',
+    height: 150,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
 });
