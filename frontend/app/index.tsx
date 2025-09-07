@@ -315,12 +315,8 @@ export default function PlantWellnessApp() {
 
   // Main app screens
   const renderGardenScreen = () => (
-    <ImageBackground
-      source={{ uri: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80' }}
-      style={styles.backgroundImage}
-      blurRadius={3}
-    >
-      <ScrollView style={styles.screen}>
+    <View style={[styles.screen, styles.gardenBackground]}>
+      <ScrollView>
         <Text style={styles.screenTitle}>Mon Jardin</Text>
         
         <View style={styles.gardenSections}>
@@ -362,7 +358,7 @@ export default function PlantWellnessApp() {
           </View>
         </View>
       </ScrollView>
-    </ImageBackground>
+    </View>
   );
 
   const renderPlantCatalog = (category: string) => {
