@@ -36,6 +36,7 @@ export default function PlantWellnessApp() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [currentTab, setCurrentTab] = useState('garden');
+  const [adminTapCount, setAdminTapCount] = useState(0);
   
   // Form states
   const [email, setEmail] = useState('');
