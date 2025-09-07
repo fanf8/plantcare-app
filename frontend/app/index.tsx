@@ -316,7 +316,10 @@ export default function PlantWellnessApp() {
       <Text style={styles.screenTitle}>Mon Jardin</Text>
       
       <View style={styles.gardenSections}>
-        <TouchableOpacity style={styles.gardenCard}>
+        <TouchableOpacity 
+          style={styles.gardenCard}
+          onPress={() => setCurrentTab('potager')}
+        >
           <Ionicons name="nutrition" size={40} color="#FF6B35" />
           <Text style={styles.gardenCardTitle}>Mon Potager</Text>
           <Text style={styles.gardenCardDesc}>
@@ -324,7 +327,10 @@ export default function PlantWellnessApp() {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.gardenCard}>
+        <TouchableOpacity 
+          style={styles.gardenCard}
+          onPress={() => setCurrentTab('ornement')}
+        >
           <Ionicons name="flower" size={40} color="#E91E63" />
           <Text style={styles.gardenCardTitle}>Mes Fleurs & Plantes</Text>
           <Text style={styles.gardenCardDesc}>
@@ -349,6 +355,122 @@ export default function PlantWellnessApp() {
       </View>
     </ScrollView>
   );
+
+  const renderPlantCatalog = (category: string) => {
+    const [plants, setPlants] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+      fetchPlants();
+    }, []);
+
+    const fetchPlants = async () => {
+      try {
+        const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/plants?category=${category}`);
+        const data = await response.json();
+        setPlants(data);
+      } catch (error) {
+        console.error('Error fetching plants:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const addPlantToGarden = async (plant: any) => {
+      try {
+        const token = await AsyncStorage.getItem('access_token');
+        const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            plant_id: plant.id,
+            custom_name: plant.name_fr,
+            location: 'extérieur',
+            notes: `Ajouté depuis le catalogue ${category}`
+          }),
+        });
+
+        if (response.ok) {
+          Alert.alert('Succès', `${plant.name_fr} ajouté à votre jardin !`);
+        } else {
+          Alert.alert('Erreur', 'Impossible d\'ajouter la plante');
+        }
+      } catch (error) {
+        console.error('Error adding plant:', error);
+        Alert.alert('Erreur', 'Erreur de connexion');
+      }
+    };
+
+    if (loading) {
+      return (
+        <View style={styles.screen}>
+          <Text style={styles.screenTitle}>
+            {category === 'potager' ? 'Catalogue Potager' : 'Catalogue Ornement'}
+          </Text>
+          <Text style={styles.loadingText}>Chargement des plantes...</Text>
+        </View>
+      );
+    }
+
+    return (
+      <ScrollView style={styles.screen}>
+        <View style={styles.catalogHeader}>
+          <TouchableOpacity 
+            style={styles.backButton}
+            onPress={() => setCurrentTab('garden')}
+          >
+            <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+            <Text style={styles.backText}>Retour</Text>
+          </TouchableOpacity>
+          <Text style={styles.screenTitle}>
+            {category === 'potager' ? 'Catalogue Potager' : 'Catalogue Ornement'}
+          </Text>
+        </View>
+
+        <View style={styles.plantGrid}>
+          {plants.map((plant: any) => (
+            <View key={plant.id} style={styles.plantCard}>
+              <View style={styles.plantCardHeader}>
+                <Ionicons 
+                  name={category === 'potager' ? 'nutrition' : 'flower'} 
+                  size={32} 
+                  color={category === 'potager' ? '#FF6B35' : '#E91E63'} 
+                />
+                <Text style={styles.plantName}>{plant.name_fr}</Text>
+                {plant.name_latin && (
+                  <Text style={styles.plantLatin}>{plant.name_latin}</Text>
+                )}
+              </View>
+              
+              <Text style={styles.plantDescription}>{plant.description}</Text>
+              
+              <View style={styles.plantDetails}>
+                <Text style={styles.plantDetail}>
+                  <Ionicons name="calendar" size={16} color="#999" /> 
+                  {plant.growing_season?.join(', ') || 'Toute saison'}
+                </Text>
+                <Text style={styles.plantDetail}>
+                  <Ionicons name="speedometer" size={16} color="#999" /> 
+                  Niveau: {plant.difficulty || 'Moyen'}
+                </Text>
+              </View>
+
+              <TouchableOpacity 
+                style={styles.addPlantButton}
+                onPress={() => addPlantToGarden(plant)}
+              >
+                <Ionicons name="add-circle" size={20} color="#fff" />
+                <Text style={styles.addPlantText}>Ajouter à mon jardin</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+    );
+  };
 
   const renderScannerScreen = () => (
     <ScrollView style={styles.screen}>
