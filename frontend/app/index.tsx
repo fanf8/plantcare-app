@@ -1284,6 +1284,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   
+  // Background styles with gradients
+  authBackground: {
+    backgroundColor: '#E8F5E8', // Light green background for auth
+  },
+  gardenBackground: {
+    backgroundColor: 'linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%)', // Garden green gradient
+  },
+  potagerBackground: {
+    backgroundColor: 'linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%)', // Warm orange for vegetables
+  },
+  ornementBackground: {
+    backgroundColor: 'linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 100%)', // Pink gradient for flowers
+  },
+  
   // Background image
   backgroundImage: {
     flex: 1,
@@ -1295,9 +1309,14 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     padding: 24,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     margin: 16,
     borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
   },
   header: {
     alignItems: 'center',
