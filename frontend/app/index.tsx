@@ -819,73 +819,83 @@ export default function PlantWellnessApp() {
 
       if (showAiPhotosDB) {
         return (
-          <ScrollView style={styles.screen}>
-            <View style={styles.catalogHeader}>
-              <TouchableOpacity 
-                style={styles.backButton}
-                onPress={() => setShowAiPhotosDB(false)}
-              >
-                <Ionicons name="arrow-back" size={24} color="#4CAF50" />
-                <Text style={styles.backText}>Retour</Text>
-              </TouchableOpacity>
-              <Text style={styles.screenTitle}>Base Photos IA</Text>
-            </View>
-
-            {selectedAiPlants.length > 0 && (
-              <View style={styles.selectionSummary}>
-                <Text style={styles.selectionText}>
-                  {selectedAiPlants.length} plante(s) sélectionnée(s)
-                </Text>
+          <ImageBackground
+            source={{ 
+              uri: category === 'potager' 
+                ? 'https://images.unsplash.com/photo-1566281796817-93bc94d7dbd2?w=800&q=80' // Photo de légumes/potager
+                : 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80' // Photo de fleurs colorées
+            }}
+            style={styles.backgroundImage}
+            blurRadius={5}
+          >
+            <ScrollView style={styles.screen}>
+              <View style={styles.catalogHeader}>
                 <TouchableOpacity 
-                  style={styles.addSelectedButton}
-                  onPress={addSelectedAiPlantsToGarden}
+                  style={styles.backButton}
+                  onPress={() => setShowAiPhotosDB(false)}
                 >
-                  <Ionicons name="checkmark-circle" size={20} color="#fff" />
-                  <Text style={styles.addSelectedText}>Ajouter la sélection</Text>
+                  <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+                  <Text style={styles.backText}>Retour</Text>
                 </TouchableOpacity>
+                <Text style={styles.screenTitle}>Base Photos IA</Text>
               </View>
-            )}
 
-            <View style={styles.plantGrid}>
-              {aiPhotosDB.map((aiPlant: any) => (
-                <TouchableOpacity 
-                  key={aiPlant.id} 
-                  style={[
-                    styles.aiPlantCard,
-                    selectedAiPlants.includes(aiPlant.id) && styles.aiPlantCardSelected
-                  ]}
-                  onPress={() => toggleAiPlantSelection(aiPlant.id)}
-                >
-                  <View style={styles.plantCardHeader}>
-                    <View style={styles.aiPlantHeader}>
-                      <Ionicons name="image" size={32} color="#9C27B0" />
-                      <View style={styles.checkboxContainer}>
-                        <Ionicons 
-                          name={selectedAiPlants.includes(aiPlant.id) ? "checkbox" : "square-outline"} 
-                          size={24} 
-                          color={selectedAiPlants.includes(aiPlant.id) ? "#4CAF50" : "#666"} 
-                        />
+              {selectedAiPlants.length > 0 && (
+                <View style={styles.selectionSummary}>
+                  <Text style={styles.selectionText}>
+                    {selectedAiPlants.length} plante(s) sélectionnée(s)
+                  </Text>
+                  <TouchableOpacity 
+                    style={styles.addSelectedButton}
+                    onPress={addSelectedAiPlantsToGarden}
+                  >
+                    <Ionicons name="checkmark-circle" size={20} color="#fff" />
+                    <Text style={styles.addSelectedText}>Ajouter la sélection</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
+              <View style={styles.plantGrid}>
+                {aiPhotosDB.map((aiPlant: any) => (
+                  <TouchableOpacity 
+                    key={aiPlant.id} 
+                    style={[
+                      styles.aiPlantCard,
+                      selectedAiPlants.includes(aiPlant.id) && styles.aiPlantCardSelected
+                    ]}
+                    onPress={() => toggleAiPlantSelection(aiPlant.id)}
+                  >
+                    <View style={styles.plantCardHeader}>
+                      <View style={styles.aiPlantHeader}>
+                        <Ionicons name="image" size={32} color="#9C27B0" />
+                        <View style={styles.checkboxContainer}>
+                          <Ionicons 
+                            name={selectedAiPlants.includes(aiPlant.id) ? "checkbox" : "square-outline"} 
+                            size={24} 
+                            color={selectedAiPlants.includes(aiPlant.id) ? "#4CAF50" : "#666"} 
+                          />
+                        </View>
                       </View>
+                      <Text style={styles.plantName}>{aiPlant.name}</Text>
+                      <Text style={styles.confidenceText}>
+                        IA • Confiance: {(aiPlant.confidence * 100).toFixed(0)}%
+                      </Text>
                     </View>
-                    <Text style={styles.plantName}>{aiPlant.name}</Text>
-                    <Text style={styles.confidenceText}>
-                      IA • Confiance: {(aiPlant.confidence * 100).toFixed(0)}%
-                    </Text>
-                  </View>
-                  
-                  <Text style={styles.plantDescription}>{aiPlant.description}</Text>
-                  
-                  <View style={styles.aiPlantTags}>
-                    {aiPlant.tags.map((tag: string, index: number) => (
-                      <View key={index} style={styles.tagChip}>
-                        <Text style={styles.tagText}>{tag}</Text>
-                      </View>
-                    ))}
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </ScrollView>
+                    
+                    <Text style={styles.plantDescription}>{aiPlant.description}</Text>
+                    
+                    <View style={styles.aiPlantTags}>
+                      {aiPlant.tags.map((tag: string, index: number) => (
+                        <View key={index} style={styles.tagChip}>
+                          <Text style={styles.tagText}>{tag}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </ScrollView>
+          </ImageBackground>
         );
       }
 
