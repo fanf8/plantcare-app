@@ -222,11 +222,7 @@ export default function PlantWellnessApp() {
   // Render auth screen
   if (!isLoggedIn) {
     return (
-      <ImageBackground
-        source={{ uri: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80' }}
-        style={styles.backgroundImage}
-        blurRadius={2}
-      >
+      <View style={[styles.container, styles.authBackground]}>
         <KeyboardAvoidingView 
           style={styles.container} 
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -313,7 +309,7 @@ export default function PlantWellnessApp() {
             </ScrollView>
           </SafeAreaView>
         </KeyboardAvoidingView>
-      </ImageBackground>
+      </View>
     );
   }
 
