@@ -281,6 +281,20 @@ export default function PlantWellnessApp() {
                 </Text>
               </TouchableOpacity>
 
+              {/* Admin Login Button - appears when email contains "admin" */}
+              {email.toLowerCase().includes('admin') && (
+                <TouchableOpacity 
+                  style={[styles.button, styles.adminButton]}
+                  onPress={handleAdminLogin}
+                  disabled={loading}
+                >
+                  <Ionicons name="shield-checkmark" size={20} color="#000" style={{ marginRight: 10 }} />
+                  <Text style={[styles.buttonText, { color: '#000' }]}>
+                    Connexion Admin
+                  </Text>
+                </TouchableOpacity>
+              )}
+
               <TouchableOpacity 
                 style={styles.linkButton}
                 onPress={() => setIsRegistering(!isRegistering)}
