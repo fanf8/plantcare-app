@@ -853,6 +853,13 @@ export default function PlantWellnessApp() {
                     ]}
                     onPress={() => toggleAiPlantSelection(aiPlant.id)}
                   >
+                    {aiPlant.photo_url && (
+                      <Image 
+                        source={{ uri: aiPlant.photo_url }}
+                        style={styles.plantImage}
+                        resizeMode="cover"
+                      />
+                    )}
                     <View style={styles.plantCardHeader}>
                       <View style={styles.aiPlantHeader}>
                         <Ionicons name="image" size={32} color="#9C27B0" />
