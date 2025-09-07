@@ -892,16 +892,11 @@ export default function PlantWellnessApp() {
       }
 
       return (
-        <ImageBackground
-          source={{ 
-            uri: category === 'potager' 
-              ? 'https://images.unsplash.com/photo-1566281796817-93bc94d7dbd2?w=800&q=80' // Photo de légumes/potager
-              : 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80' // Photo de fleurs colorées
-          }}
-          style={styles.backgroundImage}
-          blurRadius={4}
-        >
-          <ScrollView style={styles.screen}>
+        <View style={[
+          styles.screen, 
+          category === 'potager' ? styles.potagerBackground : styles.ornementBackground
+        ]}>
+          <ScrollView>
             <View style={styles.catalogHeader}>
               <TouchableOpacity 
                 style={styles.backButton}
@@ -985,7 +980,7 @@ export default function PlantWellnessApp() {
               ))}
             </View>
           </ScrollView>
-        </ImageBackground>
+        </View>
       );
     };
 
