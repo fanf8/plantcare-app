@@ -222,92 +222,98 @@ export default function PlantWellnessApp() {
   // Render auth screen
   if (!isLoggedIn) {
     return (
-      <KeyboardAvoidingView 
-        style={styles.container} 
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      <ImageBackground
+        source={{ uri: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80' }}
+        style={styles.backgroundImage}
+        blurRadius={2}
       >
-        <StatusBar style="light" />
-        <SafeAreaView style={styles.container}>
-          <ScrollView contentContainerStyle={styles.authContainer}>
-            <View style={styles.header}>
-              <Ionicons name="leaf" size={60} color="#4CAF50" />
-              <TouchableOpacity onPress={handleTitleTap} activeOpacity={0.8}>
-                <Text style={styles.title}>Plant Wellness</Text>
-              </TouchableOpacity>
-              <Text style={styles.subtitle}>
-                Votre assistant IA pour le jardinage
-              </Text>
-            </View>
+        <KeyboardAvoidingView 
+          style={styles.container} 
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+          <StatusBar style="light" />
+          <SafeAreaView style={styles.container}>
+            <ScrollView contentContainerStyle={styles.authContainer}>
+              <View style={styles.header}>
+                <Ionicons name="leaf" size={60} color="#4CAF50" />
+                <TouchableOpacity onPress={handleTitleTap} activeOpacity={0.8}>
+                  <Text style={styles.title}>Plant Wellness</Text>
+                </TouchableOpacity>
+                <Text style={styles.subtitle}>
+                  Votre assistant IA pour le jardinage
+                </Text>
+              </View>
 
-            <View style={styles.form}>
-              {isRegistering && (
+              <View style={styles.form}>
+                {isRegistering && (
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Nom complet"
+                    placeholderTextColor="#999"
+                    value={name}
+                    onChangeText={setName}
+                    autoCapitalize="words"
+                  />
+                )}
+                
                 <TextInput
                   style={styles.input}
-                  placeholder="Nom complet"
+                  placeholder="Email"
                   placeholderTextColor="#999"
-                  value={name}
-                  onChangeText={setName}
-                  autoCapitalize="words"
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoComplete="email"
                 />
-              )}
-              
-              <TextInput
-                style={styles.input}
-                placeholder="Email"
-                placeholderTextColor="#999"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoComplete="email"
-              />
-              
-              <TextInput
-                style={styles.input}
-                placeholder="Mot de passe"
-                placeholderTextColor="#999"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-                autoCapitalize="none"
-              />
+                
+                <TextInput
+                  style={styles.input}
+                  placeholder="Mot de passe"
+                  placeholderTextColor="#999"
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry
+                  autoCapitalize="none"
+                />
 
-              <TouchableOpacity 
-                style={[styles.button, styles.primaryButton]} 
-                onPress={isRegistering ? handleRegister : handleLogin}
-                disabled={loading}
-              >
-                <Text style={styles.buttonText}>
-                  {loading ? 'Chargement...' : (isRegistering ? 'Créer un compte' : 'Se connecter')}
-                </Text>
-              </TouchableOpacity>
-
-              {/* Admin Login Button - appears when email contains "admin" */}
-              {email.toLowerCase().includes('admin') && (
                 <TouchableOpacity 
-                  style={[styles.button, styles.adminButton]}
-                  onPress={handleAdminLogin}
+                  style={[styles.button, styles.primaryButton]} 
+                  onPress={isRegistering ? handleRegister : handleLogin}
                   disabled={loading}
                 >
-                  <Ionicons name="shield-checkmark" size={20} color="#000" style={{ marginRight: 10 }} />
-                  <Text style={[styles.buttonText, { color: '#000' }]}>
-                    Connexion Admin
+                  <Text style={styles.buttonText}>
+                    {loading ? 'Chargement...' : (isRegistering ? 'Créer un compte' : 'Se connecter')}
                   </Text>
                 </TouchableOpacity>
-              )}
 
-              <TouchableOpacity 
-                style={styles.linkButton}
-                onPress={() => setIsRegistering(!isRegistering)}
-              >
-                <Text style={styles.linkText}>
-                  {isRegistering ? 'Déjà un compte ? Se connecter' : 'Nouveau ? Créer un compte'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
+                {/* Admin Login Button - appears when email contains "admin" */}
+                {email.toLowerCase().includes('admin') && (
+                  <TouchableOpacity 
+                    style={[styles.button, styles.adminButton]}
+                    onPress={handleAdminLogin}
+                    disabled={loading}
+                  >
+                    <Ionicons name="shield-checkmark" size={20} color="#000" style={{ marginRight: 10 }} />
+                    <Text style={[styles.buttonText, { color: '#000' }]}>
+                      Connexion Admin
+                    </Text>
+                  </TouchableOpacity>
+                )}
+
+                <TouchableOpacity 
+                  style={styles.linkButton}
+                  onPress={() => setIsRegistering(!isRegistering)}
+                >
+                  <Text style={styles.linkText}>
+                    {isRegistering ? 'Déjà un compte ? Se connecter' : 'Nouveau ? Créer un compte'}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </SafeAreaView>
+        </KeyboardAvoidingView>
+      </ImageBackground>
     );
   }
 
