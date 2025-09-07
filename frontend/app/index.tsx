@@ -319,48 +319,54 @@ export default function PlantWellnessApp() {
 
   // Main app screens
   const renderGardenScreen = () => (
-    <ScrollView style={styles.screen}>
-      <Text style={styles.screenTitle}>Mon Jardin</Text>
-      
-      <View style={styles.gardenSections}>
-        <TouchableOpacity 
-          style={styles.gardenCard}
-          onPress={() => setCurrentTab('potager')}
-        >
-          <Ionicons name="nutrition" size={40} color="#FF6B35" />
-          <Text style={styles.gardenCardTitle}>Mon Potager</Text>
-          <Text style={styles.gardenCardDesc}>
-            Légumes, herbes aromatiques
-          </Text>
-        </TouchableOpacity>
+    <ImageBackground
+      source={{ uri: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80' }}
+      style={styles.backgroundImage}
+      blurRadius={3}
+    >
+      <ScrollView style={styles.screen}>
+        <Text style={styles.screenTitle}>Mon Jardin</Text>
+        
+        <View style={styles.gardenSections}>
+          <TouchableOpacity 
+            style={styles.gardenCard}
+            onPress={() => setCurrentTab('potager')}
+          >
+            <Ionicons name="nutrition" size={40} color="#FF6B35" />
+            <Text style={styles.gardenCardTitle}>Mon Potager</Text>
+            <Text style={styles.gardenCardDesc}>
+              Légumes, herbes aromatiques
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.gardenCard}
-          onPress={() => setCurrentTab('ornement')}
-        >
-          <Ionicons name="flower" size={40} color="#E91E63" />
-          <Text style={styles.gardenCardTitle}>Mes Fleurs & Plantes</Text>
-          <Text style={styles.gardenCardDesc}>
-            Plantes d'ornement, fleurs
-          </Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity 
+            style={styles.gardenCard}
+            onPress={() => setCurrentTab('ornement')}
+          >
+            <Ionicons name="flower" size={40} color="#E91E63" />
+            <Text style={styles.gardenCardTitle}>Mes Fleurs & Plantes</Text>
+            <Text style={styles.gardenCardDesc}>
+              Plantes d'ornement, fleurs
+            </Text>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.quickStats}>
-        <View style={styles.statCard}>
-          <Text style={styles.statNumber}>12</Text>
-          <Text style={styles.statLabel}>Plantes</Text>
+        <View style={styles.quickStats}>
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>12</Text>
+            <Text style={styles.statLabel}>Plantes</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>3</Text>
+            <Text style={styles.statLabel}>À arroser</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statNumber}>8</Text>
+            <Text style={styles.statLabel}>En bonne santé</Text>
+          </View>
         </View>
-        <View style={styles.statCard}>
-          <Text style={styles.statNumber}>3</Text>
-          <Text style={styles.statLabel}>À arroser</Text>
-        </View>
-        <View style={styles.statCard}>
-          <Text style={styles.statNumber}>8</Text>
-          <Text style={styles.statLabel}>En bonne santé</Text>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </ImageBackground>
   );
 
   const renderPlantCatalog = (category: string) => {
