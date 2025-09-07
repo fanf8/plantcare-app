@@ -359,10 +359,14 @@ export default function PlantWellnessApp() {
   const renderPlantCatalog = (category: string) => {
     const PlantCatalog = () => {
       const [plants, setPlants] = React.useState([]);
+      const [scannedPlants, setScannedPlants] = React.useState([]);
       const [loading, setLoading] = React.useState(true);
+      const [showScanner, setShowScanner] = React.useState(false);
+      const [showScannedMenu, setShowScannedMenu] = React.useState(false);
 
       React.useEffect(() => {
         fetchPlants();
+        fetchScannedPlants();
       }, []);
 
       const fetchPlants = async () => {
@@ -374,6 +378,28 @@ export default function PlantWellnessApp() {
           console.error('Error fetching plants:', error);
         } finally {
           setLoading(false);
+        }
+      };
+
+      const fetchScannedPlants = async () => {
+        try {
+          const token = await AsyncStorage.getItem('access_token');
+          const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/ai/history`, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+          if (response.ok) {
+            const data = await response.json();
+            // Filter for identification results that match the category
+            const categoryScanned = data.filter((analysis: any) => 
+              analysis.analysis_type === 'identification' && 
+              analysis.result.category === category
+            );
+            setScannedPlants(categoryScanned);
+          }
+        } catch (error) {
+          console.error('Error fetching scanned plants:', error);
         }
       };
 
@@ -405,6 +431,72 @@ export default function PlantWellnessApp() {
         }
       };
 
+      const addScannedPlantToGarden = async (scannedPlant: any) => {
+        try {
+          const token = await AsyncStorage.getItem('access_token');
+          const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              plant_id: scannedPlant.id, // Use analysis ID as plant reference
+              custom_name: scannedPlant.result.plant_name,
+              location: 'extérieur',
+              notes: `Plante scannée par IA - Confiance: ${(scannedPlant.confidence * 100).toFixed(0)}%`,
+              image_base64: scannedPlant.image_base64
+            }),
+          });
+
+          if (response.ok) {
+            Alert.alert('Succès', `${scannedPlant.result.plant_name} ajouté à votre jardin !`);
+            setShowScannedMenu(false);
+          } else {
+            Alert.alert('Erreur', 'Impossible d\'ajouter la plante scannée');
+          }
+        } catch (error) {
+          console.error('Error adding scanned plant:', error);
+          Alert.alert('Erreur', 'Erreur de connexion');
+        }
+      };
+
+      const handleScanPlant = async (imageBase64: string) => {
+        try {
+          const token = await AsyncStorage.getItem('access_token');
+          const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/ai/analyze`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              image_base64: imageBase64,
+              analysis_type: 'identification'
+            }),
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            Alert.alert(
+              'Plante Identifiée !', 
+              `${result.plant_name}\nConfiance: ${(result.confidence * 100).toFixed(0)}%\n\n${result.description}`,
+              [
+                { text: 'OK', onPress: () => {
+                  setShowScanner(false);
+                  fetchScannedPlants(); // Refresh scanned plants
+                }}
+              ]
+            );
+          } else {
+            Alert.alert('Erreur', 'Impossible d\'identifier la plante');
+          }
+        } catch (error) {
+          console.error('Error scanning plant:', error);
+          Alert.alert('Erreur', 'Erreur de connexion');
+        }
+      };
+
       if (loading) {
         return (
           <View style={styles.screen}>
@@ -413,6 +505,120 @@ export default function PlantWellnessApp() {
             </Text>
             <Text style={styles.loadingText}>Chargement des plantes...</Text>
           </View>
+        );
+      }
+
+      if (showScanner) {
+        return (
+          <View style={styles.screen}>
+            <View style={styles.catalogHeader}>
+              <TouchableOpacity 
+                style={styles.backButton}
+                onPress={() => setShowScanner(false)}
+              >
+                <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+                <Text style={styles.backText}>Retour</Text>
+              </TouchableOpacity>
+              <Text style={styles.screenTitle}>Scanner une plante</Text>
+            </View>
+
+            <View style={styles.scannerContainer}>
+              <View style={styles.scannerPlaceholder}>
+                <Ionicons name="camera" size={80} color="#4CAF50" />
+                <Text style={styles.scannerText}>
+                  Prenez une photo de votre plante
+                </Text>
+                <Text style={styles.scannerSubtext}>
+                  L'IA identifiera automatiquement l'espèce
+                </Text>
+              </View>
+
+              <TouchableOpacity 
+                style={[styles.button, styles.primaryButton]}
+                onPress={() => {
+                  // Simulate taking a photo and scanning
+                  const mockImageBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."; // Mock base64
+                  handleScanPlant(mockImageBase64);
+                }}
+              >
+                <Ionicons name="camera" size={20} color="#fff" style={{ marginRight: 10 }} />
+                <Text style={styles.buttonText}>Prendre une photo</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                style={[styles.button, styles.secondaryButton]}
+                onPress={() => {
+                  // Simulate selecting from gallery
+                  const mockImageBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."; // Mock base64
+                  handleScanPlant(mockImageBase64);
+                }}
+              >
+                <Ionicons name="images" size={20} color="#4CAF50" style={{ marginRight: 10 }} />
+                <Text style={[styles.buttonText, { color: '#4CAF50' }]}>
+                  Choisir de la galerie
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        );
+      }
+
+      if (showScannedMenu) {
+        return (
+          <ScrollView style={styles.screen}>
+            <View style={styles.catalogHeader}>
+              <TouchableOpacity 
+                style={styles.backButton}
+                onPress={() => setShowScannedMenu(false)}
+              >
+                <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+                <Text style={styles.backText}>Retour</Text>
+              </TouchableOpacity>
+              <Text style={styles.screenTitle}>Plantes Scannées IA</Text>
+            </View>
+
+            {scannedPlants.length === 0 ? (
+              <View style={styles.emptyState}>
+                <Ionicons name="scan" size={60} color="#666" />
+                <Text style={styles.emptyStateText}>
+                  Aucune plante scannée pour {category === 'potager' ? 'le potager' : 'l\'ornement'}
+                </Text>
+                <Text style={styles.emptyStateSubtext}>
+                  Utilisez le scanner IA pour identifier vos plantes
+                </Text>
+              </View>
+            ) : (
+              <View style={styles.plantGrid}>
+                {scannedPlants.map((scannedPlant: any) => (
+                  <View key={scannedPlant.id} style={styles.scannedPlantCard}>
+                    <View style={styles.plantCardHeader}>
+                      <Ionicons name="scan-circle" size={32} color="#4CAF50" />
+                      <Text style={styles.plantName}>{scannedPlant.result.plant_name}</Text>
+                      <Text style={styles.confidenceText}>
+                        Confiance: {(scannedPlant.confidence * 100).toFixed(0)}%
+                      </Text>
+                    </View>
+                    
+                    <Text style={styles.plantDescription}>{scannedPlant.result.description}</Text>
+                    
+                    <View style={styles.scannedInfo}>
+                      <Text style={styles.scannedDate}>
+                        Scanné le {new Date(scannedPlant.created_at).toLocaleDateString('fr-FR')}
+                      </Text>
+                    </View>
+
+                    <TouchableOpacity 
+                      style={styles.addPlantButton}
+                      onPress={() => addScannedPlantToGarden(scannedPlant)}
+                    >
+                      <Ionicons name="add-circle" size={20} color="#fff" />
+                      <Text style={styles.addPlantText}>Ajouter à mon jardin</Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </View>
+            )}
+          </ScrollView>
         );
       }
 
@@ -429,6 +635,27 @@ export default function PlantWellnessApp() {
             <Text style={styles.screenTitle}>
               {category === 'potager' ? 'Catalogue Potager' : 'Catalogue Ornement'}
             </Text>
+          </View>
+
+          {/* Action buttons */}
+          <View style={styles.actionButtons}>
+            <TouchableOpacity 
+              style={styles.actionButton}
+              onPress={() => setShowScanner(true)}
+            >
+              <Ionicons name="camera" size={24} color="#4CAF50" />
+              <Text style={styles.actionButtonText}>Scanner IA</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={styles.actionButton}
+              onPress={() => setShowScannedMenu(true)}
+            >
+              <Ionicons name="list" size={24} color="#4CAF50" />
+              <Text style={styles.actionButtonText}>
+                Plantes Scannées ({scannedPlants.length})
+              </Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.plantGrid}>
