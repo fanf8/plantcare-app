@@ -690,6 +690,11 @@ const styles = StyleSheet.create({
   premiumButton: {
     backgroundColor: '#FFD700',
   },
+  adminButton: {
+    backgroundColor: '#FFD700',
+    borderWidth: 2,
+    borderColor: '#FFA000',
+  },
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
