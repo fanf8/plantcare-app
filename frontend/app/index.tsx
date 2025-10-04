@@ -602,93 +602,224 @@ export default function PlantWellnessApp() {
     </View>
   );
 
-  const renderEncyclopediaScreen = () => (
-    <View style={[styles.container, styles.encyclopediaBackground]}>
-      <ScrollView style={styles.screen}>
-        <View style={styles.encyclopediaHeader}>
-          <TouchableOpacity 
-            style={styles.backButton}
-            onPress={() => setCurrentTab('garden')}
-          >
-            <Ionicons name="arrow-back" size={24} color="#4CAF50" />
-            <Text style={styles.backText}>Retour</Text>
-          </TouchableOpacity>
-          <Text style={styles.screenTitle}>Encyclopédie des Plantes</Text>
-        </View>
+  const renderEncyclopediaScreen = () => {
+    const [currentPlantIndex, setCurrentPlantIndex] = useState(0);
+    
+    const currentCategoryPlants = filteredPlants.filter(plant => 
+      !currentSection || plant.subcategory === currentSection
+    );
+    
+    const currentPlant = currentCategoryPlants[currentPlantIndex] || currentCategoryPlants[0];
 
-        <View style={styles.searchContainer}>
-          <Ionicons name="search" size={20} color="#666" />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Rechercher une plante..."
-            placeholderTextColor="#666"
-            value={filterText}
-            onChangeText={setFilterText}
-          />
-        </View>
+    const nextPlant = () => {
+      if (currentPlantIndex < currentCategoryPlants.length - 1) {
+        setCurrentPlantIndex(currentPlantIndex + 1);
+      }
+    };
 
-        <View style={styles.categoryTabs}>
-          <TouchableOpacity 
-            style={[
-              styles.categoryTab,
-              currentSection === 'legumes' && styles.categoryTabActive
-            ]}
-            onPress={() => setCurrentSection('legumes')}
-          >
-            <Text style={[
-              styles.categoryTabText,
-              currentSection === 'legumes' && styles.categoryTabTextActive
-            ]}>
-              🥕 Légumes
-            </Text>
-          </TouchableOpacity>
+    const prevPlant = () => {
+      if (currentPlantIndex > 0) {
+        setCurrentPlantIndex(currentPlantIndex - 1);
+      }
+    };
 
-          <TouchableOpacity 
-            style={[
-              styles.categoryTab,
-              currentSection === 'fruits' && styles.categoryTabActive
-            ]}
-            onPress={() => setCurrentSection('fruits')}
-          >
-            <Text style={[
-              styles.categoryTabText,
-              currentSection === 'fruits' && styles.categoryTabTextActive
-            ]}>
-              🍓 Fruits
-            </Text>
-          </TouchableOpacity>
-        </View>
+    const addCurrentPlantToGarden = async () => {
+      if (!currentPlant) return;
+      
+      try {
+        const token = await AsyncStorage.getItem('access_token');
+        const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            plant_id: currentPlant.id,
+            custom_name: currentPlant.name,
+            location: 'extérieur',
+            notes: `Ajouté depuis l'encyclopédie - ${currentPlant.subcategory}`
+          }),
+        });
 
-        <View style={styles.plantsList}>
-          {filteredPlants
-            .filter(plant => !currentSection || plant.subcategory === currentSection)
-            .map(plant => (
+        if (response.ok) {
+          Alert.alert('Succès !', `${currentPlant.name} ajouté à votre potager !`);
+        } else {
+          Alert.alert('Erreur', 'Impossible d\'ajouter la plante');
+        }
+      } catch (error) {
+        console.error('Error adding plant:', error);
+        Alert.alert('Erreur', 'Erreur de connexion');
+      }
+    };
+
+    return (
+      <View style={[styles.container, styles.encyclopediaBackground]}>
+        <ScrollView style={styles.screen}>
+          <View style={styles.encyclopediaHeader}>
             <TouchableOpacity 
-              key={plant.id}
-              style={styles.plantListItem}
-              onPress={() => setSelectedPlant(plant)}
+              style={styles.backButton}
+              onPress={() => setCurrentTab('garden')}
             >
-              <Image 
-                source={{ uri: plant.photo_url }}
-                style={styles.plantListImage}
-                resizeMode="cover"
-              />
-              <View style={styles.plantListContent}>
-                <Text style={styles.plantListName}>{plant.name}</Text>
-                <Text style={styles.plantListScientific}>{plant.scientific_name}</Text>
-                <Text style={styles.plantListDescription}>{plant.description}</Text>
-                <View style={styles.plantListTags}>
-                  <Text style={styles.plantListDifficulty}>{plant.difficulty}</Text>
-                  <Text style={styles.plantListSeason}>{plant.growing_season.join(', ')}</Text>
+              <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+              <Text style={styles.backText}>Retour</Text>
+            </TouchableOpacity>
+            <Text style={styles.screenTitle}>Encyclopédie des Plantes</Text>
+          </View>
+
+          <View style={styles.searchContainer}>
+            <Ionicons name="search" size={20} color="#666" />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Rechercher une plante..."
+              placeholderTextColor="#666"
+              value={filterText}
+              onChangeText={setFilterText}
+            />
+          </View>
+
+          <View style={styles.categoryTabs}>
+            <TouchableOpacity 
+              style={[
+                styles.categoryTab,
+                currentSection === 'legumes' && styles.categoryTabActive
+              ]}
+              onPress={() => {
+                setCurrentSection('legumes');
+                setCurrentPlantIndex(0);
+              }}
+            >
+              <Text style={[
+                styles.categoryTabText,
+                currentSection === 'legumes' && styles.categoryTabTextActive
+              ]}>
+                🥕 Légumes
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={[
+                styles.categoryTab,
+                currentSection === 'fruits' && styles.categoryTabActive
+              ]}
+              onPress={() => {
+                setCurrentSection('fruits');
+                setCurrentPlantIndex(0);
+              }}
+            >
+              <Text style={[
+                styles.categoryTabText,
+                currentSection === 'fruits' && styles.categoryTabTextActive
+              ]}>
+                🍓 Fruits
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* CARROUSEL DE PLANTES */}
+          {currentPlant && (
+            <View style={styles.carouselContainer}>
+              <View style={styles.carouselCard}>
+                <Image 
+                  source={{ uri: currentPlant.photo_url }}
+                  style={styles.carouselImage}
+                  resizeMode="cover"
+                />
+                
+                <View style={styles.carouselContent}>
+                  <Text style={styles.carouselTitle}>{currentPlant.name}</Text>
+                  <Text style={styles.carouselScientific}>{currentPlant.scientific_name}</Text>
+                  <Text style={styles.carouselDescription}>{currentPlant.description}</Text>
+                  
+                  <View style={styles.carouselInfoRow}>
+                    <View style={styles.carouselInfoItem}>
+                      <Ionicons name="sunny" size={16} color="#FF9800" />
+                      <Text style={styles.carouselInfoText}>
+                        {currentPlant.sunlight.split(' ').slice(0, 3).join(' ')}
+                      </Text>
+                    </View>
+                    <View style={styles.carouselInfoItem}>
+                      <Ionicons name="water" size={16} color="#2196F3" />
+                      <Text style={styles.carouselInfoText}>
+                        {currentPlant.watering.split(' ').slice(0, 2).join(' ')}
+                      </Text>
+                    </View>
+                  </View>
+
+                  <TouchableOpacity 
+                    style={styles.addToGardenButton}
+                    onPress={addCurrentPlantToGarden}
+                  >
+                    <Ionicons name="add-circle" size={20} color="#fff" />
+                    <Text style={styles.addToGardenText}>Ajouter à mon potager</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <Ionicons name="chevron-forward" size={20} color="#4CAF50" />
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
-    </View>
-  );
+
+              {/* Navigation du carrousel */}
+              <View style={styles.carouselNavigation}>
+                <TouchableOpacity 
+                  style={[styles.carouselButton, currentPlantIndex === 0 && styles.carouselButtonDisabled]}
+                  onPress={prevPlant}
+                  disabled={currentPlantIndex === 0}
+                >
+                  <Ionicons 
+                    name="chevron-back" 
+                    size={24} 
+                    color={currentPlantIndex === 0 ? '#ccc' : '#4CAF50'} 
+                  />
+                </TouchableOpacity>
+
+                <View style={styles.carouselIndicator}>
+                  <Text style={styles.carouselIndicatorText}>
+                    {currentPlantIndex + 1} / {currentCategoryPlants.length}
+                  </Text>
+                  <Text style={styles.carouselCategoryText}>
+                    {currentSection === 'legumes' ? 'Légumes' : 
+                     currentSection === 'fruits' ? 'Fruits' : 
+                     'Toutes catégories'}
+                  </Text>
+                </View>
+
+                <TouchableOpacity 
+                  style={[styles.carouselButton, currentPlantIndex === currentCategoryPlants.length - 1 && styles.carouselButtonDisabled]}
+                  onPress={nextPlant}
+                  disabled={currentPlantIndex === currentCategoryPlants.length - 1}
+                >
+                  <Ionicons 
+                    name="chevron-forward" 
+                    size={24} 
+                    color={currentPlantIndex === currentCategoryPlants.length - 1 ? '#ccc' : '#4CAF50'} 
+                  />
+                </TouchableOpacity>
+              </View>
+
+              {/* Bouton pour voir les détails complets */}
+              <TouchableOpacity 
+                style={styles.detailsButton}
+                onPress={() => setSelectedPlant(currentPlant)}
+              >
+                <Ionicons name="information-circle" size={20} color="#4CAF50" />
+                <Text style={styles.detailsButtonText}>Voir fiche complète</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
+          {currentCategoryPlants.length === 0 && (
+            <View style={styles.emptyState}>
+              <Ionicons name="search" size={60} color="#666" />
+              <Text style={styles.emptyStateText}>
+                Aucune plante trouvée
+              </Text>
+              <Text style={styles.emptyStateSubtext}>
+                Essayez de modifier votre recherche
+              </Text>
+            </View>
+          )}
+        </ScrollView>
+      </View>
+    );
+  };
 
   const renderScannerScreen = () => (
     <ScrollView style={styles.screen}>
