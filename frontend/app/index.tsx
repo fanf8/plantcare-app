@@ -574,10 +574,10 @@ export default function PlantWellnessApp() {
 
           <TouchableOpacity 
             style={styles.gardenCard}
-            onPress={() => setCurrentTab('community')}
+            onPress={() => setCurrentTab('my-plants')}
           >
-            <Ionicons name="people" size={40} color="#2196F3" />
-            <Text style={styles.gardenCardTitle}>Ma Collection</Text>
+            <Ionicons name="leaf" size={40} color="#2196F3" />
+            <Text style={styles.gardenCardTitle}>Mes Plants</Text>
             <Text style={styles.gardenCardDesc}>
               Mes plantes ajoutées et suivies
             </Text>
