@@ -11,8 +11,10 @@ import {
   ScrollView,
   SafeAreaView,
   Image,
-  ImageBackground
+  ImageBackground,
+  ActivityIndicator
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
