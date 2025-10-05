@@ -9,7 +9,7 @@ PLANTS_DATABASE = [
         "variety": "Cœur de Bœuf",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Coeur_de_boeuf_vraie.JPG/800px-Coeur_de_boeuf_vraie.JPG",
         "description": "Grosse tomate charnue en forme de cœur, très savoureuse",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "été"],
