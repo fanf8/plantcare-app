@@ -888,7 +888,7 @@ export default function PlantWellnessApp() {
       
       {user?.is_premium ? (
         <View style={styles.recommendationsContainer}>
-          <Text style={styles.sectionTitle}>Soins Personnalisés</Text>
+          <Text style={styles.recommendationsSectionTitle}>Soins Personnalisés</Text>
           <View style={styles.recommendationCard}>
             <Ionicons name="water" size={24} color="#2196F3" />
             <View style={styles.recommendationContent}>
