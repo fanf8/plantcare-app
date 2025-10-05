@@ -569,7 +569,8 @@ export default function PlantWellnessApp() {
             </View>
           </View>
         </ScrollView>
-      </SafeAreaView>
+        </SafeAreaView>
+      </ImageBackground>
     );
   }
 
