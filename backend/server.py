@@ -570,7 +570,7 @@ class ScanResponse(BaseModel):
     description: str
     care_tips: Optional[str] = None
 
-@router.post("/scanner/analyze", response_model=ScanResponse)
+@app.post("/api/scanner/analyze", response_model=ScanResponse)
 async def analyze_plant_image(
     scan_data: ScanRequest,
     credentials: HTTPAuthorizationCredentials = Depends(security)
