@@ -63,13 +63,19 @@ class Plant(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name_fr: str
     name_latin: Optional[str] = None
+    variety: Optional[str] = None  # Variety name (e.g., "Batavia" for lettuce)
     category: str  # "potager" or "ornement"
     subcategory: Optional[str] = None  # "legume", "herbe", "fleur", "arbuste", etc.
     image_base64: Optional[str] = None
+    image_url: Optional[str] = None  # URL for plant image
     description: Optional[str] = None
     care_instructions: Optional[str] = None
     growing_season: Optional[List[str]] = None
     difficulty: Optional[str] = None  # "facile", "moyen", "difficile"
+    sunlight: Optional[str] = None
+    watering: Optional[str] = None
+    soil_type: Optional[str] = None
+    monthly_watering: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class UserPlant(BaseModel):
