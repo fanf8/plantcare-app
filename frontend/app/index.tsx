@@ -893,8 +893,13 @@ export default function PlantWellnessApp() {
   );
 
   const renderRecommendationsScreen = () => (
-    <ScrollView style={styles.screen}>
-      <Text style={styles.screenTitle}>Recommandations</Text>
+    <ImageBackground 
+      source={{ uri: BACKGROUND_IMAGES.recommendations }} 
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.screen}>
+        <Text style={styles.screenTitle}>Recommandations</Text>
       
       {user?.is_premium ? (
         <View style={styles.recommendationsContainer}>
