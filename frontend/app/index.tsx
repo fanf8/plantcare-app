@@ -504,10 +504,15 @@ export default function PlantWellnessApp() {
   // Render plant detail screen
   if (selectedPlant) {
     return (
-      <SafeAreaView style={[styles.container, styles.potagerBackground]}>
-        <StatusBar style="dark" />
-        
-        <ScrollView style={styles.screen}>
+      <ImageBackground 
+        source={{ uri: BACKGROUND_IMAGES.details }} 
+        style={styles.container}
+        resizeMode="cover"
+      >
+        <SafeAreaView style={[styles.container, { backgroundColor: 'transparent' }]}>
+          <StatusBar style="dark" />
+          
+          <ScrollView style={styles.screen}>
           <View style={styles.detailHeader}>
             <TouchableOpacity 
               style={styles.backButton}
