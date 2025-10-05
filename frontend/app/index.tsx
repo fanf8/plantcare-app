@@ -604,8 +604,6 @@ export default function PlantWellnessApp() {
   );
 
   const renderEncyclopediaScreen = () => {
-    const [currentPlantIndex, setCurrentPlantIndex] = useState(0);
-    
     const currentCategoryPlants = filteredPlants.filter(plant => 
       !currentSection || plant.subcategory === currentSection
     );
