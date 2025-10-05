@@ -24,7 +24,7 @@ PLANTS_DATABASE = [
         "variety": "Marmande",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Tomates_Marmande.jpg/1280px-Tomates_Marmande.jpg",
         "description": "Tomate côtelée, chair ferme, parfaite pour les salades",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "été"],
