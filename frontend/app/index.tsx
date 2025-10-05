@@ -889,6 +889,7 @@ export default function PlantWellnessApp() {
         </TouchableOpacity>
       </View>
     </ScrollView>
+    </ImageBackground>
   );
 
   const renderRecommendationsScreen = () => (
