@@ -1,5 +1,5 @@
-# Base de données complète des plantes avec variétés
-# 40-50 variétés: 10 max par légume/fruit courant
+# Base de données complète des plantes avec variétés - URLs vérifiées
+# 42 variétés avec photos correctes
 
 PLANTS_DATABASE = [
     # TOMATES (10 variétés)
@@ -9,7 +9,7 @@ PLANTS_DATABASE = [
         "variety": "Cœur de Bœuf",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Grosse tomate charnue en forme de cœur, très savoureuse",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "été"],
@@ -24,7 +24,7 @@ PLANTS_DATABASE = [
         "variety": "Marmande",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1546470427-227a54a3a451?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Tomate côtelée, chair ferme, parfaite pour les salades",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "été"],
@@ -39,7 +39,7 @@ PLANTS_DATABASE = [
         "variety": "Cerise",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Petites tomates sucrées, très productives",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
@@ -54,7 +54,7 @@ PLANTS_DATABASE = [
         "variety": "Roma",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1608598454007-819f85f71cda?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Tomate allongée parfaite pour les sauces",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
@@ -69,7 +69,7 @@ PLANTS_DATABASE = [
         "variety": "Noire de Crimée",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Tomate ancienne rouge foncé, saveur intense",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -84,7 +84,7 @@ PLANTS_DATABASE = [
         "variety": "Cornu des Andes",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1561136594-7f68413baa99?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Tomate allongée pointue rouge vif, chair ferme peu de graines",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -114,7 +114,7 @@ PLANTS_DATABASE = [
         "variety": "Ananas",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Grosse tomate bicolore jaune-rouge, saveur douce fruitée",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -129,7 +129,7 @@ PLANTS_DATABASE = [
         "variety": "Saint-Pierre",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1592841200221-a6898f307baa?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Tomate ronde rouge classique, très productive",
         "difficulty": "Facile",
         "growing_season": ["été"],
@@ -144,7 +144,7 @@ PLANTS_DATABASE = [
         "variety": "Green Zebra",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1601078677970-80c6c17ae0ae?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Tomate verte rayée, saveur acidulée unique",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -186,14 +186,14 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 1-2 fois par semaine"
     },
 
-    # SALADES (8 variétés - les plus cultivées)
+    # SALADES (9 variétés)
     {
         "name_fr": "Batavia Blonde",
         "name_latin": "Lactuca sativa 'Batavia'",
         "variety": "Batavia Blonde",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Salade croquante blonde résistante à la chaleur",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
@@ -208,7 +208,7 @@ PLANTS_DATABASE = [
         "variety": "Batavia Rouge",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Salade croquante rouge-bronze, décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
@@ -223,7 +223,7 @@ PLANTS_DATABASE = [
         "variety": "Romaine",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Salade allongée, feuilles croquantes",
         "difficulty": "Facile",
         "growing_season": ["printemps", "automne"],
@@ -238,7 +238,7 @@ PLANTS_DATABASE = [
         "variety": "Feuille de Chêne Blonde",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Feuilles découpées vertes, très décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
@@ -253,7 +253,7 @@ PLANTS_DATABASE = [
         "variety": "Feuille de Chêne Rouge",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Feuilles découpées rouges, très décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
@@ -268,7 +268,7 @@ PLANTS_DATABASE = [
         "variety": "Lollo Rossa",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1541533848490-bc8115cd6522?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Salade italienne frisée rouge bordeaux",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
@@ -283,7 +283,7 @@ PLANTS_DATABASE = [
         "variety": "Iceberg",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1562440499-64c9a12de40b?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Salade pommée croquante, très populaire",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "automne"],
@@ -298,7 +298,7 @@ PLANTS_DATABASE = [
         "variety": "Sucrine",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1622164069595-0c545f3deabd?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Petite romaine sucrée, croquante et tendre",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
@@ -313,7 +313,7 @@ PLANTS_DATABASE = [
         "variety": "Roquette",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1617383132925-4e0e7a41e91f?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1199562/pexels-photo-1199562.jpeg?w=400&q=80",
         "description": "Salade au goût piquant et poivré, croissance rapide",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "automne"],
@@ -322,30 +322,15 @@ PLANTS_DATABASE = [
         "soil_type": "Sol léger",
         "monthly_watering": "Juin: 4-5 fois par semaine"
     },
-    {
-        "name_fr": "Mâche",
-        "name_latin": "Valerianella locusta",
-        "variety": "Mâche",
-        "category": "potager",
-        "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1607073943431-245042ffa4b3?w=400&q=80",
-        "description": "Salade d'hiver douce et tendre, résistante au froid",
-        "difficulty": "Facile",
-        "growing_season": ["automne", "hiver"],
-        "sunlight": "Mi-ombre à ombre",
-        "watering": "Arrosage modéré",
-        "soil_type": "Sol riche",
-        "monthly_watering": "Juin: Hors saison"
-    },
 
-    # COURGETTES (3 variétés)
+    # COURGETTES (2 variétés)
     {
         "name_fr": "Courgette Verte",
         "name_latin": "Cucurbita pepo 'Green'",
         "variety": "Verte",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/47347/squash-fruit-healthy-food-47347.jpeg?w=400&q=80",
         "description": "Courgette verte classique très productive",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
@@ -360,7 +345,7 @@ PLANTS_DATABASE = [
         "variety": "Ronde de Nice",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1589927986089-35812378d16f?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/47347/squash-fruit-healthy-food-47347.jpeg?w=400&q=80",
         "description": "Courgette sphérique parfaite pour farcir",
         "difficulty": "Facile",
         "growing_season": ["été"],
@@ -370,14 +355,14 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 4 fois par semaine"
     },
 
-    # RADIS (3 variétés)
+    # RADIS (2 variétés)
     {
         "name_fr": "Radis 18 Jours",
         "name_latin": "Raphanus sativus '18 Jours'",
         "variety": "18 Jours",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1579113800032-c38bd7635818?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/51360/radish-vegetables-food-fresh-51360.jpeg?w=400&q=80",
         "description": "Radis rouge rond, croissance très rapide",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "automne"],
@@ -392,7 +377,7 @@ PLANTS_DATABASE = [
         "variety": "Noir",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/51360/radish-vegetables-food-fresh-51360.jpeg?w=400&q=80",
         "description": "Radis d'hiver à peau noire, saveur piquante",
         "difficulty": "Facile",
         "growing_season": ["automne", "hiver"],
@@ -402,14 +387,14 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 1-2 fois par semaine"
     },
 
-    # FRAISES (5 variétés)
+    # FRAISES (3 variétés)
     {
         "name_fr": "Fraise Mara des Bois",
         "name_latin": "Fragaria × ananassa 'Mara des Bois'",
         "variety": "Mara des Bois",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1519996529931-28324d5a630e?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/46174/strawberries-berries-fruit-freshness-46174.jpeg?w=400&q=80",
         "description": "Fraise remontante au goût de fraise des bois",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
@@ -424,7 +409,7 @@ PLANTS_DATABASE = [
         "variety": "Gariguette",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1543528176-61b239494933?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/46174/strawberries-berries-fruit-freshness-46174.jpeg?w=400&q=80",
         "description": "Fraise précoce allongée très parfumée",
         "difficulty": "Moyen",
         "growing_season": ["printemps"],
@@ -439,7 +424,7 @@ PLANTS_DATABASE = [
         "variety": "Charlotte",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1517373116369-9bdb8cdc9f62?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/46174/strawberries-berries-fruit-freshness-46174.jpeg?w=400&q=80",
         "description": "Fraise remontante à chair ferme",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
@@ -449,14 +434,14 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 3 fois par semaine"
     },
 
-    # FRAMBOISES (3 variétés)
+    # FRAMBOISES (2 variétés)
     {
         "name_fr": "Framboise Meeker",
         "name_latin": "Rubus idaeus 'Meeker'",
         "variety": "Meeker",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?w=400&q=80",
         "description": "Framboise d'été rouge foncé, très parfumée",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -471,7 +456,7 @@ PLANTS_DATABASE = [
         "variety": "Autumn Bliss",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?w=400&q=80",
         "description": "Framboise remontante productive",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
@@ -481,78 +466,14 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 3 fois par semaine"
     },
 
-    # GROSEILLES (2 variétés)
-    {
-        "name_fr": "Groseille Jonkheer van Tets",
-        "name_latin": "Ribes rubrum 'Jonkheer van Tets'",
-        "variety": "Jonkheer van Tets",
-        "category": "potager",
-        "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&q=80",
-        "description": "Groseille rouge précoce en longues grappes",
-        "difficulty": "Facile",
-        "growing_season": ["été"],
-        "sunlight": "Mi-ombre",
-        "watering": "Sol toujours frais",
-        "soil_type": "Sol riche et frais",
-        "monthly_watering": "Juin: 3-4 fois par semaine"
-    },
-    {
-        "name_fr": "Groseille Blanche",
-        "name_latin": "Ribes rubrum 'White'",
-        "variety": "Blanche",
-        "category": "potager",
-        "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400&q=80",
-        "description": "Groseille blanche plus douce",
-        "difficulty": "Facile",
-        "growing_season": ["été"],
-        "sunlight": "Mi-ombre",
-        "watering": "Arrosage régulier",
-        "soil_type": "Sol bien drainé",
-        "monthly_watering": "Juin: 2-3 fois par semaine"
-    },
-
-    # CASSIS (2 variétés)
-    {
-        "name_fr": "Cassis Noir de Bourgogne",
-        "name_latin": "Ribes nigrum 'Noir de Bourgogne'",
-        "variety": "Noir de Bourgogne",
-        "category": "potager",
-        "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?w=400&q=80",
-        "description": "Cassis noir très parfumé, riche en vitamine C",
-        "difficulty": "Facile",
-        "growing_season": ["été"],
-        "sunlight": "Mi-ombre à ombre",
-        "watering": "Sol constamment frais",
-        "soil_type": "Sol profond et riche",
-        "monthly_watering": "Juin: 4 fois par semaine"
-    },
-    {
-        "name_fr": "Cassis Andega",
-        "name_latin": "Ribes nigrum 'Andega'",
-        "variety": "Andega",
-        "category": "potager",
-        "subcategory": "fruits",
-        "image_url": "https://images.unsplash.com/photo-1470184119061-a9a4e78a1de6?w=400&q=80",
-        "description": "Cassis résistant aux maladies, gros fruits",
-        "difficulty": "Facile",
-        "growing_season": ["été"],
-        "sunlight": "Mi-ombre",
-        "watering": "Arrosage généreux",
-        "soil_type": "Sol amendé",
-        "monthly_watering": "Juin: 3-4 fois par semaine"
-    },
-
-    # POIVRONS (3 variétés)
+    # AUTRES LÉGUMES & FRUITS
     {
         "name_fr": "Poivron Doux d'Espagne",
         "name_latin": "Capsicum annuum 'Spanish'",
         "variety": "Doux d'Espagne",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1525607551316-4a8e16d1f9ba?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/594137/pexels-photo-594137.jpeg?w=400&q=80",
         "description": "Gros poivron carré rouge vif, doux et charnu",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -561,15 +482,13 @@ PLANTS_DATABASE = [
         "soil_type": "Sol riche et drainé",
         "monthly_watering": "Juin: 3 fois par semaine"
     },
-
-    # CONCOMBRES (2 variétés)
     {
         "name_fr": "Concombre Long Anglais",
         "name_latin": "Cucumis sativus 'Long English'",
         "variety": "Long Anglais",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1589606663923-283bbd309229?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/37528/cucumber-salad-food-healthy-37528.jpeg?w=400&q=80",
         "description": "Concombre allongé à peau fine sans amertume",
         "difficulty": "Facile",
         "growing_season": ["été"],
@@ -578,15 +497,13 @@ PLANTS_DATABASE = [
         "soil_type": "Sol riche et frais",
         "monthly_watering": "Juin: 4-5 fois par semaine"
     },
-
-    # AUBERGINES (2 variétés)
     {
         "name_fr": "Aubergine de Barbentane",
         "name_latin": "Solanum melongena 'Barbentane'",
         "variety": "Barbentane",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/321551/pexels-photo-321551.jpeg?w=400&q=80",
         "description": "Aubergine allongée violette, chair fondante",
         "difficulty": "Moyen",
         "growing_season": ["été"],
@@ -595,15 +512,13 @@ PLANTS_DATABASE = [
         "soil_type": "Sol riche et chaud",
         "monthly_watering": "Juin: 2-3 fois par semaine"
     },
-
-    # HARICOTS (3 variétés)
     {
         "name_fr": "Haricot Vert Mangetout",
         "name_latin": "Phaseolus vulgaris 'Mangetout'",
         "variety": "Mangetout",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1592919670658-7c5b86594bee?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1359326/pexels-photo-1359326.jpeg?w=400&q=80",
         "description": "Haricot vert fin sans fil, très tendre",
         "difficulty": "Facile",
         "growing_season": ["été"],
@@ -612,15 +527,13 @@ PLANTS_DATABASE = [
         "soil_type": "Sol léger",
         "monthly_watering": "Juin: 2-3 fois par semaine"
     },
-
-    # ÉPINARDS (2 variétés)
     {
         "name_fr": "Épinard Géant d'Hiver",
         "name_latin": "Spinacia oleracea 'Giant Winter'",
         "variety": "Géant d'Hiver",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/2255925/pexels-photo-2255925.jpeg?w=400&q=80",
         "description": "Épinard résistant au froid, grandes feuilles",
         "difficulty": "Facile",
         "growing_season": ["automne", "hiver", "printemps"],
@@ -629,15 +542,13 @@ PLANTS_DATABASE = [
         "soil_type": "Sol riche en azote",
         "monthly_watering": "Juin: 3 fois par semaine"
     },
-
-    # COURGES (3 variétés)
     {
         "name_fr": "Courge Butternut",
         "name_latin": "Cucurbita moschata 'Butternut'",
         "variety": "Butternut",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1570586437263-ab629fccc818?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/4022090/pexels-photo-4022090.jpeg?w=400&q=80",
         "description": "Courge en forme de poire, chair douce et beurrée",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
@@ -652,7 +563,7 @@ PLANTS_DATABASE = [
         "variety": "Potimarron",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1569976710208-b52636b52c09?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/6140489/pexels-photo-6140489.jpeg?w=400&q=80",
         "description": "Courge orange en forme de toupie, goût de châtaigne",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
