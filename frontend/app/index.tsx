@@ -72,6 +72,8 @@ export default function PlantWellnessApp() {
   const [filterText, setFilterText] = useState('');
   const [adminTapCount, setAdminTapCount] = useState(0);
   const [currentPlantIndex, setCurrentPlantIndex] = useState(0);
+  const [plantsDatabase, setPlantsDatabase] = useState<PlantInfo[]>([]);
+  const [plantsLoading, setPlantsLoading] = useState(true);
   
   // Form states
   const [email, setEmail] = useState('');
