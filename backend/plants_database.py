@@ -154,14 +154,14 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 3 fois par semaine"
     },
 
-    # CAROTTES (5 variétés)
+    # CAROTTES (2 variétés)
     {
         "name_fr": "Carotte de Nantes",
         "name_latin": "Daucus carota 'Nantaise'",
         "variety": "Nantes",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?w=400&q=80",
         "description": "Carotte cylindrique orange vif, croquante et sucrée",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
@@ -176,7 +176,7 @@ PLANTS_DATABASE = [
         "variety": "Colmar",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/65174/pexels-photo-65174.jpeg?w=400&q=80",
         "description": "Grosse carotte conique, excellente conservation",
         "difficulty": "Moyen",
         "growing_season": ["été", "automne"],
