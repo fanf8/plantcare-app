@@ -267,6 +267,7 @@ export default function PlantWellnessApp() {
 
   useEffect(() => {
     checkAuthStatus();
+    loadPlantsFromAPI();
   }, []);
 
   // Reset plant index when section changes
