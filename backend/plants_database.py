@@ -188,13 +188,13 @@ PLANTS_DATABASE = [
 
     # SALADES (8 variétés - les plus cultivées)
     {
-        "name_fr": "Laitue Batavia",
+        "name_fr": "Batavia Blonde",
         "name_latin": "Lactuca sativa 'Batavia'",
-        "variety": "Batavia",
+        "variety": "Batavia Blonde",
         "category": "potager",
         "subcategory": "legumes",
         "image_url": "https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?w=400&q=80",
-        "description": "Salade croquante résistante à la chaleur",
+        "description": "Salade croquante blonde résistante à la chaleur",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
         "sunlight": "Mi-ombre en été",
@@ -203,7 +203,22 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 3-4 fois par semaine"
     },
     {
-        "name_fr": "Laitue Romaine",
+        "name_fr": "Batavia Rouge",
+        "name_latin": "Lactuca sativa 'Batavia Rouge'",
+        "variety": "Batavia Rouge",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=400&q=80",
+        "description": "Salade croquante rouge-bronze, décorative",
+        "difficulty": "Facile",
+        "growing_season": ["printemps", "été", "automne"],
+        "sunlight": "Mi-ombre en été",
+        "watering": "Arrosage régulier délicat",
+        "soil_type": "Sol frais et riche",
+        "monthly_watering": "Juin: 3-4 fois par semaine"
+    },
+    {
+        "name_fr": "Romaine",
         "name_latin": "Lactuca sativa 'Romana'",
         "variety": "Romaine",
         "category": "potager",
@@ -218,13 +233,13 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 4 fois par semaine"
     },
     {
-        "name_fr": "Laitue Feuille de Chêne",
-        "name_latin": "Lactuca sativa 'Oak Leaf'",
-        "variety": "Feuille de Chêne",
+        "name_fr": "Feuille de Chêne Blonde",
+        "name_latin": "Lactuca sativa 'Oak Leaf Blonde'",
+        "variety": "Feuille de Chêne Blonde",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=400&q=80",
-        "description": "Feuilles découpées rouge ou verte, très décorative",
+        "image_url": "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80",
+        "description": "Feuilles découpées vertes, très décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
         "sunlight": "Mi-ombre",
@@ -233,7 +248,22 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 3-4 fois par semaine"
     },
     {
-        "name_fr": "Laitue Lollo Rossa",
+        "name_fr": "Feuille de Chêne Rouge",
+        "name_latin": "Lactuca sativa 'Oak Leaf Red'",
+        "variety": "Feuille de Chêne Rouge",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=400&q=80",
+        "description": "Feuilles découpées rouges, très décorative",
+        "difficulty": "Facile",
+        "growing_season": ["printemps", "été", "automne"],
+        "sunlight": "Mi-ombre",
+        "watering": "Arrosage régulier",
+        "soil_type": "Sol léger et frais",
+        "monthly_watering": "Juin: 3-4 fois par semaine"
+    },
+    {
+        "name_fr": "Lollo Rossa",
         "name_latin": "Lactuca sativa 'Lollo Rossa'",
         "variety": "Lollo Rossa",
         "category": "potager",
@@ -248,7 +278,7 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 3 fois par semaine"
     },
     {
-        "name_fr": "Laitue Iceberg",
+        "name_fr": "Iceberg",
         "name_latin": "Lactuca sativa 'Iceberg'",
         "variety": "Iceberg",
         "category": "potager",
@@ -263,7 +293,7 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 4 fois par semaine"
     },
     {
-        "name_fr": "Laitue Sucrine",
+        "name_fr": "Sucrine",
         "name_latin": "Lactuca sativa 'Sucrine'",
         "variety": "Sucrine",
         "category": "potager",
