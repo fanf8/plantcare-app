@@ -186,7 +186,7 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 1-2 fois par semaine"
     },
 
-    # SALADES (5 variétés)
+    # SALADES (8 variétés - les plus cultivées)
     {
         "name_fr": "Laitue Batavia",
         "name_latin": "Lactuca sativa 'Batavia'",
@@ -216,6 +216,96 @@ PLANTS_DATABASE = [
         "watering": "Arrosage fréquent",
         "soil_type": "Sol riche en matière organique",
         "monthly_watering": "Juin: 4 fois par semaine"
+    },
+    {
+        "name_fr": "Laitue Feuille de Chêne",
+        "name_latin": "Lactuca sativa 'Oak Leaf'",
+        "variety": "Feuille de Chêne",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1556801712-76c8eb07bbc9?w=400&q=80",
+        "description": "Feuilles découpées rouge ou verte, très décorative",
+        "difficulty": "Facile",
+        "growing_season": ["printemps", "été", "automne"],
+        "sunlight": "Mi-ombre",
+        "watering": "Arrosage régulier",
+        "soil_type": "Sol léger et frais",
+        "monthly_watering": "Juin: 3-4 fois par semaine"
+    },
+    {
+        "name_fr": "Laitue Lollo Rossa",
+        "name_latin": "Lactuca sativa 'Lollo Rossa'",
+        "variety": "Lollo Rossa",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1541533848490-bc8115cd6522?w=400&q=80",
+        "description": "Salade italienne frisée rouge bordeaux",
+        "difficulty": "Facile",
+        "growing_season": ["printemps", "été"],
+        "sunlight": "Soleil modéré",
+        "watering": "Arrosage délicat",
+        "soil_type": "Sol riche",
+        "monthly_watering": "Juin: 3 fois par semaine"
+    },
+    {
+        "name_fr": "Laitue Iceberg",
+        "name_latin": "Lactuca sativa 'Iceberg'",
+        "variety": "Iceberg",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1562440499-64c9a12de40b?w=400&q=80",
+        "description": "Salade pommée croquante, très populaire",
+        "difficulty": "Moyen",
+        "growing_season": ["printemps", "automne"],
+        "sunlight": "Soleil",
+        "watering": "Arrosage régulier",
+        "soil_type": "Sol frais et fertile",
+        "monthly_watering": "Juin: 4 fois par semaine"
+    },
+    {
+        "name_fr": "Laitue Sucrine",
+        "name_latin": "Lactuca sativa 'Sucrine'",
+        "variety": "Sucrine",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1622164069595-0c545f3deabd?w=400&q=80",
+        "description": "Petite romaine sucrée, croquante et tendre",
+        "difficulty": "Facile",
+        "growing_season": ["printemps", "été"],
+        "sunlight": "Soleil à mi-ombre",
+        "watering": "Arrosage modéré",
+        "soil_type": "Sol bien drainé",
+        "monthly_watering": "Juin: 3 fois par semaine"
+    },
+    {
+        "name_fr": "Roquette",
+        "name_latin": "Eruca sativa",
+        "variety": "Roquette",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1617383132925-4e0e7a41e91f?w=400&q=80",
+        "description": "Salade au goût piquant et poivré, croissance rapide",
+        "difficulty": "Très facile",
+        "growing_season": ["printemps", "automne"],
+        "sunlight": "Mi-ombre",
+        "watering": "Arrosage fréquent",
+        "soil_type": "Sol léger",
+        "monthly_watering": "Juin: 4-5 fois par semaine"
+    },
+    {
+        "name_fr": "Mâche",
+        "name_latin": "Valerianella locusta",
+        "variety": "Mâche",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://images.unsplash.com/photo-1607073943431-245042ffa4b3?w=400&q=80",
+        "description": "Salade d'hiver douce et tendre, résistante au froid",
+        "difficulty": "Facile",
+        "growing_season": ["automne", "hiver"],
+        "sunlight": "Mi-ombre à ombre",
+        "watering": "Arrosage modéré",
+        "soil_type": "Sol riche",
+        "monthly_watering": "Juin: Hors saison"
     },
 
     # COURGETTES (3 variétés)
