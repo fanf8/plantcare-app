@@ -918,7 +918,10 @@ export default function PlantWellnessApp() {
           <Text style={styles.buttonText}>Prendre une photo</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.secondaryButton]}>
+        <TouchableOpacity 
+          style={[styles.button, styles.secondaryButton]}
+          onPress={() => setCurrentTab('encyclopedia')}
+        >
           <Ionicons name="images" size={20} color="#4CAF50" style={{ marginRight: 10 }} />
           <Text style={[styles.buttonText, { color: '#4CAF50' }]}>
             Choisir de la galerie
