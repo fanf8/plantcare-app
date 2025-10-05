@@ -323,7 +323,9 @@ metadata:
         comment: "FIXED: Replaced solid color backgrounds with real ImageBackground components using high-quality Unsplash images. Auth screen: waterfall in forest. Garden screen: botanical garden. Encyclopedia: castle garden bridge. Details: water droplets on plant. All images selected via vision_expert_agent."
 
 test_plan:
-  current_focus: []
+  current_focus:
+    - "Plant Carousel with Navigation"
+    - "Background Images"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
