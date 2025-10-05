@@ -843,7 +843,7 @@ export default function PlantWellnessApp() {
             </View>
           )}
         </ScrollView>
-      </View>
+      </ImageBackground>
     );
   };
 
