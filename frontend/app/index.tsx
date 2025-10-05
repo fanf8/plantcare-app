@@ -857,8 +857,13 @@ export default function PlantWellnessApp() {
   };
 
   const renderScannerScreen = () => (
-    <ScrollView style={styles.screen}>
-      <Text style={styles.screenTitle}>Scanner IA</Text>
+    <ImageBackground 
+      source={{ uri: BACKGROUND_IMAGES.scanner }} 
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.screen}>
+        <Text style={styles.screenTitle}>Scanner IA</Text>
       
       <View style={styles.scannerContainer}>
         <View style={styles.scannerPlaceholder}>
