@@ -955,7 +955,12 @@ export default function PlantWellnessApp() {
   );
 
   const renderCommunityScreen = () => (
-    <ScrollView style={styles.screen}>
+    <ImageBackground 
+      source={{ uri: BACKGROUND_IMAGES.community }} 
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.screen}>
       <Text style={styles.screenTitle}>Communauté</Text>
       
       <TouchableOpacity style={[styles.button, styles.primaryButton, { marginBottom: 20 }]}>
