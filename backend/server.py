@@ -555,25 +555,18 @@ async def shutdown_db_client():
 # ============= DATABASE INITIALIZATION =============
 
 async def initialize_plant_database():
-    """Initialize the database with sample plants"""
+    """Initialize the database with 53 plant varieties"""
     
     # Check if plants already exist
     existing_plants = await db.plants.count_documents({})
     if existing_plants > 0:
-        return
+        # Clear old database to update with new varieties
+        await db.plants.delete_many({})
     
-    # Sample potager plants
-    potager_plants = [
-        {
-            "name_fr": "Tomate",
-            "name_latin": "Solanum lycopersicum",
-            "category": "potager",
-            "subcategory": "legume",
-            "description": "Légume-fruit rouge très populaire au potager",
-            "care_instructions": "Arrosage régulier, tuteurage nécessaire",
-            "growing_season": ["printemps", "été"],
-            "difficulty": "moyen"
-        },
+    # Insert all 53 varieties from plants_database.py
+    if PLANTS_DATABASE:
+        await db.plants.insert_many(PLANTS_DATABASE)
+        logger.info(f"Initialized database with {len(PLANTS_DATABASE)} plant varieties")
         {
             "name_fr": "Courgette",
             "name_latin": "Cucurbita pepo",
