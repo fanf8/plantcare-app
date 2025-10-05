@@ -292,6 +292,36 @@ metadata:
         agent: "testing"
         comment: "✅ TESTED: Profile screen fully functional. User data (Marie Dupont, marie.dupont@example.com) displayed correctly. Settings and Help options visible with proper navigation arrows. Logout button working - successfully clears JWT token and returns to authentication screen. Profile icon and layout responsive."
 
+  - task: "Plant Carousel with Navigation"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/index.tsx"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "user"
+        comment: "User reported: Carousel not displaying at all"
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: React hook violation - useState was incorrectly declared inside renderEncyclopediaScreen() function. Moved currentPlantIndex state to component level. Added useEffect to reset index when category/filter changes. Carousel should now display properly with navigation buttons (prev/next), plant images, details, and 'Ajouter à mon potager' button."
+
+  - task: "Background Images"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/app/index.tsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "user"
+        comment: "User reported: No background photos (je n'ai aucune photo)"
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: Replaced solid color backgrounds with real ImageBackground components using high-quality Unsplash images. Auth screen: waterfall in forest. Garden screen: botanical garden. Encyclopedia: castle garden bridge. Details: water droplets on plant. All images selected via vision_expert_agent."
+
 test_plan:
   current_focus: []
   stuck_tasks: []
