@@ -10,7 +10,8 @@ import {
   Platform,
   ScrollView,
   SafeAreaView,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
