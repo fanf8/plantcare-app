@@ -229,6 +229,11 @@ export default function PlantWellnessApp() {
     checkAuthStatus();
   }, []);
 
+  // Reset plant index when section changes
+  useEffect(() => {
+    setCurrentPlantIndex(0);
+  }, [currentSection, filterText]);
+
   const checkAuthStatus = async () => {
     try {
       const token = await AsyncStorage.getItem('access_token');
