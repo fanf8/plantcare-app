@@ -558,6 +558,103 @@ async def startup_event():
 async def shutdown_db_client():
     client.close()
 
+# ============= SCANNER AI WITH GPT-4 VISION =============
+
+class ScanRequest(BaseModel):
+    image_base64: str  # Base64 encoded image
+
+class ScanResponse(BaseModel):
+    plant_name: str
+    variety: Optional[str] = None
+    confidence: float
+    description: str
+    care_tips: Optional[str] = None
+
+@router.post("/scanner/analyze", response_model=ScanResponse)
+async def analyze_plant_image(
+    scan_data: ScanRequest,
+    credentials: HTTPAuthorizationCredentials = Depends(security)
+):
+    """Analyze plant image using GPT-4 Vision"""
+    try:
+        # Import emergentintegrations
+        from emergentintegrations import EmergentChatCompletion
+        
+        # Get Emergent LLM key
+        llm_key = os.getenv("EMERGENT_LLM_KEY")
+        if not llm_key:
+            raise HTTPException(status_code=500, detail="LLM key not configured")
+        
+        # Prepare the prompt for GPT-4 Vision
+        prompt = """Analysez cette image de plante et identifiez:
+1. Le nom de la plante (nom commun en français)
+2. La variété spécifique si identifiable (ex: pour une tomate, dire si c'est Cœur de Bœuf, Cerise, Roma, etc.)
+3. Votre niveau de confiance (0-1)
+4. Une brève description
+5. Des conseils d'entretien basiques
+
+Répondez au format JSON avec les clés: plant_name, variety, confidence, description, care_tips
+
+Plantes possibles dans notre base:
+- Tomates: Cœur de Bœuf, Marmande, Cerise, Roma, Noire de Crimée, Cornu des Andes, Buffalo, Ananas, Saint-Pierre, Green Zebra
+- Salades: Batavia Blonde/Rouge, Romaine, Feuille de Chêne Blonde/Rouge, Lollo Rossa, Iceberg, Sucrine, Roquette
+- Carottes: Nantes, Colmar
+- Courgettes, Radis, Fraises, Framboises, Poivrons, Concombres, Aubergines, Haricots, Épinards, Courges"""
+        
+        # Call GPT-4 Vision via emergentintegrations
+        chat = EmergentChatCompletion(
+            base_url="https://llm.kindo.ai/v1",
+            api_key=llm_key
+        )
+        
+        response = chat.create(
+            model="openai/gpt-4o",  # GPT-4 Vision model
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": prompt},
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/jpeg;base64,{scan_data.image_base64}"
+                            }
+                        }
+                    ]
+                }
+            ],
+            max_tokens=500
+        )
+        
+        # Parse response
+        import json
+        result_text = response.choices[0].message.content
+        
+        # Try to extract JSON from response
+        try:
+            # Sometimes GPT returns text before JSON, try to find JSON block
+            if "```json" in result_text:
+                result_text = result_text.split("```json")[1].split("```")[0]
+            elif "```" in result_text:
+                result_text = result_text.split("```")[1].split("```")[0]
+            
+            result = json.loads(result_text.strip())
+        except:
+            # Fallback: parse manually or return generic response
+            result = {
+                "plant_name": "Plante non identifiée",
+                "variety": None,
+                "confidence": 0.5,
+                "description": result_text,
+                "care_tips": "Consultez l'encyclopédie pour plus d'informations"
+            }
+        
+        return ScanResponse(**result)
+        
+    except Exception as e:
+        logger.error(f"Error analyzing plant image: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error analyzing image: {str(e)}")
+
 # ============= DATABASE INITIALIZATION =============
 
 async def initialize_plant_database():
