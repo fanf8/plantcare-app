@@ -991,6 +991,7 @@ export default function PlantWellnessApp() {
         </View>
       </View>
     </ScrollView>
+    </ImageBackground>
   );
 
   const renderProfileScreen = () => (
