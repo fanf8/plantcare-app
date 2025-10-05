@@ -676,7 +676,11 @@ export default function PlantWellnessApp() {
     };
 
     return (
-      <View style={[styles.container, styles.encyclopediaBackground]}>
+      <ImageBackground 
+        source={{ uri: BACKGROUND_IMAGES.encyclopedia }} 
+        style={styles.container}
+        resizeMode="cover"
+      >
         <ScrollView style={styles.screen}>
           <View style={styles.encyclopediaHeader}>
             <TouchableOpacity 
