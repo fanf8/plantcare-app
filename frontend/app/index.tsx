@@ -19,6 +19,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const EXPO_PUBLIC_BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
+// Background Images
+const BACKGROUND_IMAGES = {
+  auth: 'https://images.unsplash.com/photo-1542157565-4607d82cf417?w=1200&q=80',
+  garden: 'https://images.unsplash.com/photo-1657043496762-89aca96457a0?w=1200&q=80',
+  encyclopedia: 'https://images.unsplash.com/photo-1613388585392-8ff61e5cfc3a?w=1200&q=80',
+  details: 'https://images.unsplash.com/photo-1602500491514-ed552dd7ab64?w=1200&q=80',
+};
+
 interface User {
   id: string;
   name: string;
