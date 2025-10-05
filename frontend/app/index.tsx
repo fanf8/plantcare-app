@@ -25,6 +25,10 @@ const BACKGROUND_IMAGES = {
   garden: 'https://images.unsplash.com/photo-1657043496762-89aca96457a0?w=1200&q=80',
   encyclopedia: 'https://images.unsplash.com/photo-1613388585392-8ff61e5cfc3a?w=1200&q=80',
   details: 'https://images.unsplash.com/photo-1602500491514-ed552dd7ab64?w=1200&q=80',
+  scanner: 'https://images.unsplash.com/photo-1595570909880-9e8f4b72a418?w=1200&q=80',
+  recommendations: 'https://images.unsplash.com/photo-1651760548421-f9c28517a955?w=1200&q=80',
+  community: 'https://images.unsplash.com/photo-1492496913980-501348b61469?w=1200&q=80',
+  profile: 'https://images.unsplash.com/photo-1717607423584-49450c57d361?w=1200&q=80',
 };
 
 interface User {
