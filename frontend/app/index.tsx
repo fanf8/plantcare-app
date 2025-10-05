@@ -407,7 +407,11 @@ export default function PlantWellnessApp() {
   // Render auth screen
   if (!isLoggedIn) {
     return (
-      <View style={[styles.container, styles.authBackground]}>
+      <ImageBackground 
+        source={{ uri: BACKGROUND_IMAGES.auth }} 
+        style={styles.container}
+        resizeMode="cover"
+      >
         <KeyboardAvoidingView 
           style={styles.container} 
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
