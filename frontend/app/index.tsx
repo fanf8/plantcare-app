@@ -952,6 +952,7 @@ export default function PlantWellnessApp() {
         </View>
       )}
     </ScrollView>
+    </ImageBackground>
   );
 
   const renderCommunityScreen = () => (
