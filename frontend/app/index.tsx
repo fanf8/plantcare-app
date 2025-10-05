@@ -995,8 +995,13 @@ export default function PlantWellnessApp() {
   );
 
   const renderProfileScreen = () => (
-    <ScrollView style={styles.screen}>
-      <Text style={styles.screenTitle}>Profil</Text>
+    <ImageBackground 
+      source={{ uri: BACKGROUND_IMAGES.profile }} 
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.screen}>
+        <Text style={styles.screenTitle}>Profil</Text>
       
       <View style={styles.profileHeader}>
         <Ionicons name="person-circle" size={80} color="#4CAF50" />
