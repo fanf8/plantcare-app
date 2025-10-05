@@ -12,7 +12,7 @@ import base64
 import os
 
 # Configuration
-BASE_URL = "https://leafy-companion-1.preview.emergentagent.com/api"
+BASE_URL = "https://florasage.preview.emergentagent.com/api"
 TEST_USER_EMAIL = "marie.dupont@example.com"
 TEST_USER_NAME = "Marie Dupont"
 TEST_USER_PASSWORD = "PlantLover2025!"
