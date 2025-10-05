@@ -81,7 +81,41 @@ export default function PlantWellnessApp() {
   const [name, setName] = useState('');
 
   // Plant database with detailed information
-  const plantsDatabase: PlantInfo[] = [
+  // Fetch plants from API
+  const loadPlantsFromAPI = async () => {
+    try {
+      setPlantsLoading(true);
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/plants`);
+      if (response.ok) {
+        const apiPlants = await response.json();
+        // Transform API data to PlantInfo format
+        const transformedPlants: PlantInfo[] = apiPlants.map((plant: any) => ({
+          id: plant.id,
+          name: plant.variety || plant.name_fr,
+          category: plant.category,
+          subcategory: plant.subcategory,
+          photo_url: plant.image_url || '',
+          description: plant.description || '',
+          common_name: plant.name_fr,
+          scientific_name: plant.name_latin,
+          sunlight: plant.sunlight || '',
+          watering: plant.watering || '',
+          soil_type: plant.soil_type || '',
+          monthly_watering: plant.monthly_watering || '',
+          difficulty: plant.difficulty || 'Moyen',
+          growing_season: plant.growing_season || []
+        }));
+        setPlantsDatabase(transformedPlants);
+      }
+    } catch (error) {
+      console.error('Error loading plants:', error);
+    } finally {
+      setPlantsLoading(false);
+    }
+  };
+
+  // LEGACY: Old hardcoded database (keep as fallback)
+  const legacyPlantsDatabase: PlantInfo[] = [
     // LÉGUMES
     {
       id: 'leg-1',
