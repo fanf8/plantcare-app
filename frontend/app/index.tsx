@@ -623,7 +623,7 @@ export default function PlantWellnessApp() {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 
   const renderEncyclopediaScreen = () => {
