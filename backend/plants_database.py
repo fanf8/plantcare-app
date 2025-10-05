@@ -99,7 +99,7 @@ PLANTS_DATABASE = [
         "variety": "Buffalo",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&q=80",
+        "image_url": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?w=400&q=80",
         "description": "Grosse tomate lisse rouge parfaite pour farce",
         "difficulty": "Facile",
         "growing_season": ["été"],
