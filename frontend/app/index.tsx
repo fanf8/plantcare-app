@@ -1538,7 +1538,7 @@ const styles = StyleSheet.create({
   recommendationsContainer: {
     gap: 16,
   },
-  sectionTitle: {
+  recommendationsSectionTitle: {
     fontSize: 20,
     fontWeight: '600',
     color: '#2E7D32',
