@@ -99,7 +99,7 @@ PLANTS_DATABASE = [
         "variety": "Buffalo",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Solanum_lycopersicum_1.jpg/800px-Solanum_lycopersicum_1.jpg",
+        "image_url": "https://www.labonnegraine.com/3702-large_default/gigantomo-f1.jpg",
         "description": "Grosse tomate lisse rouge parfaite pour farce",
         "difficulty": "Facile",
         "growing_season": ["été"],
