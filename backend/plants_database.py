@@ -313,7 +313,7 @@ PLANTS_DATABASE = [
         "variety": "Roquette",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://agrifournitures.fr/198695-large_default/roquette-cultivee-lunel-non-traite.jpg",
         "description": "Salade au goût piquant et poivré, croissance rapide",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "automne"],
