@@ -193,7 +193,7 @@ PLANTS_DATABASE = [
         "variety": "Batavia Blonde",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://kokopelli-semences.fr/media/cache/shop_product_large_thumbnail/p3619-1.jpg",
         "description": "Salade croquante blonde résistante à la chaleur",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
