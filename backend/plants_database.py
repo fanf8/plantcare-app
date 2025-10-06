@@ -268,7 +268,7 @@ PLANTS_DATABASE = [
         "variety": "Lollo Rossa",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://www.organicseeds4you.com/11352-large_default/graines-laitue-salade-lollo-rossa.jpg",
         "description": "Salade italienne frisée rouge bordeaux",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
