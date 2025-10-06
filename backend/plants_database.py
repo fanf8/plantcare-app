@@ -208,7 +208,7 @@ PLANTS_DATABASE = [
         "variety": "Batavia Rouge",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://www.fermedesaintemarthe.com/cdn/shop/files/LAITUE-BATAVIA-ROUGE-GRENOBLOISE-AB-ENSACHAGE-FDSM-71201523.jpg",
         "description": "Salade croquante rouge-bronze, décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
