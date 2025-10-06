@@ -610,7 +610,7 @@ PLANTS_DATABASE = [
         "variety": "Clémentine",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Clementine.jpg/800px-Clementine.jpg",
+        "image_url": "https://www.leaderplant.com/media/catalog/product/c/l/clementine-mandarine-fortune7.jpg",
         "description": "Petit agrume doux et facile à éplucher",
         "difficulty": "Moyen",
         "growing_season": ["automne", "hiver"],
