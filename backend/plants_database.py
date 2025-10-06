@@ -330,7 +330,7 @@ PLANTS_DATABASE = [
         "variety": "Verte",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Zucchini_in_bloom.jpg/800px-Zucchini_in_bloom.jpg",
+        "image_url": "https://agrifournitures.fr/249247-medium_default/courgette-diamant-f1-non-traite.jpg",
         "description": "Courgette verte classique très productive",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
