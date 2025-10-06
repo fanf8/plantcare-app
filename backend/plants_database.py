@@ -689,7 +689,7 @@ PLANTS_DATABASE = [
         "variety": "Échalote",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Shallots_-_sliced_and_whole.jpg/800px-Shallots_-_sliced_and_whole.jpg",
+        "image_url": "https://www.graines-baumaux.fr/62798-thickbox_default/echalote-certifiee-jermor.jpg",
         "description": "Petit bulbe au goût fin, indispensable en cuisine",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
