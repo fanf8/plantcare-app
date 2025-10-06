@@ -409,7 +409,7 @@ PLANTS_DATABASE = [
         "variety": "Gariguette",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PerfectStrawberry.jpg/800px-PerfectStrawberry.jpg",
+        "image_url": "https://www.georgesdelbard.com/pub/catalog/petits_fruits/fraises/.fraisier_gariguette_m.jpg",
         "description": "Fraise précoce allongée très parfumée",
         "difficulty": "Moyen",
         "growing_season": ["printemps"],
