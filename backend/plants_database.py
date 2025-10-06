@@ -223,7 +223,7 @@ PLANTS_DATABASE = [
         "variety": "Romaine",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://static.wixstatic.com/media/2418dc_c51c87a0592e42e0a79b5c1aee1ddfee~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2418dc_c51c87a0592e42e0a79b5c1aee1ddfee~mv2.jpg",
         "description": "Salade allongée, feuilles croquantes",
         "difficulty": "Facile",
         "growing_season": ["printemps", "automne"],
