@@ -362,7 +362,7 @@ PLANTS_DATABASE = [
         "variety": "18 Jours",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Radishes_on_a_bench.jpg/800px-Radishes_on_a_bench.jpg",
+        "image_url": "https://www.willemsefrance.fr/cdn/shop/files/HOR_100070_1_BK_1741358175316_675x.jpg?v=1745998449",
         "description": "Radis rouge rond, croissance très rapide",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "automne"],
