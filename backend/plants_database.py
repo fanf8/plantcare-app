@@ -345,7 +345,7 @@ PLANTS_DATABASE = [
         "variety": "Ronde de Nice",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Zucchini_in_bloom.jpg/800px-Zucchini_in_bloom.jpg",
+        "image_url": "https://www.millevarietesanciennes.org/wp-content/uploads/2024/01/Courgette_Ronde_Nice_carre-1024x1024.jpg",
         "description": "Courgette sphérique parfaite pour farcir",
         "difficulty": "Facile",
         "growing_season": ["été"],
