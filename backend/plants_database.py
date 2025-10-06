@@ -704,7 +704,7 @@ PLANTS_DATABASE = [
         "variety": "Oignon Blanc",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://www.labonnegraine.com/8911-large_default/blanc-snowball.jpg",
+        "image_url": "https://www.jardindupicvert.com/media/catalog/product/o/i/oignon-blanc-tres-hatif-de-la-reine-27194.jpg",
         "description": "Oignon blanc doux et croquant, récolte précoce",
         "difficulty": "Facile",
         "growing_season": ["printemps"],
