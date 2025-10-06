@@ -815,7 +815,7 @@ PLANTS_DATABASE = [
         "variety": "Thym",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Thymus_vulgaris.jpg/800px-Thymus_vulgaris.jpg",
+        "image_url": "https://www.willemsefrance.fr/cdn/shop/files/HOR_100280_1_BK_1741358175317_675x.jpg",
         "description": "Herbe de Provence aux propriétés antiseptiques",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "été", "automne"],
