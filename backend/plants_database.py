@@ -770,7 +770,7 @@ PLANTS_DATABASE = [
         "variety": "Basilic",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Basil-Basilico-Ocimum_basilicum-albahaca.jpg/800px-Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
+        "image_url": "https://terrabacchus.fr/wp-content/uploads/sites/25/2016/09/basilic-botte-600-web.jpg",
         "description": "Herbe aromatique méditerranéenne, parfaite pour la cuisine",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
