@@ -659,7 +659,7 @@ PLANTS_DATABASE = [
         "variety": "Rouge de Toulouges",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Red_onion.jpg/800px-Red_onion.jpg",
+        "image_url": "https://iod.keplrstatic.com/api/c_fill,dpr_auto,g_north,f_auto,q_70,w_1100/mon_marche/8678_L_OIGNON_DE_TOULOUGES.jpg",
         "description": "Oignon rouge doux du Roussillon, excellente conservation",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
