@@ -860,7 +860,7 @@ PLANTS_DATABASE = [
         "variety": "Coriandre",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Coriander_leaves.jpg/800px-Coriander_leaves.jpg",
+        "image_url": "https://i.ebayimg.com/images/g/yRYAAOSwhCddbe-0/s-l1600.webp",
         "description": "Herbe au goût unique, feuilles et graines comestibles",
         "difficulty": "Facile",
         "growing_season": ["printemps", "automne"],
