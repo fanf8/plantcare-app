@@ -704,7 +704,7 @@ PLANTS_DATABASE = [
         "variety": "Oignon Blanc",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/White_onions.jpg/800px-White_onions.jpg",
+        "image_url": "https://www.labonnegraine.com/8911-large_default/blanc-snowball.jpg",
         "description": "Oignon blanc doux et croquant, récolte précoce",
         "difficulty": "Facile",
         "growing_season": ["printemps"],
