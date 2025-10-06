@@ -907,7 +907,7 @@ PLANTS_DATABASE = [
         "variety": "Scarole",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cichorium_endivia2.jpg/800px-Cichorium_endivia2.jpg",
+        "image_url": "https://www.graines-semences.com/1253/chicoree-scarole-geante-maraichaire-2-grammes.jpg",
         "description": "Chicorée aux feuilles larges et épaisses, légèrement amère",
         "difficulty": "Facile",
         "growing_season": ["été", "automne", "hiver"],
