@@ -875,7 +875,7 @@ PLANTS_DATABASE = [
         "variety": "Origan",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Origanum_vulgare_001.jpg/800px-Origanum_vulgare_001.jpg",
+        "image_url": "https://www.fleurir-son-jardin.fr/wp-content/uploads/origan-italian-2.jpg",
         "description": "Herbe méditerranéenne parfaite pour pizzas et sauces",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
