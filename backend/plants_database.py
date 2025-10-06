@@ -377,7 +377,7 @@ PLANTS_DATABASE = [
         "variety": "Noir",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Radishes_on_a_bench.jpg/800px-Radishes_on_a_bench.jpg",
+        "image_url": "https://www.academiedugout.fr/images/16379/1200-auto/radis-noir-copy.jpg?poix=50&poiy=50",
         "description": "Radis d'hiver à peau noire, saveur piquante",
         "difficulty": "Facile",
         "growing_season": ["automne", "hiver"],
