@@ -785,7 +785,7 @@ PLANTS_DATABASE = [
         "variety": "Plat",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Parsley_flat_leaf.jpg/800px-Parsley_flat_leaf.jpg",
+        "image_url": "https://allink.fr/wp-content/uploads/2021/07/Persil-plat.jpg",
         "description": "Persil au goût prononcé, riche en vitamines",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "été", "automne"],
