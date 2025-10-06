@@ -441,7 +441,7 @@ PLANTS_DATABASE = [
         "variety": "Meeker",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Raspberries05.jpg/800px-Raspberries05.jpg",
+        "image_url": "https://www.leaderplant.com/media/catalog/product/f/r/framboisier-meeker3.jpg",
         "description": "Framboise d'été rouge foncé, très parfumée",
         "difficulty": "Moyen",
         "growing_season": ["été"],
