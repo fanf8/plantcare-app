@@ -394,7 +394,7 @@ PLANTS_DATABASE = [
         "variety": "Mara des Bois",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQfVxCSAMapxjnw2F9oRP_kfJNvRzonhWAivsTZ6bP4ACdzz3vIbofdVFIc5azPf-W17aZ7OqjZpAYs-ttuPRB3PG93G_BY1HSxe0WTa9w",
+        "image_url": "https://www.georgesdelbard.com/pub/catalog/petits_fruits/fraises/.Fraises_Mara_des_Bois_site_AdobeStock_368022357_m.jpg",
         "description": "Fraise remontante au goût de fraise des bois",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
