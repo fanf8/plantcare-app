@@ -885,6 +885,53 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 1-2 fois par semaine"
     },
 
+    # SALADES SUPPLÉMENTAIRES (3 variétés)
+    {
+        "name_fr": "Laitue",
+        "name_latin": "Lactuca sativa",
+        "variety": "Laitue",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Iceberg_lettuce_in_SB.jpg/800px-Iceberg_lettuce_in_SB.jpg",
+        "description": "Salade classique aux feuilles tendres et croquantes",
+        "difficulty": "Très facile",
+        "growing_season": ["printemps", "été", "automne"],
+        "sunlight": "Soleil à mi-ombre",
+        "watering": "Arrosage régulier modéré",
+        "soil_type": "Sol frais et fertile",
+        "monthly_watering": "Juin: 3 fois par semaine"
+    },
+    {
+        "name_fr": "Scarole",
+        "name_latin": "Cichorium endivia var. latifolium",
+        "variety": "Scarole",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cichorium_endivia2.jpg/800px-Cichorium_endivia2.jpg",
+        "description": "Chicorée aux feuilles larges et épaisses, légèrement amère",
+        "difficulty": "Facile",
+        "growing_season": ["été", "automne", "hiver"],
+        "sunlight": "Soleil à mi-ombre",
+        "watering": "Arrosage régulier",
+        "soil_type": "Sol riche et humifère",
+        "monthly_watering": "Juin: 2-3 fois par semaine"
+    },
+    {
+        "name_fr": "Frisée",
+        "name_latin": "Cichorium endivia var. crispum",
+        "variety": "Frisée",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Endive_frisee.jpg/800px-Endive_frisee.jpg",
+        "description": "Chicorée aux feuilles finement découpées et frisées",
+        "difficulty": "Facile",
+        "growing_season": ["été", "automne"],
+        "sunlight": "Soleil à mi-ombre",
+        "watering": "Arrosage régulier",
+        "soil_type": "Sol fertile et bien drainé",
+        "monthly_watering": "Juin: 2-3 fois par semaine"
+    },
+
     # LÉGUMES SUPPLÉMENTAIRES (4 variétés)
     {
         "name_fr": "Betterave Rouge",
