@@ -456,7 +456,7 @@ PLANTS_DATABASE = [
         "variety": "Autumn Bliss",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Raspberries05.jpg/800px-Raspberries05.jpg",
+        "image_url": "https://www.leaderplant.com/media/catalog/product/f/r/framboisier-remontant-autumn-bliss3.jpg",
         "description": "Framboise remontante productive",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
