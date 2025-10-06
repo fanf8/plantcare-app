@@ -129,7 +129,7 @@ PLANTS_DATABASE = [
         "variety": "Saint-Pierre",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/800px-Bright_red_tomato_and_cross_section02.jpg",
+        "image_url": "https://images.gardenseedsmarket.com/images/detailed/57/003613-16101564PA_spez_FMm.jpg",
         "description": "Tomate ronde rouge classique, très productive",
         "difficulty": "Facile",
         "growing_season": ["été"],
