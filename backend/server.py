@@ -30,7 +30,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30 * 24 * 60  # 30 days
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
-app = FastAPI(title="Plant Wellness API", version="1.0.0")
+app = FastAPI(title="Le potager malin API", version="1.0.0")
 api_router = APIRouter(prefix="/api")
 
 # ============= MODELS =============
