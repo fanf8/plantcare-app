@@ -39,7 +39,7 @@ PLANTS_DATABASE = [
         "variety": "Cerise",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Cherry_tomatoes_red_and_yellow.jpg/800px-Cherry_tomatoes_red_and_yellow.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg",
         "description": "Petites tomates sucrées, très productives",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
