@@ -298,7 +298,7 @@ PLANTS_DATABASE = [
         "variety": "Sucrine",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,h_976,q_auto,w_1300/https://images-ca-1-0-1-eu.s3-eu-west-1.amazonaws.com/photos/original/1670/sucrine-produit-AdobeStock_81010152.jpeg",
         "description": "Petite romaine sucrée, croquante et tendre",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
