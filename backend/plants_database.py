@@ -84,7 +84,7 @@ PLANTS_DATABASE = [
         "variety": "Cornu des Andes",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Tomaten_am_Strauch.jpg/800px-Tomaten_am_Strauch.jpg",
+        "image_url": "https://www.fermedesaintemarthe.com/cdn/shop/files/TOMATE-ANDINE-CORNUE-AB-ENSACHAGE-FDSM-71260575.jpg?v=1749033427&width=713",
         "description": "Tomate allongée pointue rouge vif, chair ferme peu de graines",
         "difficulty": "Moyen",
         "growing_season": ["été"],
