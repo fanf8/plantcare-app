@@ -144,7 +144,7 @@ PLANTS_DATABASE = [
         "variety": "Green Zebra",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Green_Zebra_Tomato_65.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Green_Zebra_Tomato_65.jpg/640px-Green_Zebra_Tomato_65.jpg",
         "description": "Tomate verte rayée, saveur acidulée unique",
         "difficulty": "Moyen",
         "growing_season": ["été"],
