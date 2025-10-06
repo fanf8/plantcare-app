@@ -161,7 +161,7 @@ PLANTS_DATABASE = [
         "variety": "Nantes",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vegetable-Carrot-Bundle-wStalks.jpg/800px-Vegetable-Carrot-Bundle-wStalks.jpg",
+        "image_url": "https://www.graines-semences.com/1676/carotte-de-nantes-2-bio.jpg",
         "description": "Carotte cylindrique orange vif, croquante et sucrée",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
