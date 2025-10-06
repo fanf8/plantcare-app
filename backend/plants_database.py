@@ -283,7 +283,7 @@ PLANTS_DATABASE = [
         "variety": "Iceberg",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://m.media-amazon.com/images/I/71yxDa6DBJL._AC_SX679_.jpg",
         "description": "Salade pommée croquante, très populaire",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "automne"],
