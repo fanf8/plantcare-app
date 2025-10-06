@@ -253,7 +253,7 @@ PLANTS_DATABASE = [
         "variety": "Feuille de Chêne Rouge",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://primeurdusud.fr/wp-content/uploads/2021/02/depositphotos_3488659-stock-photo-red-cabbage-lettuce-head-isolated.jpg",
         "description": "Feuilles découpées rouges, très décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
