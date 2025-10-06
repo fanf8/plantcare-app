@@ -279,7 +279,7 @@ async def admin_login():
         # Create admin user
         admin_data = {
             "email": admin_email,
-            "name": "Administrateur Plant Wellness",
+            "name": "Administrateur Le potager malin",
             "password_hash": get_password_hash("admin123"),  # Fallback password
             "is_premium": True,  # Admin has premium access
         }
