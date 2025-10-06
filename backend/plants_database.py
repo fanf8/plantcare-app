@@ -937,7 +937,7 @@ PLANTS_DATABASE = [
         "variety": "Brocoli",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Broccoli_bunches.jpg/800px-Broccoli_bunches.jpg",
+        "image_url": "https://www.miam-asso.fr/wp-content/uploads/2017/11/appetite-1238250_1920.jpg",
         "description": "Légume vert riche en vitamines et antioxydants",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "automne"],
