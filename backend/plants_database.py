@@ -845,7 +845,7 @@ PLANTS_DATABASE = [
         "variety": "Menthe",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Mint_leaves_2007.jpg/800px-Mint_leaves_2007.jpg",
+        "image_url": "https://www.francebleu.fr/pikapi/images/755cb1ba-7d15-46b1-8c7f-0a332e3c5e4d/1200x680",
         "description": "Plante rafraîchissante à croissance rapide",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "été", "automne"],
