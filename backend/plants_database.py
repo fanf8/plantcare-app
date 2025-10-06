@@ -644,7 +644,7 @@ PLANTS_DATABASE = [
         "variety": "Poireau",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Leek.jpg/800px-Leek.jpg",
+        "image_url": "https://static.pourdebon.com/images/500-370/pourdebon-image-bucket-prod/109f2725fdfb4409eb3e36528b2d308a.jpg",
         "description": "Légume au goût délicat, résistant au froid",
         "difficulty": "Facile",
         "growing_season": ["automne", "hiver", "printemps"],
