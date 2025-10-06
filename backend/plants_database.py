@@ -69,7 +69,7 @@ PLANTS_DATABASE = [
         "variety": "Noire de Crimée",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Solanum_lycopersicum_1.jpg/800px-Solanum_lycopersicum_1.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tomate_%28_Noire_de_Crim%C3%A9e%29_Cl_J_Weber01.jpg/640px-Tomate_%28_Noire_de_Crim%C3%A9e%29_Cl_J_Weber01.jpg",
         "description": "Tomate ancienne rouge foncé, saveur intense",
         "difficulty": "Moyen",
         "growing_season": ["été"],
