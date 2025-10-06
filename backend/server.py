@@ -272,7 +272,7 @@ async def admin_login():
     """Admin login without credentials - creates/returns admin user"""
     
     # Check if admin user exists
-    admin_email = "admin@plantwellness.com"
+    admin_email = "admin@lepotagermalin.com"
     admin_user = await db.users.find_one({"email": admin_email})
     
     if not admin_user:
