@@ -176,7 +176,7 @@ PLANTS_DATABASE = [
         "variety": "Colmar",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vegetable-Carrot-Bundle-wStalks.jpg/800px-Vegetable-Carrot-Bundle-wStalks.jpg",
+        "image_url": "https://cdn.live.srag.cahosting.de/media/catalog/product/cache/1b8f60cb7c11172c9e8d369ea19e612a/k/a/ka50_shop_1759762239_1.jpg",
         "description": "Grosse carotte conique, excellente conservation",
         "difficulty": "Moyen",
         "growing_season": ["été", "automne"],
