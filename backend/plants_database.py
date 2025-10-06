@@ -892,7 +892,7 @@ PLANTS_DATABASE = [
         "variety": "Laitue",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Iceberg_lettuce_in_SB.jpg/800px-Iceberg_lettuce_in_SB.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Kropsla_herfst.jpg",
         "description": "Salade classique aux feuilles tendres et croquantes",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "été", "automne"],
