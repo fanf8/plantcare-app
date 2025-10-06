@@ -472,7 +472,7 @@ export default function PlantWellnessApp() {
               <View style={styles.header}>
                 <Ionicons name="leaf" size={60} color="#4CAF50" />
                 <TouchableOpacity onPress={handleTitleTap} activeOpacity={0.8}>
-                  <Text style={styles.title}>Plant Wellness</Text>
+                  <Text style={styles.title}>Le potager malin</Text>
                 </TouchableOpacity>
                 <Text style={styles.subtitle}>
                   Votre assistant IA pour le jardinage
