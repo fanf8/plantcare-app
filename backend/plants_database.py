@@ -238,7 +238,7 @@ PLANTS_DATABASE = [
         "variety": "Feuille de Chêne Blonde",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lactuca_sativa_var_capitata0.jpg/800px-Lactuca_sativa_var_capitata0.jpg",
+        "image_url": "https://terrabacchus.fr/wp-content/uploads/sites/25/2016/09/salade-feuille-de-chene-01-600-web.jpg",
         "description": "Feuilles découpées vertes, très décorative",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
