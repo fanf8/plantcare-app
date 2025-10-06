@@ -533,7 +533,7 @@ PLANTS_DATABASE = [
         "variety": "Géant d'Hiver",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Spinach_bunch.jpg/800px-Spinach_bunch.jpg",
+        "image_url": "https://www.graines-baumaux.fr/66861-thickbox_default/epinard-geant-d-hiver.jpg",
         "description": "Épinard résistant au froid, grandes feuilles",
         "difficulty": "Facile",
         "growing_season": ["automne", "hiver", "printemps"],
