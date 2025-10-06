@@ -800,7 +800,7 @@ PLANTS_DATABASE = [
         "variety": "Ciboulette",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Chives_02.jpg/800px-Chives_02.jpg",
+        "image_url": "https://assets.bonappetit.com/photos/5c7046abfd4f880683731c4b/16:9/w_2560,c_limit/Basically-Chives.jpg",
         "description": "Fines herbes au goût d'oignon délicat",
         "difficulty": "Très facile",
         "growing_season": ["printemps", "été", "automne"],
