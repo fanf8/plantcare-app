@@ -394,7 +394,7 @@ PLANTS_DATABASE = [
         "variety": "Mara des Bois",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PerfectStrawberry.jpg/800px-PerfectStrawberry.jpg",
+        "image_url": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQfVxCSAMapxjnw2F9oRP_kfJNvRzonhWAivsTZ6bP4ACdzz3vIbofdVFIc5azPf-W17aZ7OqjZpAYs-ttuPRB3PG93G_BY1HSxe0WTa9w",
         "description": "Fraise remontante au goût de fraise des bois",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
