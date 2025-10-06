@@ -114,7 +114,7 @@ PLANTS_DATABASE = [
         "variety": "Ananas",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/800px-Bright_red_tomato_and_cross_section02.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Tomatensorte_Saveol_Ananas_02_%28fcm%29.jpg/640px-Tomatensorte_Saveol_Ananas_02_%28fcm%29.jpg",
         "description": "Grosse tomate bicolore jaune-rouge, saveur douce fruitée",
         "difficulty": "Moyen",
         "growing_season": ["été"],
