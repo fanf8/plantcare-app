@@ -552,7 +552,7 @@ logger = logging.getLogger(__name__)
 async def startup_event():
     # Initialize plant database with sample data
     await initialize_plant_database()
-    logger.info("Plant Wellness API started successfully")
+    logger.info("Le potager malin API started successfully")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
