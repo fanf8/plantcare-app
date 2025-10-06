@@ -738,7 +738,7 @@ PLANTS_DATABASE = [
         "variety": "Rouge",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Red_chili_peppers.jpg/800px-Red_chili_peppers.jpg",
+        "image_url": "https://www.vivavera.be/foto/fotogroot/3220gr.jpg",
         "description": "Piment rouge épicé, riche en vitamines",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "été"],
