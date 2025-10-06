@@ -620,6 +620,23 @@ PLANTS_DATABASE = [
         "monthly_watering": "Juin: 2 fois par semaine"
     },
 
+    # LÉGUMINEUSES (1 variété)
+    {
+        "name_fr": "Pois Mangetout Nain de Grâce",
+        "name_latin": "Pisum sativum 'Nain de Grâce'",
+        "variety": "Nain de Grâce",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://www.graines-baumaux.fr/68151-thickbox_default/pois-mangetout-nain-de-grace.jpg",
+        "description": "Pois à cosses plates tendres, variété naine précoce",
+        "difficulty": "Facile",
+        "growing_season": ["printemps", "été"],
+        "sunlight": "Soleil à mi-ombre",
+        "watering": "Arrosage régulier modéré",
+        "soil_type": "Sol frais et bien drainé",
+        "monthly_watering": "Juin: 2-3 fois par semaine"
+    },
+
     # ALLIACÉES (4 variétés)
     {
         "name_fr": "Poireau",
