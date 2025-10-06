@@ -830,7 +830,7 @@ PLANTS_DATABASE = [
         "variety": "Romarin",
         "category": "potager",
         "subcategory": "aromatiques",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Rosemary_bush.jpg/800px-Rosemary_bush.jpg",
+        "image_url": "https://serreodelices.com/wp-content/uploads/2020/03/Romarin-rosmarinus-officinalis.jpg",
         "description": "Arbuste aromatique méditerranéen persistant",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne", "hiver"],
