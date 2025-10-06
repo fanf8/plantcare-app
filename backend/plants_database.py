@@ -563,7 +563,7 @@ PLANTS_DATABASE = [
         "variety": "Potimarron",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Potimarron.JPG/800px-Potimarron.JPG",
+        "image_url": "https://www.graines-baumaux.fr/69636-thickbox_default/potimarron-red-kuri.jpg",
         "description": "Courge orange en forme de toupie, goût de châtaigne",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
