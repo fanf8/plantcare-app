@@ -753,7 +753,7 @@ PLANTS_DATABASE = [
         "variety": "Espelette",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Piment_d%27Espelette.jpg/800px-Piment_d%27Espelette.jpg",
+        "image_url": "https://www.semaille.com/7626/piment-d-espelette.webp",
         "description": "Piment basque AOP, doux et parfumé",
         "difficulty": "Moyen",
         "growing_season": ["printemps", "été"],
