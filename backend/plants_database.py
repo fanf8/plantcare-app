@@ -922,7 +922,7 @@ PLANTS_DATABASE = [
         "variety": "Frisée",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Endive_frisee.jpg/800px-Endive_frisee.jpg",
+        "image_url": "https://www.jardiner-malin.fr/wp-content/uploads/2024/01/Chicoree-frisee-plante-culture.jpg",
         "description": "Chicorée aux feuilles finement découpées et frisées",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
