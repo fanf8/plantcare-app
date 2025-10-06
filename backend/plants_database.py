@@ -548,7 +548,7 @@ PLANTS_DATABASE = [
         "variety": "Butternut",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Butternut_squash_and_cross_section.jpg/800px-Butternut_squash_and_cross_section.jpg",
+        "image_url": "https://gardenchick.com/wp-content/uploads/2024/11/Butternut-squash.jpg",
         "description": "Courge en forme de poire, chair douce et beurrée",
         "difficulty": "Facile",
         "growing_season": ["été", "automne"],
