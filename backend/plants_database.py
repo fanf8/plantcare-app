@@ -721,7 +721,7 @@ PLANTS_DATABASE = [
         "variety": "Jaune",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Yellow_squash_102806.jpg/800px-Yellow_squash_102806.jpg",
+        "image_url": "https://graines-grelin-grelinette.fr/wp-content/uploads/2021/11/9955739-courgettejaune.jpg",
         "description": "Courgette jaune productive et savoureuse",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
