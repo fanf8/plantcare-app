@@ -54,7 +54,7 @@ PLANTS_DATABASE = [
         "variety": "Roma",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Tomaten_am_Strauch.jpg/800px-Tomaten_am_Strauch.jpg",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Roma_tomatoes.jpg/640px-Roma_tomatoes.jpg",
         "description": "Tomate allongée parfaite pour les sauces",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été"],
