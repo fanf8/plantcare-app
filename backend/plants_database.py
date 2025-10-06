@@ -674,7 +674,7 @@ PLANTS_DATABASE = [
         "variety": "Ail",
         "category": "potager",
         "subcategory": "legumes",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Garlic.jpg/800px-Garlic.jpg",
+        "image_url": "https://www.graines-baumaux.fr/62840-thickbox_default/ail-certifie-messidor.jpg",
         "description": "Condiment aux propriétés médicinales reconnues",
         "difficulty": "Très facile",
         "growing_season": ["automne", "hiver"],
