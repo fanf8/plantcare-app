@@ -424,7 +424,7 @@ PLANTS_DATABASE = [
         "variety": "Charlotte",
         "category": "potager",
         "subcategory": "fruits",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PerfectStrawberry.jpg/800px-PerfectStrawberry.jpg",
+        "image_url": "https://www.georgesdelbard.com/pub/catalog/petits_fruits/fraises/.fraisier_charlotte_m.jpg",
         "description": "Fraise remontante à chair ferme",
         "difficulty": "Facile",
         "growing_season": ["printemps", "été", "automne"],
