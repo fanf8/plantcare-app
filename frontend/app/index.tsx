@@ -12,7 +12,8 @@ import {
   SafeAreaView,
   Image,
   ImageBackground,
-  ActivityIndicator
+  ActivityIndicator,
+  Modal
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { StatusBar } from 'expo-status-bar';
