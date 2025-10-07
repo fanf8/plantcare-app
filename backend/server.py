@@ -941,6 +941,152 @@ async def get_planting_calendar(
     
     return mock_calendar
 
+@api_router.get("/premium/lunar-calendar")
+async def get_lunar_calendar(
+    current_user: User = Depends(get_current_user)
+):
+    """Calendrier lunaire pour le jardinage - Fonctionnalité Premium"""
+    if not current_user.is_premium:
+        raise HTTPException(
+            status_code=402, 
+            detail="Fonctionnalité premium requise. Le calendrier lunaire est réservé aux utilisateurs premium."
+        )
+    
+    # Mock lunar calendar data starting from this Tuesday
+    from datetime import datetime, timedelta
+    
+    # Trouver le mardi de cette semaine
+    today = datetime.now()
+    days_ahead = 1 - today.weekday()  # Mardi = 1
+    if days_ahead <= 0:  # Si mardi est passé, prendre le mardi suivant
+        days_ahead += 7
+    next_tuesday = today + timedelta(days=days_ahead)
+    
+    mock_lunar_calendar = {
+        "period": f"Du {next_tuesday.strftime('%d/%m')} au {(next_tuesday + timedelta(days=13)).strftime('%d/%m')}",
+        "current_phase": {
+            "name": "Lune croissante",
+            "icon": "🌒",
+            "description": "Période favorable aux semis et plantations des légumes-feuilles",
+            "energy": "Montante"
+        },
+        "weekly_calendar": [
+            {
+                "date": next_tuesday.strftime("%d/%m"),
+                "day": "Mardi",
+                "phase": "🌒",
+                "phase_name": "Premier croissant",
+                "garden_activities": [
+                    "Semer les radis et épinards",
+                    "Planter les salades d'automne",
+                    "Arroser les semis récents"
+                ],
+                "avoid": ["Taille des arbres"],
+                "optimal_hours": "6h-10h et 16h-19h"
+            },
+            {
+                "date": (next_tuesday + timedelta(days=1)).strftime("%d/%m"),
+                "day": "Mercredi", 
+                "phase": "🌓",
+                "phase_name": "Lune croissante",
+                "garden_activities": [
+                    "Repiquer les jeunes plants",
+                    "Fertiliser les cultures en place",
+                    "Semer les haricots verts (sous abri)"
+                ],
+                "avoid": ["Récolte des fruits de conservation"],
+                "optimal_hours": "7h-11h et 15h-18h"
+            },
+            {
+                "date": (next_tuesday + timedelta(days=2)).strftime("%d/%m"),
+                "day": "Jeudi",
+                "phase": "🌔",
+                "phase_name": "Lune gibbeuse croissante", 
+                "garden_activities": [
+                    "Planter les arbustes à fruits",
+                    "Greffer les rosiers",
+                    "Traiter préventivement contre les maladies"
+                ],
+                "avoid": ["Taille sévère"],
+                "optimal_hours": "8h-12h et 17h-20h"
+            },
+            {
+                "date": (next_tuesday + timedelta(days=3)).strftime("%d/%m"),
+                "day": "Vendredi",
+                "phase": "🌕",
+                "phase_name": "Pleine lune",
+                "garden_activities": [
+                    "Récolter les légumes racines",
+                    "Cueillir les herbes aromatiques",
+                    "Préparer les décoctions de plantes"
+                ],
+                "avoid": ["Semis délicat", "Greffage"],
+                "optimal_hours": "Éviter 12h-14h (trop intense)"
+            },
+            {
+                "date": (next_tuesday + timedelta(days=4)).strftime("%d/%m"),
+                "day": "Samedi",
+                "phase": "🌖",
+                "phase_name": "Lune gibbeuse décroissante",
+                "garden_activities": [
+                    "Tailler les haies et arbustes",
+                    "Diviser les vivaces", 
+                    "Composter les déchets verts"
+                ],
+                "avoid": ["Semis de légumes-feuilles"],
+                "optimal_hours": "6h-9h et 16h-19h"
+            },
+            {
+                "date": (next_tuesday + timedelta(days=5)).strftime("%d/%m"),
+                "day": "Dimanche",
+                "phase": "🌗",
+                "phase_name": "Dernier quartier",
+                "garden_activities": [
+                    "Planter bulbes d'automne",
+                    "Préparer le sol pour l'hiver",
+                    "Nettoyer les outils de jardinage"
+                ],
+                "avoid": ["Greffage", "Bouturage"],
+                "optimal_hours": "7h-10h et 15h-17h"
+            },
+            {
+                "date": (next_tuesday + timedelta(days=6)).strftime("%d/%m"),
+                "day": "Lundi",
+                "phase": "🌘",
+                "phase_name": "Lune décroissante",
+                "garden_activities": [
+                    "Semer les légumes racines", 
+                    "Planter ail et échalotes",
+                    "Effectuer les dernières récoltes"
+                ],
+                "avoid": ["Taille des rosiers"],
+                "optimal_hours": "8h-11h et 16h-18h"
+            }
+        ],
+        "monthly_overview": {
+            "best_sowing_days": [
+                (next_tuesday + timedelta(days=1)).strftime("%d/%m") + " - Légumes feuilles",
+                (next_tuesday + timedelta(days=6)).strftime("%d/%m") + " - Légumes racines"
+            ],
+            "best_planting_days": [
+                next_tuesday.strftime("%d/%m") + " - Salades et aromates",
+                (next_tuesday + timedelta(days=2)).strftime("%d/%m") + " - Arbustes fruitiers"
+            ],
+            "best_harvest_days": [
+                (next_tuesday + timedelta(days=3)).strftime("%d/%m") + " - Pleine lune (optimal)",
+                (next_tuesday + timedelta(days=5)).strftime("%d/%m") + " - Légumes de conservation"
+            ]
+        },
+        "tips": [
+            "🌙 La lune croissante favorise la montée de sève",
+            "🌱 Semer 2-3 jours avant la pleine lune pour une meilleure germination", 
+            "🍂 La lune décroissante est idéale pour les travaux souterrains",
+            "⏰ Éviter de jardiner 2h avant et après le lever/coucher de lune"
+        ]
+    }
+    
+    return mock_lunar_calendar
+
 @api_router.post("/subscription/webhook")
 async def stripe_webhook():
     # Handle Stripe webhooks
