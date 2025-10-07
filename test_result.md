@@ -197,15 +197,18 @@ backend:
 
   - task: "Lunar Calendar Premium Feature"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Lunar calendar API endpoint already exists at /api/premium/lunar-calendar with comprehensive mock data including phases, activities, optimal hours, monthly overview and tips. Premium-only access correctly implemented."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Lunar calendar premium feature working perfectly. Non-premium users correctly blocked with 402 Payment Required. Premium users (admin) get complete lunar calendar data with all required fields: period, current_phase, weekly_calendar (7 days), monthly_overview, and tips. Response structure validated - weekly calendar has complete daily entries with phases, garden activities, and optimal hours. Premium access control working as expected."
 
 frontend:
   - task: "Authentication UI"
