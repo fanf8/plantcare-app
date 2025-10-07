@@ -1211,7 +1211,11 @@ export default function PlantWellnessApp() {
         console.log('Response ok:', response.ok);
         
         if (response.status === 200) {
-          Alert.alert('Succès !', `${currentPlant.name} ajouté à votre potager !`);
+          // Show success feedback
+          Alert.alert('✅ Succès !', `${currentPlant.name} a été ajouté à votre potager !`, [
+            { text: 'Voir mes plants', onPress: () => setCurrentTab('my-plants') },
+            { text: 'OK', style: 'default' }
+          ]);
         } else {
           const errorText = await response.text();
           console.error('Add plant error:', errorText);
