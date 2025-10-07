@@ -797,6 +797,150 @@ async def delete_watering_schedule(
     
     return {"message": "Planning d'arrosage supprimé"}
 
+# ============= PREMIUM FEATURES ROUTES =============
+
+@api_router.get("/premium/weather")
+async def get_weather_data(
+    location: str = "Paris",
+    current_user: User = Depends(get_current_user)
+):
+    """Obtenir les données météo - Fonctionnalité Premium"""
+    if not current_user.is_premium:
+        raise HTTPException(
+            status_code=402, 
+            detail="Fonctionnalité premium requise. L'accès aux données météo est réservé aux utilisateurs premium."
+        )
+    
+    # Mock weather data - in production, integrate with OpenWeatherMap API
+    mock_weather = {
+        "location": location,
+        "current": {
+            "temperature": 22,
+            "humidity": 65,
+            "weather": "Nuageux",
+            "wind_speed": 12,
+            "uv_index": 4
+        },
+        "forecast": [
+            {"day": "Aujourd'hui", "temp_max": 24, "temp_min": 18, "weather": "Nuageux", "rain_chance": 30},
+            {"day": "Demain", "temp_max": 26, "temp_min": 20, "weather": "Ensoleillé", "rain_chance": 10},
+            {"day": "Après-demain", "temp_max": 23, "temp_min": 17, "weather": "Pluvieux", "rain_chance": 80},
+        ],
+        "garden_advice": [
+            "Humidité élevée : Surveillez les maladies fongiques",
+            "UV modéré : Pas besoin d'ombrager les plants sensibles",
+            "Pluie prévue après-demain : Reporter l'arrosage"
+        ]
+    }
+    
+    return mock_weather
+
+@api_router.get("/premium/advanced-care/{plant_name}")
+async def get_advanced_care_tips(
+    plant_name: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Obtenir des conseils avancés pour une plante - Fonctionnalité Premium"""
+    if not current_user.is_premium:
+        raise HTTPException(
+            status_code=402, 
+            detail="Fonctionnalité premium requise. Les conseils avancés sont réservés aux utilisateurs premium."
+        )
+    
+    # Mock advanced care data
+    mock_advanced_care = {
+        "plant_name": plant_name,
+        "seasonal_care": {
+            "printemps": [
+                "Commencer les semis sous abri",
+                "Préparer le sol avec du compost",
+                "Surveiller les dernières gelées"
+            ],
+            "été": [
+                "Arroser tôt le matin ou en soirée",
+                "Pailler pour conserver l'humidité",
+                "Pincer les fleurs pour prolonger la récolte"
+            ],
+            "automne": [
+                "Récolter avant les premières gelées",
+                "Préparer les plants pour l'hivernage",
+                "Nettoyer et désinfecter les outils"
+            ],
+            "hiver": [
+                "Protéger avec un voile d'hivernage",
+                "Réduire drastiquement l'arrosage",
+                "Planifier les cultures de la saison prochaine"
+            ]
+        },
+        "pest_management": [
+            {
+                "pest": "Pucerons",
+                "prevention": "Favoriser les coccinelles avec des plantes mellifères",
+                "treatment": "Pulvérisation d'eau savonneuse",
+                "organic": True
+            },
+            {
+                "pest": "Limaces",
+                "prevention": "Barrières de cendres ou coquilles d'œufs",
+                "treatment": "Pièges à bière",
+                "organic": True
+            }
+        ],
+        "companion_planting": [
+            "Basilic : Éloigne les mouches et moustiques",
+            "Œillets d'Inde : Protègent contre les nématodes",
+            "Capucines : Attirent les pucerons loin des cultures"
+        ],
+        "harvest_optimization": [
+            "Récolter le matin après la rosée pour plus de fraîcheur",
+            "Couper avec des ciseaux propres pour éviter les infections",
+            "Ne pas récolter plus d'1/3 de la plante à la fois"
+        ],
+        "soil_analysis": {
+            "ph_optimal": "6.0 - 7.0",
+            "nutrients": ["Azote modéré", "Phosphore élevé", "Potassium élevé"],
+            "amendments": ["Compost bien décomposé", "Cendre de bois (potassium)"]
+        }
+    }
+    
+    return mock_advanced_care
+
+@api_router.get("/premium/plant-calendar")
+async def get_planting_calendar(
+    region: str = "tempéré",
+    current_user: User = Depends(get_current_user)
+):
+    """Calendrier de plantation personnalisé - Fonctionnalité Premium"""
+    if not current_user.is_premium:
+        raise HTTPException(
+            status_code=402, 
+            detail="Fonctionnalité premium requise. Le calendrier de plantation est réservé aux utilisateurs premium."
+        )
+    
+    mock_calendar = {
+        "region": region,
+        "current_month": "Octobre",
+        "this_month": {
+            "sow": ["Épinards d'hiver", "Mâche", "Radis d'hiver"],
+            "plant": ["Ail", "Échalotes", "Oignons blancs"],
+            "harvest": ["Courges", "Potimarrons", "Dernières tomates"],
+            "care": ["Nettoyer les parcelles", "Préparer le compost", "Protéger les plants sensibles"]
+        },
+        "next_month": {
+            "sow": ["Fèves", "Petits pois (sous abri)"],
+            "plant": ["Arbres fruitiers", "Arbustes à baies"],
+            "harvest": ["Choux d'hiver", "Poireaux"],
+            "care": ["Pailler les cultures", "Entretenir les outils", "Planifier la saison prochaine"]
+        },
+        "lunar_calendar": [
+            {"date": "15 octobre", "phase": "Lune croissante", "activity": "Favorable aux semis de légumes-feuilles"},
+            {"date": "20 octobre", "phase": "Pleine lune", "activity": "Éviter les semis, préférer les récoltes"},
+            {"date": "25 octobre", "phase": "Lune décroissante", "activity": "Favorise l'enracinement des plantations"}
+        ]
+    }
+    
+    return mock_calendar
+
 @api_router.post("/subscription/webhook")
 async def stripe_webhook():
     # Handle Stripe webhooks
