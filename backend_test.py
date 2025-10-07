@@ -511,6 +511,7 @@ def test_lunar_calendar_premium_feature():
 
 def test_watering_schedule_authentication():
     """Test Watering Schedule Authentication Fixes - HIGH PRIORITY (NEW)"""
+    global test_user_plant_id
     
     print("=== TESTING WATERING SCHEDULE AUTHENTICATION ===")
     
@@ -524,7 +525,6 @@ def test_watering_schedule_authentication():
             }
             response = make_request("POST", "/my-garden", plant_data)
             if response and response.status_code == 200:
-                global test_user_plant_id
                 test_user_plant_id = response.json()["id"]
             else:
                 log_test("Watering Schedule Setup", "FAIL", "Could not create test plant")
