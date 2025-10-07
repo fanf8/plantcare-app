@@ -911,7 +911,7 @@ Plantes possibles dans notre base:
                 result_text = result_text.split("```")[1].split("```")[0]
             
             result = json.loads(result_text.strip())
-        except:
+        except (json.JSONDecodeError, KeyError, IndexError):
             # Fallback: parse manually or return generic response
             result = {
                 "plant_name": "Plante non identifiée",
