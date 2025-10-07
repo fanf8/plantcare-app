@@ -379,6 +379,18 @@ metadata:
         agent: "testing"
         comment: "✅ TESTED: Scanner analyze authentication working perfectly. Identification analysis (free feature) works for authenticated users. Diagnostic analysis correctly requires premium access - returns 402 Payment Required for non-premium users and 200 OK for premium users. JWT token validation working properly."
 
+  - task: "Plant Database ID Mismatch Issue"
+    implemented: false
+    working: false
+    file: "/app/backend/server.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "❌ CRITICAL ISSUE: Plant database has ID mismatch problem. GET /plants returns 64 plants with IDs, but GET /plants/{id} returns 404 for the same IDs. This prevents adding plants to garden and testing watering schedule endpoints. Example: GET /plants returns plant with ID 'ab08a24b-b4e9-43e1-8440-ea49575203aa' but GET /plants/ab08a24b-b4e9-43e1-8440-ea49575203aa returns 404. This suggests database initialization or query issue."
+
 test_plan:
   current_focus:
     - "Plant Database Issue Investigation"
