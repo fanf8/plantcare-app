@@ -765,6 +765,133 @@ export default function PlantWellnessApp() {
     );
   }
 
+  // ============= WATERING CALENDAR COMPONENT =============
+  
+  const renderWateringCalendar = (plantId: string, plantName: string) => {
+    const weekDays = generateWeekDays();
+    const schedule = wateringSchedules[plantId];
+    
+    // Calculer quels jours nécessitent un arrosage
+    let wateringDays: number[] = [];
+    if (schedule) {
+      if (schedule.schedule_type === 'custom' && schedule.custom_days) {
+        wateringDays = schedule.custom_days;
+      } else if (schedule.schedule_type === 'auto' && schedule.auto_frequency) {
+        wateringDays = calculateAutoWateringDays(schedule.auto_frequency);
+      }
+    }
+    
+    return (
+      <View style={styles.wateringCalendar}>
+        <View style={styles.calendarHeader}>
+          <Text style={styles.calendarTitle}>Calendrier d'arrosage - {plantName}</Text>
+          <View style={styles.calendarModeSelector}>
+            <TouchableOpacity
+              style={[
+                styles.modeButton,
+                calendarMode === 'auto' && styles.modeButtonActive
+              ]}
+              onPress={async () => {
+                setCalendarMode('auto');
+                if (schedule) {
+                  await updateWateringSchedule(plantId, 'auto');
+                } else {
+                  await createWateringSchedule(plantId, 'auto');
+                }
+              }}
+            >
+              <Text style={[
+                styles.modeButtonText,
+                calendarMode === 'auto' && styles.modeButtonTextActive
+              ]}>Auto</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={[
+                styles.modeButton,
+                calendarMode === 'custom' && styles.modeButtonActive
+              ]}
+              onPress={() => {
+                setCalendarMode('custom');
+              }}
+            >
+              <Text style={[
+                styles.modeButtonText,
+                calendarMode === 'custom' && styles.modeButtonTextActive
+              ]}>Personnalisé</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={styles.weekContainer}>
+          {weekDays.map((dayInfo, index) => {
+            const needsWatering = wateringDays.includes(dayInfo.dayIndex);
+            const isCustomMode = calendarMode === 'custom';
+            
+            return (
+              <TouchableOpacity
+                key={index}
+                style={[
+                  styles.dayContainer,
+                  needsWatering && styles.dayContainerWatering
+                ]}
+                onPress={async () => {
+                  if (isCustomMode) {
+                    // Toggle ce jour dans le mode personnalisé
+                    let newCustomDays = [...(schedule?.custom_days || [])];
+                    if (needsWatering) {
+                      newCustomDays = newCustomDays.filter(day => day !== dayInfo.dayIndex);
+                    } else {
+                      newCustomDays.push(dayInfo.dayIndex);
+                      newCustomDays.sort();
+                    }
+                    
+                    if (schedule) {
+                      await updateWateringSchedule(plantId, 'custom', newCustomDays);
+                    } else {
+                      await createWateringSchedule(plantId, 'custom', newCustomDays);
+                    }
+                  }
+                }}
+                disabled={!isCustomMode}
+              >
+                <Text style={[
+                  styles.dayText,
+                  needsWatering && styles.dayTextWatering
+                ]}>
+                  {dayInfo.day}
+                </Text>
+                <Text style={[
+                  styles.dateText,
+                  needsWatering && styles.dateTextWatering
+                ]}>
+                  {dayInfo.date}
+                </Text>
+                {needsWatering && (
+                  <View style={styles.waterDropContainer}>
+                    <Ionicons name="water" size={16} color="#007AFF" />
+                  </View>
+                )}
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+
+        {calendarMode === 'custom' && (
+          <Text style={styles.calendarHint}>
+            Cliquez sur les jours pour programmer l'arrosage
+          </Text>
+        )}
+
+        {calendarMode === 'auto' && schedule?.auto_frequency && (
+          <Text style={styles.calendarInfo}>
+            Arrosage automatique : {schedule.auto_frequency} fois par semaine
+          </Text>
+        )}
+      </View>
+    );
+  };
+
   // Main app screens
   const renderGardenScreen = () => (
     <ImageBackground 
