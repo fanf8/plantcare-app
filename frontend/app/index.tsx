@@ -2394,6 +2394,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     gap: 8,
   },
+  addToGardenButtonDisabled: {
+    backgroundColor: '#A5D6A7',
+    opacity: 0.8,
+  },
   addToGardenText: {
     color: '#fff',
     fontSize: 16,
