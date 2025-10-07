@@ -1849,6 +1849,13 @@ export default function PlantWellnessApp() {
                       <Text style={styles.myPlantNotes}>Note: {plant.notes}</Text>
                     )}
                   </View>
+                  
+                  <TouchableOpacity 
+                    style={styles.deletePlantButton}
+                    onPress={() => deletePlantFromGarden(plant.id, plant.custom_name || 'Plante')}
+                  >
+                    <Ionicons name="trash" size={20} color="#FF6B35" />
+                  </TouchableOpacity>
                 </TouchableOpacity>
 
                 {showWateringCalendar === plant.id && 
