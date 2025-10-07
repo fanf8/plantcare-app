@@ -2819,4 +2819,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 16,
   },
+
+  // Selected image styles
+  selectedImageContainer: {
+    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+    borderRadius: 12,
+    padding: 16,
+    marginTop: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#4CAF50',
+  },
+  selectedImageText: {
+    fontSize: 16,
+    color: '#4CAF50',
+    fontWeight: '600',
+  },
+  removeImageText: {
+    fontSize: 14,
+    color: '#FF6B35',
+    fontWeight: '600',
+  },
 });
