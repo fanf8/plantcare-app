@@ -1355,6 +1355,145 @@ export default function PlantWellnessApp() {
     </ImageBackground>
   );
 
+  const renderMyPlantsScreen = () => (
+    <ImageBackground 
+      source={{ uri: BACKGROUND_IMAGES.garden }} 
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.screen}>
+        <View style={styles.screenHeader}>
+          <TouchableOpacity 
+            style={styles.backButton}
+            onPress={() => setCurrentTab('garden')}
+          >
+            <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+          </TouchableOpacity>
+          <Text style={styles.screenTitle}>Mes Plants</Text>
+        </View>
+
+        {/* Exemple de plantes utilisateur - à remplacer par les vraies données */}
+        <View style={styles.myPlantsContainer}>
+          <TouchableOpacity 
+            style={styles.myPlantCard}
+            onPress={async () => {
+              const plantId = 'user-plant-1';
+              if (showWateringCalendar === plantId) {
+                setShowWateringCalendar(null);
+              } else {
+                setShowWateringCalendar(plantId);
+                // Charger le calendrier si pas déjà fait
+                if (!wateringSchedules[plantId]) {
+                  const schedule = await getWateringSchedule(plantId);
+                  if (schedule) {
+                    setWateringSchedules(prev => ({
+                      ...prev,
+                      [plantId]: schedule
+                    }));
+                  }
+                }
+              }
+            }}
+          >
+            <Image 
+              source={{ uri: 'https://images.unsplash.com/photo-1592150621744-aca64f48394a?w=300&q=80' }} 
+              style={styles.myPlantImage} 
+            />
+            <View style={styles.myPlantInfo}>
+              <Text style={styles.myPlantName}>Basilic de mon jardin</Text>
+              <Text style={styles.myPlantDetails}>Ajouté le 15 octobre</Text>
+              <Text style={styles.myPlantStatus}>État: Bonne santé</Text>
+            </View>
+          </TouchableOpacity>
+
+          {showWateringCalendar === 'user-plant-1' && 
+            renderWateringCalendar('user-plant-1', 'Basilic de mon jardin')
+          }
+
+          <TouchableOpacity 
+            style={styles.myPlantCard}
+            onPress={async () => {
+              const plantId = 'user-plant-2';
+              if (showWateringCalendar === plantId) {
+                setShowWateringCalendar(null);
+              } else {
+                setShowWateringCalendar(plantId);
+                // Charger le calendrier si pas déjà fait
+                if (!wateringSchedules[plantId]) {
+                  const schedule = await getWateringSchedule(plantId);
+                  if (schedule) {
+                    setWateringSchedules(prev => ({
+                      ...prev,
+                      [plantId]: schedule
+                    }));
+                  }
+                }
+              }
+            }}
+          >
+            <Image 
+              source={{ uri: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=300&q=80' }} 
+              style={styles.myPlantImage} 
+            />
+            <View style={styles.myPlantInfo}>
+              <Text style={styles.myPlantName}>Tomate Cerise</Text>
+              <Text style={styles.myPlantDetails}>Ajouté le 12 octobre</Text>
+              <Text style={styles.myPlantStatus}>État: Excellente</Text>
+            </View>
+          </TouchableOpacity>
+
+          {showWateringCalendar === 'user-plant-2' && 
+            renderWateringCalendar('user-plant-2', 'Tomate Cerise')
+          }
+
+          <TouchableOpacity 
+            style={styles.myPlantCard}
+            onPress={async () => {
+              const plantId = 'user-plant-3';
+              if (showWateringCalendar === plantId) {
+                setShowWateringCalendar(null);
+              } else {
+                setShowWateringCalendar(plantId);
+                // Charger le calendrier si pas déjà fait
+                if (!wateringSchedules[plantId]) {
+                  const schedule = await getWateringSchedule(plantId);
+                  if (schedule) {
+                    setWateringSchedules(prev => ({
+                      ...prev,
+                      [plantId]: schedule
+                    }));
+                  }
+                }
+              }
+            }}
+          >
+            <Image 
+              source={{ uri: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&q=80' }} 
+              style={styles.myPlantImage} 
+            />
+            <View style={styles.myPlantInfo}>
+              <Text style={styles.myPlantName}>Courgette Verte</Text>
+              <Text style={styles.myPlantDetails}>Ajouté le 10 octobre</Text>
+              <Text style={styles.myPlantStatus}>État: Bonne</Text>
+            </View>
+          </TouchableOpacity>
+
+          {showWateringCalendar === 'user-plant-3' && 
+            renderWateringCalendar('user-plant-3', 'Courgette Verte')
+          }
+        </View>
+
+        <TouchableOpacity 
+          style={[styles.button, styles.primaryButton, { marginTop: 20 }]}
+          onPress={() => setCurrentTab('encyclopedia')}
+        >
+          <Ionicons name="add" size={20} color="#fff" style={{ marginRight: 10 }} />
+          <Text style={styles.buttonText}>Ajouter une nouvelle plante</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </ImageBackground>
+  );
+
   const renderCurrentScreen = () => {
     switch (currentTab) {
       case 'garden':
