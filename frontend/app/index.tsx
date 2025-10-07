@@ -1396,7 +1396,7 @@ export default function PlantWellnessApp() {
             }}
           >
             <Image 
-              source={{ uri: 'https://images.unsplash.com/photo-1592150621744-aca64f48394a?w=300&q=80' }} 
+              source={{ uri: 'https://terrabacchus.fr/wp-content/uploads/sites/25/2016/09/basilic-botte-600-web.jpg' }} 
               style={styles.myPlantImage} 
             />
             <View style={styles.myPlantInfo}>
