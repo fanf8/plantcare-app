@@ -811,12 +811,24 @@ export default function PlantWellnessApp() {
                 styles.modeButton,
                 calendarMode === 'custom' && styles.modeButtonActive
               ]}
-              onPress={async () => {
+              onPress={() => {
                 setCalendarMode('custom');
-                if (schedule) {
-                  await updateWateringSchedule(plantId, 'custom', schedule.custom_days || []);
-                } else {
-                  await createWateringSchedule(plantId, 'custom', []);
+                // S'assurer qu'il y a un schedule en mode custom
+                if (!schedule) {
+                  const mockSchedule = {
+                    id: `mock-schedule-${plantId}`,
+                    user_id: 'current-user',
+                    user_plant_id: plantId,
+                    schedule_type: 'custom',
+                    custom_days: [1], // Garder lundi par défaut
+                    auto_frequency: null,
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString()
+                  };
+                  setWateringSchedules(prev => ({
+                    ...prev,
+                    [plantId]: mockSchedule
+                  }));
                 }
               }}
             >
