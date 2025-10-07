@@ -464,7 +464,7 @@ async def get_analysis_history(current_user: User = Depends(get_premium_user)):
     return [AIAnalysis(**analysis) for analysis in analyses]
 
 @api_router.post("/scanner/analyze")
-async def analyze_plant_image(
+async def analyze_plant_with_premium_check(
     request: AIAnalysisRequest,
     current_user: User = Depends(get_current_user)
 ):
