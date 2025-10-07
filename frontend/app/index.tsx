@@ -1220,6 +1220,13 @@ export default function PlantWellnessApp() {
 
     const addCurrentPlantToGarden = async () => {
       console.log('DEBUG - addCurrentPlantToGarden called');
+      
+      // Protection contre les clics multiples
+      if (isAddingPlant) {
+        console.log('⚠️ Plant addition already in progress, ignoring click');
+        return;
+      }
+      
       console.log('DEBUG - currentPlant:', currentPlant);
       console.log('DEBUG - currentPlantIndex:', currentPlantIndex);
       console.log('DEBUG - currentCategoryPlants length:', currentCategoryPlants.length);
@@ -1235,6 +1242,8 @@ export default function PlantWellnessApp() {
         Alert.alert('Erreur', 'Plante invalide - ID manquant');
         return;
       }
+      
+      setIsAddingPlant(true); // Bloquer les clics multiples
       
       try {
         const token = await AsyncStorage.getItem('access_token');
