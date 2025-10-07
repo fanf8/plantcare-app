@@ -1432,7 +1432,7 @@ export default function PlantWellnessApp() {
             }}
           >
             <Image 
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg' }} 
+              source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Cherry_tomatoes_red_and_yellow.jpg/800px-Cherry_tomatoes_red_and_yellow.jpg' }} 
               style={styles.myPlantImage} 
             />
             <View style={styles.myPlantInfo}>
