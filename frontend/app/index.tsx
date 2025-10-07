@@ -811,8 +811,13 @@ export default function PlantWellnessApp() {
                 styles.modeButton,
                 calendarMode === 'custom' && styles.modeButtonActive
               ]}
-              onPress={() => {
+              onPress={async () => {
                 setCalendarMode('custom');
+                if (schedule) {
+                  await updateWateringSchedule(plantId, 'custom', schedule.custom_days || []);
+                } else {
+                  await createWateringSchedule(plantId, 'custom', []);
+                }
               }}
             >
               <Text style={[
