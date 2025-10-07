@@ -381,9 +381,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Lunar Calendar Premium Feature"
-    - "Authentication Token Fix"
-  stuck_tasks: []
+    - "Plant Database Issue Investigation"
+    - "Watering Schedule Authentication"
+  stuck_tasks: 
+    - "Plant Database Issue Investigation"
   test_all: false
   test_priority: "high_first"
 
