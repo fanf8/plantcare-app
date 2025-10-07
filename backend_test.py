@@ -393,60 +393,6 @@ if __name__ == "__main__":
     else:
         print("\n❌ PLANT DATABASE FIX VERIFICATION: ISSUES FOUND")
         exit(1)
-        elif method == "PUT":
-            response = requests.put(url, json=data, headers=request_headers)
-        elif method == "DELETE":
-            response = requests.delete(url, headers=request_headers)
-        
-        return response
-    except Exception as e:
-        print(f"Request failed: {str(e)}")
-        return None
-
-def test_user_authentication():
-    """Test User Authentication System - HIGH PRIORITY"""
-    global auth_token, test_user_id
-    
-    print("=== TESTING USER AUTHENTICATION SYSTEM ===")
-    
-    # Test 1: User Registration
-    register_data = {
-        "email": TEST_USER_EMAIL,
-        "name": TEST_USER_NAME,
-        "password": TEST_USER_PASSWORD
-    }
-    
-    response = make_request("POST", "/auth/register", register_data, auth_required=False)
-    if response and response.status_code == 200:
-        data = response.json()
-        if "access_token" in data and "user" in data:
-            auth_token = data["access_token"]
-            test_user_id = data["user"]["id"]
-            log_test("User Registration", "PASS", f"User created with ID: {test_user_id}")
-        else:
-            log_test("User Registration", "FAIL", "Missing token or user data in response")
-            return False
-    else:
-        # User might already exist, try login instead
-        response = make_request("POST", "/auth/login", {
-            "email": TEST_USER_EMAIL,
-            "password": TEST_USER_PASSWORD
-        }, auth_required=False)
-        
-        if response and response.status_code == 200:
-            data = response.json()
-            auth_token = data["access_token"]
-            test_user_id = data["user"]["id"]
-            log_test("User Registration", "PASS", "User already exists, logged in successfully")
-        else:
-            log_test("User Registration", "FAIL", f"Status: {response.status_code if response else 'No response'}")
-            return False
-    
-    # Test 2: User Login
-    login_data = {
-        "email": TEST_USER_EMAIL,
-        "password": TEST_USER_PASSWORD
-    }
     
     response = make_request("POST", "/auth/login", login_data, auth_required=False)
     if response and response.status_code == 200:
