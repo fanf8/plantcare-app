@@ -857,6 +857,109 @@ export default function PlantWellnessApp() {
     );
   }
 
+  // ============= LUNAR CALENDAR COMPONENT =============
+  
+  const renderLunarCalendar = () => {
+    if (!lunarCalendarData) return null;
+
+    return (
+      <ScrollView style={styles.lunarCalendarContainer}>
+        <View style={styles.lunarCalendarHeader}>
+          <TouchableOpacity 
+            style={styles.backButton}
+            onPress={() => setShowLunarCalendar(false)}
+          >
+            <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+            <Text style={styles.backText}>Retour</Text>
+          </TouchableOpacity>
+          <Text style={styles.lunarCalendarTitle}>🌙 Calendrier Lunaire</Text>
+        </View>
+
+        <View style={styles.lunarPeriod}>
+          <Text style={styles.lunarPeriodText}>{lunarCalendarData.period}</Text>
+        </View>
+
+        <View style={styles.currentPhaseContainer}>
+          <Text style={styles.currentPhaseIcon}>{lunarCalendarData.current_phase.icon}</Text>
+          <View style={styles.currentPhaseInfo}>
+            <Text style={styles.currentPhaseName}>{lunarCalendarData.current_phase.name}</Text>
+            <Text style={styles.currentPhaseDesc}>{lunarCalendarData.current_phase.description}</Text>
+          </View>
+        </View>
+
+        <Text style={styles.sectionTitle}>Calendrier de la semaine</Text>
+        
+        {lunarCalendarData.weekly_calendar.map((day: any, index: number) => (
+          <View key={index} style={styles.lunarDayCard}>
+            <View style={styles.lunarDayHeader}>
+              <View style={styles.lunarDayInfo}>
+                <Text style={styles.lunarDayName}>{day.day}</Text>
+                <Text style={styles.lunarDate}>{day.date}</Text>
+              </View>
+              <View style={styles.lunarPhaseInfo}>
+                <Text style={styles.lunarPhaseIcon}>{day.phase}</Text>
+                <Text style={styles.lunarPhaseName}>{day.phase_name}</Text>
+              </View>
+            </View>
+
+            <View style={styles.lunarActivitiesContainer}>
+              <Text style={styles.lunarActivitiesTitle}>🌱 Activités recommandées</Text>
+              {day.garden_activities.map((activity: string, actIndex: number) => (
+                <Text key={actIndex} style={styles.lunarActivity}>• {activity}</Text>
+              ))}
+            </View>
+
+            {day.avoid.length > 0 && (
+              <View style={styles.lunarAvoidContainer}>
+                <Text style={styles.lunarAvoidTitle}>⚠️ À éviter</Text>
+                {day.avoid.map((avoid: string, avoidIndex: number) => (
+                  <Text key={avoidIndex} style={styles.lunarAvoid}>• {avoid}</Text>
+                ))}
+              </View>
+            )}
+
+            <View style={styles.lunarOptimalHours}>
+              <Ionicons name="time" size={16} color="#666" />
+              <Text style={styles.lunarOptimalText}>Heures optimales: {day.optimal_hours}</Text>
+            </View>
+          </View>
+        ))}
+
+        <View style={styles.lunarOverviewContainer}>
+          <Text style={styles.sectionTitle}>Vue d'ensemble du mois</Text>
+          
+          <View style={styles.lunarOverviewSection}>
+            <Text style={styles.lunarOverviewTitle}>🌱 Meilleurs jours de semis</Text>
+            {lunarCalendarData.monthly_overview.best_sowing_days.map((day: string, index: number) => (
+              <Text key={index} style={styles.lunarOverviewItem}>• {day}</Text>
+            ))}
+          </View>
+
+          <View style={styles.lunarOverviewSection}>
+            <Text style={styles.lunarOverviewTitle}>🌿 Meilleurs jours de plantation</Text>
+            {lunarCalendarData.monthly_overview.best_planting_days.map((day: string, index: number) => (
+              <Text key={index} style={styles.lunarOverviewItem}>• {day}</Text>
+            ))}
+          </View>
+
+          <View style={styles.lunarOverviewSection}>
+            <Text style={styles.lunarOverviewTitle}>🍅 Meilleurs jours de récolte</Text>
+            {lunarCalendarData.monthly_overview.best_harvest_days.map((day: string, index: number) => (
+              <Text key={index} style={styles.lunarOverviewItem}>• {day}</Text>
+            ))}
+          </View>
+        </View>
+
+        <View style={styles.lunarTipsContainer}>
+          <Text style={styles.sectionTitle}>💡 Conseils lunaires</Text>
+          {lunarCalendarData.tips.map((tip: string, index: number) => (
+            <Text key={index} style={styles.lunarTip}>{tip}</Text>
+          ))}
+        </View>
+      </ScrollView>
+    );
+  };
+
   // ============= WATERING CALENDAR COMPONENT =============
   
   const renderWateringCalendar = (plantId: string, plantName: string) => {
