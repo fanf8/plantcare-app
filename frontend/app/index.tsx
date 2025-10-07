@@ -106,6 +106,12 @@ export default function PlantWellnessApp() {
   const [showWateringCalendar, setShowWateringCalendar] = useState<string | null>(null);
   const [wateringSchedules, setWateringSchedules] = useState<{[key: string]: WateringSchedule}>({});
   const [calendarMode, setCalendarMode] = useState<'auto' | 'custom'>('auto');
+  
+  // Premium features states
+  const [weatherData, setWeatherData] = useState<any>(null);
+  const [advancedCareData, setAdvancedCareData] = useState<any>(null);
+  const [plantingCalendar, setPlantingCalendar] = useState<any>(null);
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   // Plant database with detailed information
   // Fetch plants from API
