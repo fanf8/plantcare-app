@@ -1293,6 +1293,8 @@ export default function PlantWellnessApp() {
       } catch (error) {
         console.error('Error adding plant:', error);
         Alert.alert('Erreur', `Erreur de connexion: ${error.message}`);
+      } finally {
+        setIsAddingPlant(false); // Débloquer les clics après la fin de l'opération
       }
     };
 
