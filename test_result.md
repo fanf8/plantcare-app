@@ -324,8 +324,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Plant Carousel with Navigation"
-    - "Background Images"
+    - "Lunar Calendar Premium Feature"
+    - "Authentication Token Fix"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
