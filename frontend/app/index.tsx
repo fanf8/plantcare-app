@@ -1476,7 +1476,7 @@ export default function PlantWellnessApp() {
             }}
           >
             <Image 
-              source={{ uri: 'https://graines-grelin-grelinette.fr/wp-content/uploads/2021/11/9955739-courgettejaune.jpg' }} 
+              source={{ uri: 'https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=300&q=80' }} 
               style={styles.myPlantImage} 
             />
             <View style={styles.myPlantInfo}>
