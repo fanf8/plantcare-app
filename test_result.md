@@ -195,6 +195,18 @@ backend:
         agent: "testing"
         comment: "✅ TESTED: Subscription endpoints working. GET /subscription/plans returns Premium Plant Care plan at €9.99/month with correct features list. POST /subscription/create-checkout returns mock Stripe checkout URL and session ID. Webhook endpoint ready for Stripe integration."
 
+  - task: "Lunar Calendar Premium Feature"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Lunar calendar API endpoint already exists at /api/premium/lunar-calendar with comprehensive mock data including phases, activities, optimal hours, monthly overview and tips. Premium-only access correctly implemented."
+
 frontend:
   - task: "Authentication UI"
     implemented: true
