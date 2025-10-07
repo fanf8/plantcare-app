@@ -1484,6 +1484,21 @@ export default function PlantWellnessApp() {
       {user?.is_premium ? (
         <View style={styles.recommendationsContainer}>
           <Text style={styles.recommendationsSectionTitle}>Soins Personnalisés</Text>
+          
+          <TouchableOpacity 
+            style={styles.recommendationCard}
+            onPress={loadLunarCalendar}
+          >
+            <Ionicons name="moon" size={24} color="#8E4EC6" />
+            <View style={styles.recommendationContent}>
+              <Text style={styles.recommendationTitle}>Calendrier Lunaire</Text>
+              <Text style={styles.recommendationDesc}>
+                Jardinez selon les phases de la lune
+              </Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="#666" />
+          </TouchableOpacity>
+          
           <View style={styles.recommendationCard}>
             <Ionicons name="water" size={24} color="#2196F3" />
             <View style={styles.recommendationContent}>
