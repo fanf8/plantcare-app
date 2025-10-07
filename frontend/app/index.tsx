@@ -1183,7 +1183,22 @@ export default function PlantWellnessApp() {
     };
 
     const addCurrentPlantToGarden = async () => {
-      if (!currentPlant) return;
+      console.log('DEBUG - addCurrentPlantToGarden called');
+      console.log('DEBUG - currentPlant:', currentPlant);
+      console.log('DEBUG - currentPlantIndex:', currentPlantIndex);
+      console.log('DEBUG - currentCategoryPlants length:', currentCategoryPlants.length);
+      
+      if (!currentPlant) {
+        console.error('ERROR: currentPlant is null/undefined');
+        Alert.alert('Erreur', 'Aucune plante sélectionnée pour l\'ajout');
+        return;
+      }
+      
+      if (!currentPlant.id) {
+        console.error('ERROR: currentPlant has no ID:', currentPlant);
+        Alert.alert('Erreur', 'Plante invalide - ID manquant');
+        return;
+      }
       
       try {
         const token = await AsyncStorage.getItem('access_token');
