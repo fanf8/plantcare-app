@@ -1730,123 +1730,68 @@ export default function PlantWellnessApp() {
           <Text style={styles.screenTitle}>Mes Plants</Text>
         </View>
 
-        {/* Exemple de plantes utilisateur - à remplacer par les vraies données */}
+        {/* Plantes du jardin utilisateur - données réelles */}
         <View style={styles.myPlantsContainer}>
-          <TouchableOpacity 
-            style={styles.myPlantCard}
-            onPress={async () => {
-              const plantId = 'user-plant-1';
-              if (showWateringCalendar === plantId) {
-                setShowWateringCalendar(null);
-              } else {
-                setShowWateringCalendar(plantId);
-                // Charger le calendrier si pas déjà fait
-                if (!wateringSchedules[plantId]) {
-                  const schedule = await getWateringSchedule(plantId);
-                  if (schedule) {
-                    setWateringSchedules(prev => ({
-                      ...prev,
-                      [plantId]: schedule
-                    }));
-                  }
-                }
-              }
-            }}
-          >
-            <Image 
-              source={{ uri: 'https://terrabacchus.fr/wp-content/uploads/sites/25/2016/09/basilic-botte-600-web.jpg' }} 
-              style={styles.myPlantImage} 
-            />
-            <View style={styles.myPlantInfo}>
-              <Text style={styles.myPlantName}>Basilic de mon jardin</Text>
-              <Text style={styles.myPlantDetails}>Ajouté le 15 octobre</Text>
-              <Text style={styles.myPlantStatus}>État: Bonne santé</Text>
+          {myGardenPlants.length === 0 ? (
+            <View style={styles.emptyGardenContainer}>
+              <Ionicons name="leaf" size={60} color="#4CAF50" />
+              <Text style={styles.emptyGardenTitle}>Aucune plante ajoutée</Text>
+              <Text style={styles.emptyGardenText}>
+                Commencez votre potager en ajoutant des plantes depuis l'encyclopédie !
+              </Text>
             </View>
-          </TouchableOpacity>
+          ) : (
+            myGardenPlants.map((plant, index) => (
+              <View key={plant.id || index}>
+                <TouchableOpacity 
+                  style={styles.myPlantCard}
+                  onPress={async () => {
+                    const plantId = plant.id;
+                    if (showWateringCalendar === plantId) {
+                      setShowWateringCalendar(null);
+                    } else {
+                      setShowWateringCalendar(plantId);
+                      // Charger le calendrier si pas déjà fait
+                      if (!wateringSchedules[plantId]) {
+                        const schedule = await getWateringSchedule(plantId);
+                        if (schedule) {
+                          setWateringSchedules(prev => ({
+                            ...prev,
+                            [plantId]: schedule
+                          }));
+                        }
+                      }
+                    }
+                  }}
+                >
+                  <Image 
+                    source={{ 
+                      uri: plant.image_base64 
+                        ? `data:image/jpeg;base64,${plant.image_base64}` 
+                        : 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop'
+                    }} 
+                    style={styles.myPlantImage} 
+                  />
+                  <View style={styles.myPlantInfo}>
+                    <Text style={styles.myPlantName}>{plant.custom_name || 'Plante'}</Text>
+                    <Text style={styles.myPlantDetails}>
+                      {plant.location ? `Localisation: ${plant.location}` : 'Ajouté récemment'}
+                    </Text>
+                    <Text style={styles.myPlantStatus}>
+                      État: {plant.health_status || 'Bonne'}
+                    </Text>
+                    {plant.notes && (
+                      <Text style={styles.myPlantNotes}>Note: {plant.notes}</Text>
+                    )}
+                  </View>
+                </TouchableOpacity>
 
-          {showWateringCalendar === 'user-plant-1' && 
-            renderWateringCalendar('user-plant-1', 'Basilic de mon jardin')
-          }
-
-          <TouchableOpacity 
-            style={styles.myPlantCard}
-            onPress={async () => {
-              const plantId = 'user-plant-2';
-              if (showWateringCalendar === plantId) {
-                setShowWateringCalendar(null);
-              } else {
-                setShowWateringCalendar(plantId);
-                // Charger le calendrier si pas déjà fait
-                if (!wateringSchedules[plantId]) {
-                  const schedule = await getWateringSchedule(plantId);
-                  if (schedule) {
-                    setWateringSchedules(prev => ({
-                      ...prev,
-                      [plantId]: schedule
-                    }));
-                  }
+                {showWateringCalendar === plant.id && 
+                  renderWateringCalendar(plant.id, plant.custom_name || 'Plante')
                 }
-              }
-            }}
-          >
-            <Image 
-              source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg' }} 
-              style={styles.myPlantImage} 
-            />
-            <View style={styles.myPlantInfo}>
-              <Text style={styles.myPlantName}>Tomate Cerise</Text>
-              <Text style={styles.myPlantDetails}>Ajouté le 12 octobre</Text>
-              <Text style={styles.myPlantStatus}>État: Excellente</Text>
-            </View>
-          </TouchableOpacity>
-
-          {showWateringCalendar === 'user-plant-2' && 
-            renderWateringCalendar('user-plant-2', 'Tomate Cerise')
-          }
-
-          <TouchableOpacity 
-            style={styles.myPlantCard}
-            onPress={async () => {
-              const plantId = 'user-plant-3';
-              if (showWateringCalendar === plantId) {
-                setShowWateringCalendar(null);
-              } else {
-                setShowWateringCalendar(plantId);
-                // Charger le calendrier si pas déjà fait
-                if (!wateringSchedules[plantId]) {
-                  // Créer un calendrier par défaut avec arrosage le lundi pour test
-                  const mockSchedule = {
-                    id: 'mock-schedule-3',
-                    user_id: 'current-user',
-                    user_plant_id: plantId,
-                    schedule_type: 'custom',
-                    custom_days: [1], // Lundi seulement
-                    auto_frequency: null,
-                    created_at: new Date().toISOString(),
-                    updated_at: new Date().toISOString()
-                  };
-                  setWateringSchedules(prev => ({
-                    ...prev,
-                    [plantId]: mockSchedule
-                  }));
-                }
-              }
-            }}
-          >
-            <Image 
-              source={{ uri: 'https://agrifournitures.fr/249247-medium_default/courgette-diamant-f1-non-traite.jpg' }} 
-              style={styles.myPlantImage} 
-            />
-            <View style={styles.myPlantInfo}>
-              <Text style={styles.myPlantName}>Courgette Verte</Text>
-              <Text style={styles.myPlantDetails}>Ajouté le 10 octobre</Text>
-              <Text style={styles.myPlantStatus}>État: Bonne</Text>
-            </View>
-          </TouchableOpacity>
-
-          {showWateringCalendar === 'user-plant-3' && 
-            renderWateringCalendar('user-plant-3', 'Courgette Verte')
-          }
+              </View>
+            ))
+          )}
         </View>
 
         <TouchableOpacity 
