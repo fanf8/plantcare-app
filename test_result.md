@@ -349,6 +349,36 @@ metadata:
         agent: "main"
         comment: "IMPLEMENTED: Added complete lunar calendar UI component with phases display, daily activities, optimal hours, monthly overview, and tips. Added lunar calendar button in premium recommendations section. Integrated premium access control and authentication token fixes. UI includes full navigation, proper styling, and responsive design for mobile."
 
+  - task: "Authentication Token Fixes"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "FIXED: Authentication token issues resolved. JWT token authentication working correctly for all protected endpoints including watering schedule and scanner analyze endpoints."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Authentication token fixes working correctly. JWT authentication validated for scanner analyze endpoint - identification works for all users, diagnostic correctly requires premium access (402 for non-premium, 200 for premium). User login and admin login both working properly with correct token generation and validation. Protected endpoints properly validate JWT tokens."
+
+  - task: "Scanner Analyze Authentication Fix"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Authentication fixes applied to scanner analyze endpoint to resolve 401 errors."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Scanner analyze authentication working perfectly. Identification analysis (free feature) works for authenticated users. Diagnostic analysis correctly requires premium access - returns 402 Payment Required for non-premium users and 200 OK for premium users. JWT token validation working properly."
+
 test_plan:
   current_focus:
     - "Lunar Calendar Premium Feature"
