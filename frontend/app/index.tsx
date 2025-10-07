@@ -63,6 +63,24 @@ interface PlantInfo {
   growing_season: string[];
 }
 
+interface WateringSchedule {
+  id: string;
+  user_id: string;
+  user_plant_id: string;
+  schedule_type: string; // "auto" ou "custom"
+  custom_days?: number[]; // [1,3,5] pour lundi, mercredi, vendredi
+  auto_frequency?: number; // nombre d'arrosages par semaine
+  created_at: string;
+  updated_at: string;
+}
+
+interface WeekDay {
+  day: string;
+  date: number;
+  dayIndex: number;
+  needsWatering: boolean;
+}
+
 export default function PlantWellnessApp() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
