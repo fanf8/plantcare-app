@@ -1893,6 +1893,7 @@ const styles = StyleSheet.create({
   },
   premiumButton: {
     backgroundColor: '#FFD700',
+    borderWidth: 0,
   },
   adminButton: {
     backgroundColor: '#FFD700',
