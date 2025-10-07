@@ -548,6 +548,165 @@ async def create_checkout_session(current_user: User = Depends(get_current_user)
         "session_id": "cs_mock_123456"
     }
 
+# ============= WATERING SCHEDULE ROUTES =============
+
+@api_router.post("/watering-schedule", response_model=WateringSchedule)
+async def create_watering_schedule(
+    schedule_data: WateringScheduleCreate,
+    current_user: User = Depends(get_current_user)
+):
+    """Créer un nouveau calendrier d'arrosage pour une plante de l'utilisateur"""
+    
+    # Vérifier que la plante appartient à l'utilisateur
+    user_plant = await db.user_plants.find_one({
+        "id": schedule_data.user_plant_id,
+        "user_id": current_user.id
+    })
+    if not user_plant:
+        raise HTTPException(status_code=404, detail="Plante non trouvée")
+    
+    # Calculer la fréquence automatique si mode "auto"
+    auto_frequency = None
+    if schedule_data.schedule_type == "auto":
+        # Extraire la fréquence des données de la plante
+        plant_data = next((p for p in PLANTS_DATABASE if p["name_fr"] == user_plant["plant_name"]), None)
+        if plant_data and "monthly_watering" in plant_data:
+            monthly_watering = plant_data["monthly_watering"]
+            # Parser "Juin: 2-3 fois par semaine" -> prendre la moyenne
+            if "fois par semaine" in monthly_watering:
+                parts = monthly_watering.split(":")
+                if len(parts) > 1:
+                    freq_part = parts[1].strip()
+                    if "2-3" in freq_part:
+                        auto_frequency = 3  # prendre le maximum
+                    elif "3-4" in freq_part:
+                        auto_frequency = 4
+                    elif "1-2" in freq_part:
+                        auto_frequency = 2
+                    elif freq_part.startswith("3"):
+                        auto_frequency = 3
+                    elif freq_part.startswith("2"):
+                        auto_frequency = 2
+                    elif freq_part.startswith("1"):
+                        auto_frequency = 1
+                    elif freq_part.startswith("4"):
+                        auto_frequency = 4
+        if auto_frequency is None:
+            auto_frequency = 2  # défaut: 2 fois par semaine
+    
+    # Supprimer l'ancien planning s'il existe
+    await db.watering_schedules.delete_many({
+        "user_id": current_user.id,
+        "user_plant_id": schedule_data.user_plant_id
+    })
+    
+    # Créer le nouveau planning
+    schedule = WateringSchedule(
+        user_id=current_user.id,
+        user_plant_id=schedule_data.user_plant_id,
+        schedule_type=schedule_data.schedule_type,
+        custom_days=schedule_data.custom_days,
+        auto_frequency=auto_frequency
+    )
+    
+    await db.watering_schedules.insert_one(schedule.dict())
+    return schedule
+
+@api_router.get("/watering-schedule/{user_plant_id}", response_model=Optional[WateringSchedule])
+async def get_watering_schedule(
+    user_plant_id: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Récupérer le calendrier d'arrosage d'une plante"""
+    
+    schedule = await db.watering_schedules.find_one({
+        "user_id": current_user.id,
+        "user_plant_id": user_plant_id
+    })
+    
+    if schedule:
+        return WateringSchedule(**schedule)
+    return None
+
+@api_router.put("/watering-schedule/{user_plant_id}", response_model=WateringSchedule)
+async def update_watering_schedule(
+    user_plant_id: str,
+    update_data: WateringScheduleUpdate,
+    current_user: User = Depends(get_current_user)
+):
+    """Mettre à jour le calendrier d'arrosage d'une plante"""
+    
+    existing_schedule = await db.watering_schedules.find_one({
+        "user_id": current_user.id,
+        "user_plant_id": user_plant_id
+    })
+    
+    if not existing_schedule:
+        raise HTTPException(status_code=404, detail="Planning d'arrosage non trouvé")
+    
+    update_dict = update_data.dict(exclude_unset=True)
+    update_dict["updated_at"] = datetime.utcnow()
+    
+    # Recalculer auto_frequency si changement vers "auto"
+    if update_dict.get("schedule_type") == "auto":
+        user_plant = await db.user_plants.find_one({
+            "id": user_plant_id,
+            "user_id": current_user.id
+        })
+        if user_plant:
+            plant_data = next((p for p in PLANTS_DATABASE if p["name_fr"] == user_plant["plant_name"]), None)
+            if plant_data and "monthly_watering" in plant_data:
+                monthly_watering = plant_data["monthly_watering"]
+                auto_frequency = 2  # défaut
+                if "fois par semaine" in monthly_watering:
+                    parts = monthly_watering.split(":")
+                    if len(parts) > 1:
+                        freq_part = parts[1].strip()
+                        if "2-3" in freq_part:
+                            auto_frequency = 3
+                        elif "3-4" in freq_part:
+                            auto_frequency = 4
+                        elif "1-2" in freq_part:
+                            auto_frequency = 2
+                        elif freq_part.startswith("3"):
+                            auto_frequency = 3
+                        elif freq_part.startswith("2"):
+                            auto_frequency = 2
+                        elif freq_part.startswith("1"):
+                            auto_frequency = 1
+                        elif freq_part.startswith("4"):
+                            auto_frequency = 4
+                update_dict["auto_frequency"] = auto_frequency
+    
+    await db.watering_schedules.update_one(
+        {"user_id": current_user.id, "user_plant_id": user_plant_id},
+        {"$set": update_dict}
+    )
+    
+    updated_schedule = await db.watering_schedules.find_one({
+        "user_id": current_user.id,
+        "user_plant_id": user_plant_id
+    })
+    
+    return WateringSchedule(**updated_schedule)
+
+@api_router.delete("/watering-schedule/{user_plant_id}")
+async def delete_watering_schedule(
+    user_plant_id: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Supprimer le calendrier d'arrosage d'une plante"""
+    
+    result = await db.watering_schedules.delete_one({
+        "user_id": current_user.id,
+        "user_plant_id": user_plant_id
+    })
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Planning d'arrosage non trouvé")
+    
+    return {"message": "Planning d'arrosage supprimé"}
+
 @api_router.post("/subscription/webhook")
 async def stripe_webhook():
     # Handle Stripe webhooks
