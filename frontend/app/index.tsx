@@ -1725,6 +1725,67 @@ export default function PlantWellnessApp() {
           </Text>
         </TouchableOpacity>
       </View>
+
+      {/* Premium Modal */}
+      <Modal
+        visible={showPremiumModal}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setShowPremiumModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Ionicons name="star" size={40} color="#FFD700" />
+              <Text style={styles.modalTitle}>Diagnostic Premium</Text>
+              <TouchableOpacity 
+                style={styles.modalCloseButton}
+                onPress={() => setShowPremiumModal(false)}
+              >
+                <Ionicons name="close" size={24} color="#666" />
+              </TouchableOpacity>
+            </View>
+            
+            <Text style={styles.modalDescription}>
+              Le diagnostic avancé des maladies nécessite un abonnement Premium pour accéder à l'IA de diagnostic.
+            </Text>
+            
+            <View style={styles.modalFeatures}>
+              <View style={styles.modalFeature}>
+                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Text style={styles.modalFeatureText}>Diagnostic IA des maladies</Text>
+              </View>
+              <View style={styles.modalFeature}>
+                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Text style={styles.modalFeatureText}>Recommandations de traitement</Text>
+              </View>
+              <View style={styles.modalFeature}>
+                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Text style={styles.modalFeatureText}>Calendrier de soins intelligent</Text>
+              </View>
+            </View>
+            
+            <View style={styles.modalButtons}>
+              <TouchableOpacity 
+                style={[styles.button, styles.premiumButton, { flex: 1, marginRight: 8 }]}
+                onPress={() => {
+                  setShowPremiumModal(false);
+                  Alert.alert('Bientôt disponible', 'L\'intégration Stripe sera bientôt disponible !');
+                }}
+              >
+                <Text style={styles.buttonText}>S'abonner - 9,99€/mois</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity 
+                style={[styles.button, styles.secondaryButton, { flex: 1, marginLeft: 8 }]}
+                onPress={() => setShowPremiumModal(false)}
+              >
+                <Text style={[styles.buttonText, { color: '#4CAF50' }]}>Plus tard</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }
