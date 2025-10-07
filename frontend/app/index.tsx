@@ -1226,11 +1226,20 @@ export default function PlantWellnessApp() {
         console.log('Response ok:', response.ok);
         
         if (response.status === 200) {
-          // Show success feedback
-          Alert.alert('✅ Succès !', `${currentPlant.name} a été ajouté à votre potager !`, [
-            { text: 'Voir mes plants', onPress: () => setCurrentTab('my-plants') },
-            { text: 'OK', style: 'default' }
-          ]);
+          console.log('✅ SUCCESS: Plant added successfully to backend');
+          
+          // Force refresh "Mes Plants" data by reloading user garden
+          await loadMyGarden();
+          
+          // Show visual success feedback AND navigate
+          Alert.alert(
+            '🌱 Plante ajoutée !', 
+            `${currentPlant.name} a été ajouté avec succès à votre potager.`,
+            [
+              { text: 'Voir mes plants', onPress: () => setCurrentTab('my-plants') },
+              { text: 'Continuer', style: 'default' }
+            ]
+          );
         } else {
           const errorText = await response.text();
           console.error('Add plant error:', errorText);
