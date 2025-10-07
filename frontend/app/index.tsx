@@ -113,7 +113,9 @@ export default function PlantWellnessApp() {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [advancedCareData, setAdvancedCareData] = useState<any>(null);
   const [plantingCalendar, setPlantingCalendar] = useState<any>(null);
+  const [lunarCalendarData, setLunarCalendarData] = useState<any>(null);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showLunarCalendar, setShowLunarCalendar] = useState(false);
 
   // Plant database with detailed information
   // Fetch plants from API
