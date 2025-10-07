@@ -1299,13 +1299,34 @@ export default function PlantWellnessApp() {
 
         <TouchableOpacity 
           style={[styles.button, styles.secondaryButton]}
-          onPress={() => setCurrentTab('encyclopedia')}
+          onPress={async () => {
+            const result = await ImagePicker.launchImageLibraryAsync({
+              mediaTypes: ImagePicker.MediaTypeOptions.Images,
+              allowsEditing: true,
+              aspect: [1, 1],
+              quality: 0.8,
+              base64: true,
+            });
+            
+            if (!result.canceled && result.assets[0].base64) {
+              setSelectedImage(result.assets[0].base64);
+            }
+          }}
         >
           <Ionicons name="images" size={20} color="#4CAF50" style={{ marginRight: 10 }} />
           <Text style={[styles.buttonText, { color: '#4CAF50' }]}>
             Choisir de la galerie
           </Text>
         </TouchableOpacity>
+
+        {selectedImage && (
+          <View style={styles.selectedImageContainer}>
+            <Text style={styles.selectedImageText}>Image sélectionnée ✓</Text>
+            <TouchableOpacity onPress={() => setSelectedImage(null)}>
+              <Text style={styles.removeImageText}>Supprimer</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </ScrollView>
     </ImageBackground>
