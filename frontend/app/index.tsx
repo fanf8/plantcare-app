@@ -141,6 +141,124 @@ export default function PlantWellnessApp() {
     }
   };
 
+  // ============= WATERING CALENDAR FUNCTIONS =============
+
+  // Générer les 7 jours de la semaine (lundi à dimanche)
+  const generateWeekDays = (): WeekDay[] => {
+    const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    const today = new Date();
+    
+    // Trouver le lundi de cette semaine
+    const monday = new Date(today);
+    const dayOfWeek = today.getDay();
+    const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // dimanche = 0, lundi = 1
+    monday.setDate(today.getDate() + diffToMonday);
+    
+    return days.map((day, index) => {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + index);
+      return {
+        day,
+        date: date.getDate(),
+        dayIndex: index + 1, // 1 = lundi, 7 = dimanche
+        needsWatering: false // sera calculé plus tard
+      };
+    });
+  };
+
+  // Calculer les jours d'arrosage automatique basé sur la fréquence
+  const calculateAutoWateringDays = (frequency: number): number[] => {
+    if (frequency <= 1) return [1]; // lundi seulement
+    if (frequency === 2) return [2, 5]; // mardi et vendredi
+    if (frequency === 3) return [1, 3, 6]; // lundi, mercredi, samedi
+    if (frequency >= 4) return [1, 3, 5, 7]; // lundi, mercredi, vendredi, dimanche
+    return [1, 4]; // défaut
+  };
+
+  // Récupérer ou créer le calendrier d'arrosage
+  const getWateringSchedule = async (userPlantId: string): Promise<WateringSchedule | null> => {
+    if (!user) return null;
+    
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/watering-schedule/${userPlantId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      
+      if (response.ok) {
+        const schedule = await response.json();
+        return schedule;
+      }
+      return null;
+    } catch (error) {
+      console.error('Erreur lors de la récupération du calendrier:', error);
+      return null;
+    }
+  };
+
+  // Créer un calendrier d'arrosage
+  const createWateringSchedule = async (userPlantId: string, scheduleType: string, customDays?: number[]): Promise<void> => {
+    if (!user) return;
+    
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/watering-schedule`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          user_plant_id: userPlantId,
+          schedule_type: scheduleType,
+          custom_days: customDays,
+        }),
+      });
+      
+      if (response.ok) {
+        const schedule = await response.json();
+        setWateringSchedules(prev => ({
+          ...prev,
+          [userPlantId]: schedule
+        }));
+      }
+    } catch (error) {
+      console.error('Erreur lors de la création du calendrier:', error);
+    }
+  };
+
+  // Mettre à jour un calendrier d'arrosage
+  const updateWateringSchedule = async (userPlantId: string, scheduleType: string, customDays?: number[]): Promise<void> => {
+    if (!user) return;
+    
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/watering-schedule/${userPlantId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          schedule_type: scheduleType,
+          custom_days: customDays,
+        }),
+      });
+      
+      if (response.ok) {
+        const schedule = await response.json();
+        setWateringSchedules(prev => ({
+          ...prev,
+          [userPlantId]: schedule
+        }));
+      }
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour du calendrier:', error);
+    }
+  };
+
   // LEGACY: Old hardcoded database (keep as fallback)
   const legacyPlantsDatabase: PlantInfo[] = [
     // LÉGUMES
