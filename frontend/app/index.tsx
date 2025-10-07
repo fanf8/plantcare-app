@@ -597,6 +597,53 @@ export default function PlantWellnessApp() {
     return true;
   };
 
+  const handleScan = async (analysisType: 'identification' | 'diagnostic' = 'identification') => {
+    if (!selectedImage) {
+      Alert.alert('Erreur', 'Veuillez d\'abord sélectionner une image');
+      return;
+    }
+
+    // Vérifier si l'utilisateur essaie d'accéder au diagnostic sans être premium
+    if (analysisType === 'diagnostic' && (!user || !user.is_premium)) {
+      setShowPremiumModal(true);
+      return;
+    }
+
+    setScanning(true);
+    try {
+      const token = await AsyncStorage.getItem('token');
+      
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/scanner/analyze`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          image_base64: selectedImage,
+          analysis_type: analysisType
+        }),
+      });
+
+      if (response.status === 402) {
+        setShowPremiumModal(true);
+        return;
+      }
+
+      if (response.ok) {
+        const result = await response.json();
+        setScanResult(result.analysis);
+      } else {
+        throw new Error('Échec de l\'analyse');
+      }
+    } catch (error) {
+      console.error('Erreur lors du scan:', error);
+      Alert.alert('Erreur', 'Impossible d\'analyser l\'image');
+    } finally {
+      setScanning(false);
+    }
+  };
+
   const filteredPlants = plantsDatabase.filter(plant => 
     plant.name.toLowerCase().includes(filterText.toLowerCase()) ||
     plant.description.toLowerCase().includes(filterText.toLowerCase())
