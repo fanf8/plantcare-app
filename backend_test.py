@@ -685,10 +685,16 @@ def run_all_tests():
     test_results["Plant Database with Sample Data"] = test_plant_database()
     test_results["User Garden Management"] = test_user_garden_management()
     
+    # NEW HIGH PRIORITY TESTS (Focus of this testing session)
+    test_results["Lunar Calendar Premium Feature"] = test_lunar_calendar_premium_feature()
+    test_results["Watering Schedule Authentication"] = test_watering_schedule_authentication()
+    test_results["Scanner Analyze Authentication"] = test_scanner_analyze_authentication()
+    
     # MEDIUM PRIORITY TESTS
     test_results["AI Analysis System (Premium)"] = test_ai_analysis_system()
     test_results["Community Features"] = test_community_features()
     test_results["Subscription Management"] = test_subscription_management()
+    test_results["Existing Premium Endpoints"] = test_existing_premium_endpoints()
     
     # Summary
     print("=" * 50)
@@ -711,6 +717,14 @@ def run_all_tests():
     print(f"Passed: {passed}")
     print(f"Failed: {failed}")
     print(f"Success Rate: {(passed/len(test_results)*100):.1f}%")
+    
+    # Highlight focus areas
+    print("\n🎯 FOCUS AREAS (New Features):")
+    focus_tests = ["Lunar Calendar Premium Feature", "Watering Schedule Authentication", "Scanner Analyze Authentication"]
+    for test_name in focus_tests:
+        if test_name in test_results:
+            status = "✅ PASS" if test_results[test_name] else "❌ FAIL"
+            print(f"{status} {test_name}")
     
     return test_results
 
