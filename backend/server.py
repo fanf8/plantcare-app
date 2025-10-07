@@ -151,6 +151,29 @@ class SubscriptionPlan(BaseModel):
     features: List[str]
     stripe_price_id: Optional[str] = None
 
+class SubscriptionCreate(BaseModel):
+    plan_type: str
+    payment_method: str
+
+class WateringSchedule(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    user_plant_id: str
+    schedule_type: str  # "auto" ou "custom"
+    custom_days: Optional[List[int]] = None  # [1,3,5] pour lundi, mercredi, vendredi (1=lundi, 7=dimanche)
+    auto_frequency: Optional[int] = None  # nombre d'arrosages par semaine calculé automatiquement
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class WateringScheduleCreate(BaseModel):
+    user_plant_id: str
+    schedule_type: str  # "auto" ou "custom"
+    custom_days: Optional[List[int]] = None
+
+class WateringScheduleUpdate(BaseModel):
+    schedule_type: Optional[str] = None
+    custom_days: Optional[List[int]] = None
+
 # ============= UTILITY FUNCTIONS =============
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
