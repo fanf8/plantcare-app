@@ -1187,6 +1187,12 @@ export default function PlantWellnessApp() {
       
       try {
         const token = await AsyncStorage.getItem('access_token');
+        console.log('Adding plant to garden:', {
+          plant_id: currentPlant.id,
+          plant_name: currentPlant.name,
+          token_exists: !!token
+        });
+        
         const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden`, {
           method: 'POST',
           headers: {
@@ -1201,14 +1207,18 @@ export default function PlantWellnessApp() {
           }),
         });
 
+        console.log('Add plant response status:', response.status);
+        
         if (response.ok) {
           Alert.alert('Succès !', `${currentPlant.name} ajouté à votre potager !`);
         } else {
-          Alert.alert('Erreur', 'Impossible d\'ajouter la plante');
+          const errorText = await response.text();
+          console.error('Add plant error:', errorText);
+          Alert.alert('Erreur', `Impossible d'ajouter la plante (${response.status}): ${errorText}`);
         }
       } catch (error) {
         console.error('Error adding plant:', error);
-        Alert.alert('Erreur', 'Erreur de connexion');
+        Alert.alert('Erreur', `Erreur de connexion: ${error.message}`);
       }
     };
 
