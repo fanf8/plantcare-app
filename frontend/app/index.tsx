@@ -119,6 +119,7 @@ export default function PlantWellnessApp() {
   
   // My Garden state
   const [myGardenPlants, setMyGardenPlants] = useState<any[]>([]);
+  const [isAddingPlant, setIsAddingPlant] = useState(false);
 
   // Plant database with detailed information
   // Fetch plants from API
