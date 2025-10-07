@@ -72,4 +72,4 @@ def clean_garden_duplicates():
         print(f"❌ Failed to get garden: {garden_response.status_code}")
 
 if __name__ == "__main__":
-    clean_duplicates()
+    clean_garden_duplicates()
