@@ -840,9 +840,9 @@ export default function PlantWellnessApp() {
                   styles.dayContainer,
                   needsWatering && styles.dayContainerWatering
                 ]}
-                onPress={async () => {
+                onPress={() => {
                   if (isCustomMode) {
-                    // Toggle ce jour dans le mode personnalisé
+                    // Toggle ce jour dans le mode personnalisé (mode local pour test)
                     let newCustomDays = [...(schedule?.custom_days || [])];
                     if (needsWatering) {
                       newCustomDays = newCustomDays.filter(day => day !== dayInfo.dayIndex);
@@ -851,11 +851,18 @@ export default function PlantWellnessApp() {
                       newCustomDays.sort();
                     }
                     
-                    if (schedule) {
-                      await updateWateringSchedule(plantId, 'custom', newCustomDays);
-                    } else {
-                      await createWateringSchedule(plantId, 'custom', newCustomDays);
-                    }
+                    // Mettre à jour le state local directement pour test
+                    const updatedSchedule = {
+                      ...schedule,
+                      schedule_type: 'custom',
+                      custom_days: newCustomDays,
+                      updated_at: new Date().toISOString()
+                    };
+                    
+                    setWateringSchedules(prev => ({
+                      ...prev,
+                      [plantId]: updatedSchedule
+                    }));
                   }
                 }}
                 disabled={!isCustomMode}
