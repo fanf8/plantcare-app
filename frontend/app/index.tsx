@@ -187,6 +187,49 @@ export default function PlantWellnessApp() {
     }
   }, [user]);
 
+  const deletePlantFromGarden = async (plantId: string, plantName: string) => {
+    if (!user) return;
+    
+    Alert.alert(
+      'Supprimer la plante',
+      `Êtes-vous sûr de vouloir supprimer "${plantName}" de votre jardin ?`,
+      [
+        {
+          text: 'Annuler',
+          style: 'cancel'
+        },
+        {
+          text: 'Supprimer',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              const token = await AsyncStorage.getItem('access_token');
+              const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden/${plantId}`, {
+                method: 'DELETE',
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                },
+              });
+
+              if (response.ok) {
+                console.log('✅ Plant deleted successfully');
+                // Recharger la liste des plantes
+                await loadMyGarden();
+                Alert.alert('Succès !', `${plantName} a été supprimé de votre jardin.`);
+              } else {
+                console.error('Delete plant error:', response.status);
+                Alert.alert('Erreur', 'Impossible de supprimer la plante');
+              }
+            } catch (error) {
+              console.error('Error deleting plant:', error);
+              Alert.alert('Erreur', 'Erreur de connexion');
+            }
+          }
+        }
+      ]
+    );
+  };
+
   // ============= WATERING CALENDAR FUNCTIONS =============
 
   // Générer les 7 jours de la semaine (lundi à dimanche)
