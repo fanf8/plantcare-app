@@ -2128,6 +2128,31 @@ const styles = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
+  scanButtonsContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    gap: 16,
+  },
+  freeLabel: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#fff',
+    backgroundColor: '#4CAF50',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginTop: 4,
+  },
+  premiumLabel: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#000',
+    backgroundColor: '#FFD700',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginTop: 4,
+  },
 
   // Recommendations screen
   recommendationsContainer: {
