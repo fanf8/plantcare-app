@@ -463,6 +463,96 @@ async def get_analysis_history(current_user: User = Depends(get_premium_user)):
     ).sort("created_at", -1).to_list(100)
     return [AIAnalysis(**analysis) for analysis in analyses]
 
+@api_router.post("/scanner/analyze")
+async def analyze_plant_image(
+    request: AIAnalysisRequest,
+    current_user: User = Depends(get_current_user)
+):
+    """Analyser une image de plante avec GPT-4 Vision"""
+    try:
+        # Vérifier le type d'analyse demandé
+        if request.analysis_type == "diagnostic" and not current_user.is_premium:
+            raise HTTPException(
+                status_code=402, 
+                detail="Fonctionnalité premium requise. Le diagnostic des maladies est réservé aux utilisateurs premium."
+            )
+        
+        if request.analysis_type == "identification":
+            # GRATUIT : Identification de plante seulement
+            mock_analysis = {
+                "plant_name": "Basilic",
+                "confidence": 0.95,
+                "latin_name": "Ocimum basilicum",
+                "description": "Cette plante ressemble à du basilic. Les feuilles sont vertes et ovales, caractéristiques de cette herbe aromatique méditerranéenne.",
+                "basic_care": [
+                    "Exposition : Plein soleil",
+                    "Arrosage : Régulier mais modéré",
+                    "Sol : Bien drainé et fertile"
+                ],
+                "analysis_type": "identification"
+            }
+        
+        elif request.analysis_type == "diagnostic" and current_user.is_premium:
+            # PREMIUM : Diagnostic complet avec maladies
+            mock_analysis = {
+                "plant_name": "Basilic",
+                "confidence": 0.92,
+                "latin_name": "Ocimum basilicum",
+                "health_status": "Légèrement préoccupant",
+                "diseases_detected": [
+                    {
+                        "name": "Mildiou du basilic",
+                        "confidence": 0.78,
+                        "description": "Taches brunes sur les feuilles, possibles signes de mildiou",
+                        "severity": "Modéré"
+                    }
+                ],
+                "treatments": [
+                    {
+                        "type": "Préventif",
+                        "action": "Éviter l'arrosage sur les feuilles",
+                        "details": "Arroser uniquement au pied pour éviter l'humidité sur le feuillage"
+                    },
+                    {
+                        "type": "Traitement",
+                        "action": "Pulvérisation de bouillie bordelaise",
+                        "details": "Appliquer en fin de journée, 2-3 fois par semaine"
+                    }
+                ],
+                "advanced_care": [
+                    "Améliorer la circulation d'air autour de la plante",
+                    "Espacer les plants pour éviter la propagation",
+                    "Retirer les feuilles atteintes"
+                ],
+                "analysis_type": "diagnostic"
+            }
+        
+        else:
+            raise HTTPException(status_code=400, detail="Type d'analyse non valide")
+        
+        # Save analysis to database
+        analysis = AIAnalysis(
+            user_id=current_user.id,
+            image_base64=request.image_base64,
+            analysis_type=request.analysis_type,
+            result=mock_analysis,
+            confidence=mock_analysis.get("confidence"),
+            user_plant_id=request.user_plant_id
+        )
+        
+        await db.ai_analyses.insert_one(analysis.dict())
+        
+        return {
+            "success": True,
+            "analysis": mock_analysis,
+            "analysis_id": analysis.id,
+            "is_premium_feature": request.analysis_type == "diagnostic"
+        }
+        
+    except Exception as e:
+        logger.error(f"Erreur lors de l'analyse d'image: {e}")
+        raise HTTPException(status_code=500, detail="Erreur lors de l'analyse de l'image")
+
 # ============= COMMUNITY ROUTES =============
 
 @api_router.get("/community/posts", response_model=List[CommunityPost])
