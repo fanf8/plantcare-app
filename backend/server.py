@@ -1220,7 +1220,7 @@ Plantes possibles dans notre base:
 # ============= DATABASE INITIALIZATION =============
 
 async def initialize_plant_database():
-    """Initialize the database with 53 plant varieties"""
+    """Initialize the database with 64 plant varieties"""
     
     # Check if plants already exist
     existing_plants = await db.plants.count_documents({})
@@ -1228,7 +1228,13 @@ async def initialize_plant_database():
         # Clear old database to update with new varieties
         await db.plants.delete_many({})
     
-    # Insert all 53 varieties from plants_database.py
+    # Add IDs to plants and insert them
     if PLANTS_DATABASE:
-        await db.plants.insert_many(PLANTS_DATABASE)
-        logger.info(f"Initialized database with {len(PLANTS_DATABASE)} plant varieties")
+        plants_with_ids = []
+        for i, plant in enumerate(PLANTS_DATABASE):
+            plant_with_id = plant.copy()
+            plant_with_id["id"] = str(uuid.uuid4())
+            plants_with_ids.append(plant_with_id)
+        
+        await db.plants.insert_many(plants_with_ids)
+        logger.info(f"Initialized database with {len(plants_with_ids)} plant varieties")
