@@ -1786,6 +1786,21 @@ export default function PlantWellnessApp() {
   );
 
   const renderCurrentScreen = () => {
+    // Si le calendrier lunaire est affiché, le montrer en priorité
+    if (showLunarCalendar) {
+      return (
+        <ImageBackground 
+          source={{ uri: BACKGROUND_IMAGES.recommendations }} 
+          style={styles.container}
+          resizeMode="cover"
+        >
+          <SafeAreaView style={styles.container}>
+            {renderLunarCalendar()}
+          </SafeAreaView>
+        </ImageBackground>
+      );
+    }
+
     switch (currentTab) {
       case 'garden':
         return renderGardenScreen();
