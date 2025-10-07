@@ -1263,10 +1263,38 @@ export default function PlantWellnessApp() {
           </Text>
         </View>
 
-        <TouchableOpacity style={[styles.button, styles.primaryButton]}>
-          <Ionicons name="camera" size={20} color="#fff" style={{ marginRight: 10 }} />
-          <Text style={styles.buttonText}>Prendre une photo</Text>
-        </TouchableOpacity>
+        {/* Boutons de scan - Gratuit vs Premium */}
+        <View style={styles.scanButtonsContainer}>
+          <TouchableOpacity 
+            style={[styles.button, styles.primaryButton, { flex: 1, marginRight: 8 }]} 
+            onPress={() => handleScan('identification')}
+            disabled={scanning}
+          >
+            <Ionicons name="search" size={20} color="#fff" style={{ marginRight: 10 }} />
+            <Text style={styles.buttonText}>
+              {scanning ? 'Analyse...' : 'Identifier'}
+            </Text>
+            <Text style={styles.freeLabel}>GRATUIT</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={[
+              styles.button, 
+              user?.is_premium ? styles.primaryButton : styles.premiumButton, 
+              { flex: 1, marginLeft: 8 }
+            ]} 
+            onPress={() => handleScan('diagnostic')}
+            disabled={scanning}
+          >
+            <Ionicons name="medical" size={20} color="#fff" style={{ marginRight: 10 }} />
+            <Text style={styles.buttonText}>
+              {scanning ? 'Diagnostic...' : 'Diagnostic'}
+            </Text>
+            <Text style={styles.premiumLabel}>
+              {user?.is_premium ? 'PREMIUM' : 'PREMIUM'}
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         <TouchableOpacity 
           style={[styles.button, styles.secondaryButton]}
