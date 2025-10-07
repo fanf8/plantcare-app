@@ -1396,11 +1396,21 @@ export default function PlantWellnessApp() {
                   </View>
 
                   <TouchableOpacity 
-                    style={styles.addToGardenButton}
+                    style={[
+                      styles.addToGardenButton,
+                      isAddingPlant && styles.addToGardenButtonDisabled
+                    ]}
                     onPress={addCurrentPlantToGarden}
+                    disabled={isAddingPlant}
                   >
-                    <Ionicons name="add-circle" size={20} color="#fff" />
-                    <Text style={styles.addToGardenText}>Ajouter à mon potager</Text>
+                    <Ionicons 
+                      name={isAddingPlant ? "checkmark-circle" : "add-circle"} 
+                      size={20} 
+                      color="#fff" 
+                    />
+                    <Text style={styles.addToGardenText}>
+                      {isAddingPlant ? "Ajout en cours..." : "Ajouter à mon potager"}
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </View>
