@@ -3013,6 +3013,7 @@ const styles = StyleSheet.create({
   },
   myPlantInfo: {
     flex: 1,
+    marginLeft: 12,
   },
   myPlantName: {
     fontSize: 18,
