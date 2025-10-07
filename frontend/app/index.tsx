@@ -1531,7 +1531,8 @@ export default function PlantWellnessApp() {
           
           <View style={styles.premiumFeatures}>
             <Text style={styles.featureItem}>✓ Diagnostic IA des maladies</Text>
-            <Text style={styles.featureItem}>✓ Calendrier de soins intelligent</Text>
+            <Text style={styles.featureItem}>✓ Calendrier lunaire pour jardinage</Text>
+            <Text style={styles.featureItem}>✓ Données météo et conseils avancés</Text>
             <Text style={styles.featureItem}>✓ Recommandations personnalisées</Text>
             <Text style={styles.featureItem}>✓ Support prioritaire</Text>
           </View>
