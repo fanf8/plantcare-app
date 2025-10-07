@@ -1456,19 +1456,27 @@ export default function PlantWellnessApp() {
                 setShowWateringCalendar(plantId);
                 // Charger le calendrier si pas déjà fait
                 if (!wateringSchedules[plantId]) {
-                  const schedule = await getWateringSchedule(plantId);
-                  if (schedule) {
-                    setWateringSchedules(prev => ({
-                      ...prev,
-                      [plantId]: schedule
-                    }));
-                  }
+                  // Créer un calendrier par défaut avec arrosage le lundi pour test
+                  const mockSchedule = {
+                    id: 'mock-schedule-3',
+                    user_id: 'current-user',
+                    user_plant_id: plantId,
+                    schedule_type: 'custom',
+                    custom_days: [1], // Lundi seulement
+                    auto_frequency: null,
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString()
+                  };
+                  setWateringSchedules(prev => ({
+                    ...prev,
+                    [plantId]: mockSchedule
+                  }));
                 }
               }
             }}
           >
             <Image 
-              source={{ uri: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&q=80' }} 
+              source={{ uri: 'https://graines-grelin-grelinette.fr/wp-content/uploads/2021/11/9955739-courgettejaune.jpg' }} 
               style={styles.myPlantImage} 
             />
             <View style={styles.myPlantInfo}>
