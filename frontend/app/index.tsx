@@ -190,7 +190,7 @@ export default function PlantWellnessApp() {
     if (!user) return null;
     
     try {
-      const token = await AsyncStorage.getItem('token');
+      const token = await AsyncStorage.getItem('access_token');
       const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/watering-schedule/${userPlantId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -213,7 +213,7 @@ export default function PlantWellnessApp() {
     if (!user) return;
     
     try {
-      const token = await AsyncStorage.getItem('token');
+      const token = await AsyncStorage.getItem('access_token');
       const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/watering-schedule`, {
         method: 'POST',
         headers: {
@@ -244,7 +244,7 @@ export default function PlantWellnessApp() {
     if (!user) return;
     
     try {
-      const token = await AsyncStorage.getItem('token');
+      const token = await AsyncStorage.getItem('access_token');
       const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/watering-schedule/${userPlantId}`, {
         method: 'PUT',
         headers: {
@@ -614,7 +614,7 @@ export default function PlantWellnessApp() {
 
     setScanning(true);
     try {
-      const token = await AsyncStorage.getItem('token');
+      const token = await AsyncStorage.getItem('access_token');
       
       const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/scanner/analyze`, {
         method: 'POST',
