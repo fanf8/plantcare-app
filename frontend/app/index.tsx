@@ -1476,7 +1476,7 @@ export default function PlantWellnessApp() {
             }}
           >
             <Image 
-              source={{ uri: 'https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=300&q=80' }} 
+              source={{ uri: 'https://agrifournitures.fr/249247-medium_default/courgette-diamant-f1-non-traite.jpg' }} 
               style={styles.myPlantImage} 
             />
             <View style={styles.myPlantInfo}>
