@@ -96,6 +96,7 @@ export default function PlantWellnessApp() {
   const [plantsLoading, setPlantsLoading] = useState(true);
   const [scanResult, setScanResult] = useState<any>(null);
   const [scanning, setScanning] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   // Form states
   const [email, setEmail] = useState('');
