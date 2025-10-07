@@ -1953,7 +1953,7 @@ export default function PlantWellnessApp() {
               </View>
               <View style={styles.modalFeature}>
                 <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
-                <Text style={styles.modalFeatureText}>Calendrier de soins intelligent</Text>
+                <Text style={styles.modalFeatureText}>Calendrier lunaire pour jardinage</Text>
               </View>
             </View>
             
