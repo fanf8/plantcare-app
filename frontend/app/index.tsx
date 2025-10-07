@@ -1807,7 +1807,13 @@ export default function PlantWellnessApp() {
 
         <TouchableOpacity 
           style={[styles.button, styles.primaryButton, { marginTop: 20 }]}
-          onPress={() => setCurrentTab('encyclopedia')}
+          onPress={() => {
+            // Initialiser correctement l'état de l'encyclopédie
+            setCurrentSection('legumes'); // Commencer avec les légumes
+            setFilterText(''); // Reset le filtre
+            setCurrentPlantIndex(0); // Reset l'index
+            setCurrentTab('encyclopedia'); // Naviguer vers l'encyclopédie
+          }}
         >
           <Ionicons name="add" size={20} color="#fff" style={{ marginRight: 10 }} />
           <Text style={styles.buttonText}>Ajouter une nouvelle plante</Text>
