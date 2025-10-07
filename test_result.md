@@ -309,9 +309,9 @@ metadata:
 
   - task: "Plant Carousel with Navigation"
     implemented: true
-    working: true
+    working: false
     file: "/app/frontend/app/index.tsx"
-    stuck_count: 1
+    stuck_count: 2
     priority: "high"
     needs_retesting: false
     status_history:
@@ -324,6 +324,9 @@ metadata:
       - working: true
         agent: "testing"
         comment: "✅ TESTED: Plant carousel working perfectly! Encyclopedia navigation successful, carousel displays plants with high-quality images (Cœur de Bœuf tomato visible), plant names, scientific names, and descriptions. Navigation buttons present. Plant addition functionality working - API calls successful with 200 status. However, success alert not showing (minor UI issue). Plants successfully added to 'Mes Plants' section with proper display."
+      - working: false
+        agent: "testing"
+        comment: "❌ CRITICAL ISSUE CONFIRMED: Plant addition flow is NOT working in frontend despite backend API working perfectly. BACKEND TESTING: Admin login works, Cœur de Bœuf plant exists (ID: 60e0918e-4646-40ea-af39-bdaaf405fff2), API calls return 200 OK, plants are successfully added to database (12+ Cœur de Bœuf entries confirmed in admin garden). FRONTEND ISSUE: The 'Ajouter à mon potager' button click is not triggering the addCurrentPlantToGarden function properly, OR the success alert is not showing, OR the Mes Plants section is not refreshing to display newly added plants. User's exact flow 'Mes Plants' → 'Ajouter une nouvelle plante' → 'Cœur de Bœuf' → 'Ajouter à mon potager' fails at the final step - no visual feedback and plants don't appear in Mes Plants list despite successful backend storage."
 
   - task: "Background Images"
     implemented: true
