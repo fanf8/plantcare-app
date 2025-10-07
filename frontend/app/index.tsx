@@ -2954,6 +2954,35 @@ const styles = StyleSheet.create({
     color: '#4CAF50',
     fontWeight: '600',
   },
+  myPlantNotes: {
+    fontSize: 12,
+    color: '#888',
+    fontStyle: 'italic',
+    marginTop: 4,
+  },
+  emptyGardenContainer: {
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderRadius: 16,
+    padding: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: '#E8F5E8',
+    borderStyle: 'dashed',
+  },
+  emptyGardenTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#4CAF50',
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  emptyGardenText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    lineHeight: 22,
+  },
 
   // Modal styles
   modalOverlay: {
