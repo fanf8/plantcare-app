@@ -1,197 +1,224 @@
-diff --git a/backend/server.py b/backend/server.py
-index 13378fb..a52a18b 100644
---- a/backend/server.py
-+++ b/backend/server.py
-@@ -151,6 +151,29 @@ class SubscriptionPlan(BaseModel):
-     features: List[str]
-     stripe_price_id: Optional[str] = None
- 
-+class SubscriptionCreate(BaseModel):
-+    plan_type: str
-+    payment_method: str
-+
-+class WateringSchedule(BaseModel):
-+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-+    user_id: str
-+    user_plant_id: str
-+    schedule_type: str  # "auto" ou "custom"
-+    custom_days: Optional[List[int]] = None  # [1,3,5] pour lundi, mercredi, vendredi (1=lundi, 7=dimanche)
-+    auto_frequency: Optional[int] = None  # nombre d'arrosages par semaine calculé automatiquement
-+    created_at: datetime = Field(default_factory=datetime.utcnow)
-+    updated_at: datetime = Field(default_factory=datetime.utcnow)
-+
-+class WateringScheduleCreate(BaseModel):
-+    user_plant_id: str
-+    schedule_type: str  # "auto" ou "custom"
-+    custom_days: Optional[List[int]] = None
-+
-+class WateringScheduleUpdate(BaseModel):
-+    schedule_type: Optional[str] = None
-+    custom_days: Optional[List[int]] = None
-+
- # ============= UTILITY FUNCTIONS =============
- 
- def verify_password(plain_password: str, hashed_password: str) -> bool:
+diff --git a/frontend/app/index.tsx b/frontend/app/index.tsx
+index 82f01a1..872698d 100644
+--- a/frontend/app/index.tsx
++++ b/frontend/app/index.tsx
+@@ -1432,7 +1432,7 @@ export default function PlantWellnessApp() {
+             }}
+           >
+             <Image 
+-              source={{ uri: 'https://images.unsplash.com/photo-1592841200221-4e2f8d3f1d95?w=300&q=80' }} 
++              source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg' }} 
+               style={styles.myPlantImage} 
+             />
+             <View style={styles.myPlantInfo}>
+@@ -1476,7 +1476,7 @@ export default function PlantWellnessApp() {
+             }}
+           >
+             <Image 
+-              source={{ uri: 'https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=300&q=80' }} 
++              source={{ uri: 'https://agrifournitures.fr/249247-medium_default/courgette-diamant-f1-non-traite.jpg' }} 
+               style={styles.myPlantImage} 
+             />
+             <View style={styles.myPlantInfo}>
 diff --git a/model.patch b/model.patch
-index 9066105..e69de29 100644
+index d7a540b..e69de29 100644
 --- a/model.patch
 +++ b/model.patch
-@@ -1,158 +0,0 @@
--diff --git a/backend/plants_database.py b/backend/plants_database.py
--index ef54e1c..db6dd10 100644
----- a/backend/plants_database.py
--+++ b/backend/plants_database.py
--@@ -885,6 +885,53 @@ PLANTS_DATABASE = [
--         "monthly_watering": "Juin: 1-2 fois par semaine"
--     },
+@@ -1,197 +0,0 @@
+-diff --git a/backend/server.py b/backend/server.py
+-index 13378fb..a52a18b 100644
+---- a/backend/server.py
+-+++ b/backend/server.py
+-@@ -151,6 +151,29 @@ class SubscriptionPlan(BaseModel):
+-     features: List[str]
+-     stripe_price_id: Optional[str] = None
 - 
--+    # SALADES SUPPLÉMENTAIRES (3 variétés)
--+    {
--+        "name_fr": "Laitue",
--+        "name_latin": "Lactuca sativa",
--+        "variety": "Laitue",
--+        "category": "potager",
--+        "subcategory": "legumes",
--+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Iceberg_lettuce_in_SB.jpg/800px-Iceberg_lettuce_in_SB.jpg",
--+        "description": "Salade classique aux feuilles tendres et croquantes",
--+        "difficulty": "Très facile",
--+        "growing_season": ["printemps", "été", "automne"],
--+        "sunlight": "Soleil à mi-ombre",
--+        "watering": "Arrosage régulier modéré",
--+        "soil_type": "Sol frais et fertile",
--+        "monthly_watering": "Juin: 3 fois par semaine"
--+    },
--+    {
--+        "name_fr": "Scarole",
--+        "name_latin": "Cichorium endivia var. latifolium",
--+        "variety": "Scarole",
--+        "category": "potager",
--+        "subcategory": "legumes",
--+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cichorium_endivia2.jpg/800px-Cichorium_endivia2.jpg",
--+        "description": "Chicorée aux feuilles larges et épaisses, légèrement amère",
--+        "difficulty": "Facile",
--+        "growing_season": ["été", "automne", "hiver"],
--+        "sunlight": "Soleil à mi-ombre",
--+        "watering": "Arrosage régulier",
--+        "soil_type": "Sol riche et humifère",
--+        "monthly_watering": "Juin: 2-3 fois par semaine"
--+    },
--+    {
--+        "name_fr": "Frisée",
--+        "name_latin": "Cichorium endivia var. crispum",
--+        "variety": "Frisée",
--+        "category": "potager",
--+        "subcategory": "legumes",
--+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Endive_frisee.jpg/800px-Endive_frisee.jpg",
--+        "description": "Chicorée aux feuilles finement découpées et frisées",
--+        "difficulty": "Facile",
--+        "growing_season": ["été", "automne"],
--+        "sunlight": "Soleil à mi-ombre",
--+        "watering": "Arrosage régulier",
--+        "soil_type": "Sol fertile et bien drainé",
--+        "monthly_watering": "Juin: 2-3 fois par semaine"
--+    },
+-+class SubscriptionCreate(BaseModel):
+-+    plan_type: str
+-+    payment_method: str
 -+
--     # LÉGUMES SUPPLÉMENTAIRES (4 variétés)
--     {
--         "name_fr": "Betterave Rouge",
+-+class WateringSchedule(BaseModel):
+-+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+-+    user_id: str
+-+    user_plant_id: str
+-+    schedule_type: str  # "auto" ou "custom"
+-+    custom_days: Optional[List[int]] = None  # [1,3,5] pour lundi, mercredi, vendredi (1=lundi, 7=dimanche)
+-+    auto_frequency: Optional[int] = None  # nombre d'arrosages par semaine calculé automatiquement
+-+    created_at: datetime = Field(default_factory=datetime.utcnow)
+-+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+-+
+-+class WateringScheduleCreate(BaseModel):
+-+    user_plant_id: str
+-+    schedule_type: str  # "auto" ou "custom"
+-+    custom_days: Optional[List[int]] = None
+-+
+-+class WateringScheduleUpdate(BaseModel):
+-+    schedule_type: Optional[str] = None
+-+    custom_days: Optional[List[int]] = None
+-+
+- # ============= UTILITY FUNCTIONS =============
+- 
+- def verify_password(plain_password: str, hashed_password: str) -> bool:
 -diff --git a/model.patch b/model.patch
--index a6dba02..e69de29 100644
+-index 9066105..e69de29 100644
 ---- a/model.patch
 -+++ b/model.patch
--@@ -1,95 +0,0 @@
+-@@ -1,158 +0,0 @@
 --diff --git a/backend/plants_database.py b/backend/plants_database.py
---index 4756068..f42618f 100644
+--index ef54e1c..db6dd10 100644
 ----- a/backend/plants_database.py
 --+++ b/backend/plants_database.py
---@@ -39,7 +39,7 @@ PLANTS_DATABASE = [
---         "variety": "Cerise",
---         "category": "potager",
---         "subcategory": "legumes",
----        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Cherry_tomatoes_red_and_yellow.jpg/800px-Cherry_tomatoes_red_and_yellow.jpg",
---+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg",
---         "description": "Petites tomates sucrées, très productives",
---         "difficulty": "Facile",
---         "growing_season": ["printemps", "été"],
+--@@ -885,6 +885,53 @@ PLANTS_DATABASE = [
+--         "monthly_watering": "Juin: 1-2 fois par semaine"
+--     },
+-- 
+--+    # SALADES SUPPLÉMENTAIRES (3 variétés)
+--+    {
+--+        "name_fr": "Laitue",
+--+        "name_latin": "Lactuca sativa",
+--+        "variety": "Laitue",
+--+        "category": "potager",
+--+        "subcategory": "legumes",
+--+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Iceberg_lettuce_in_SB.jpg/800px-Iceberg_lettuce_in_SB.jpg",
+--+        "description": "Salade classique aux feuilles tendres et croquantes",
+--+        "difficulty": "Très facile",
+--+        "growing_season": ["printemps", "été", "automne"],
+--+        "sunlight": "Soleil à mi-ombre",
+--+        "watering": "Arrosage régulier modéré",
+--+        "soil_type": "Sol frais et fertile",
+--+        "monthly_watering": "Juin: 3 fois par semaine"
+--+    },
+--+    {
+--+        "name_fr": "Scarole",
+--+        "name_latin": "Cichorium endivia var. latifolium",
+--+        "variety": "Scarole",
+--+        "category": "potager",
+--+        "subcategory": "legumes",
+--+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cichorium_endivia2.jpg/800px-Cichorium_endivia2.jpg",
+--+        "description": "Chicorée aux feuilles larges et épaisses, légèrement amère",
+--+        "difficulty": "Facile",
+--+        "growing_season": ["été", "automne", "hiver"],
+--+        "sunlight": "Soleil à mi-ombre",
+--+        "watering": "Arrosage régulier",
+--+        "soil_type": "Sol riche et humifère",
+--+        "monthly_watering": "Juin: 2-3 fois par semaine"
+--+    },
+--+    {
+--+        "name_fr": "Frisée",
+--+        "name_latin": "Cichorium endivia var. crispum",
+--+        "variety": "Frisée",
+--+        "category": "potager",
+--+        "subcategory": "legumes",
+--+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Endive_frisee.jpg/800px-Endive_frisee.jpg",
+--+        "description": "Chicorée aux feuilles finement découpées et frisées",
+--+        "difficulty": "Facile",
+--+        "growing_season": ["été", "automne"],
+--+        "sunlight": "Soleil à mi-ombre",
+--+        "watering": "Arrosage régulier",
+--+        "soil_type": "Sol fertile et bien drainé",
+--+        "monthly_watering": "Juin: 2-3 fois par semaine"
+--+    },
+--+
+--     # LÉGUMES SUPPLÉMENTAIRES (4 variétés)
+--     {
+--         "name_fr": "Betterave Rouge",
 --diff --git a/model.patch b/model.patch
---index b76499c..e69de29 100644
+--index a6dba02..e69de29 100644
 ----- a/model.patch
 --+++ b/model.patch
---@@ -1,77 +0,0 @@
+--@@ -1,95 +0,0 @@
+---diff --git a/backend/plants_database.py b/backend/plants_database.py
+---index 4756068..f42618f 100644
+------ a/backend/plants_database.py
+---+++ b/backend/plants_database.py
+---@@ -39,7 +39,7 @@ PLANTS_DATABASE = [
+---         "variety": "Cerise",
+---         "category": "potager",
+---         "subcategory": "legumes",
+----        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Cherry_tomatoes_red_and_yellow.jpg/800px-Cherry_tomatoes_red_and_yellow.jpg",
+---+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg",
+---         "description": "Petites tomates sucrées, très productives",
+---         "difficulty": "Facile",
+---         "growing_season": ["printemps", "été"],
 ---diff --git a/model.patch b/model.patch
----index 28728a3..e69de29 100644
+---index b76499c..e69de29 100644
 ------ a/model.patch
 ---+++ b/model.patch
----@@ -1,72 +0,0 @@
-----diff --git a/frontend/app/index.tsx b/frontend/app/index.tsx
-----index 575d431..1c54a4b 100644
-------- a/frontend/app/index.tsx
-----+++ b/frontend/app/index.tsx
-----@@ -955,7 +955,12 @@ export default function PlantWellnessApp() {
-----   );
----- 
-----   const renderCommunityScreen = () => (
------    <ScrollView style={styles.screen}>
-----+    <ImageBackground 
-----+      source={{ uri: BACKGROUND_IMAGES.community }} 
-----+      style={styles.container}
-----+      resizeMode="cover"
-----+    >
-----+      <ScrollView style={styles.screen}>
-----       <Text style={styles.screenTitle}>Communauté</Text>
-----       
-----       <TouchableOpacity style={[styles.button, styles.primaryButton, { marginBottom: 20 }]}>
-----@@ -986,6 +991,7 @@ export default function PlantWellnessApp() {
-----         </View>
-----       </View>
-----     </ScrollView>
-----+    </ImageBackground>
-----   );
----- 
-----   const renderProfileScreen = () => (
+---@@ -1,77 +0,0 @@
 ----diff --git a/model.patch b/model.patch
-----index afb2f5a..e69de29 100644
+----index 28728a3..e69de29 100644
 ------- a/model.patch
 ----+++ b/model.patch
-----@@ -1,41 +0,0 @@
+----@@ -1,72 +0,0 @@
 -----diff --git a/frontend/app/index.tsx b/frontend/app/index.tsx
------index 6e83905..17e61db 100644
+-----index 575d431..1c54a4b 100644
 -------- a/frontend/app/index.tsx
 -----+++ b/frontend/app/index.tsx
------@@ -889,6 +889,7 @@ export default function PlantWellnessApp() {
------         </TouchableOpacity>
+-----@@ -955,7 +955,12 @@ export default function PlantWellnessApp() {
+-----   );
+----- 
+-----   const renderCommunityScreen = () => (
+------    <ScrollView style={styles.screen}>
+-----+    <ImageBackground 
+-----+      source={{ uri: BACKGROUND_IMAGES.community }} 
+-----+      style={styles.container}
+-----+      resizeMode="cover"
+-----+    >
+-----+      <ScrollView style={styles.screen}>
+-----       <Text style={styles.screenTitle}>Communauté</Text>
+-----       
+-----       <TouchableOpacity style={[styles.button, styles.primaryButton, { marginBottom: 20 }]}>
+-----@@ -986,6 +991,7 @@ export default function PlantWellnessApp() {
+-----         </View>
 -----       </View>
 -----     </ScrollView>
 -----+    </ImageBackground>
 -----   );
 ----- 
------   const renderRecommendationsScreen = () => (
+-----   const renderProfileScreen = () => (
 -----diff --git a/model.patch b/model.patch
------index 64a5995..e69de29 100644
+-----index afb2f5a..e69de29 100644
 -------- a/model.patch
 -----+++ b/model.patch
------@@ -1,24 +0,0 @@
+-----@@ -1,41 +0,0 @@
+------diff --git a/frontend/app/index.tsx b/frontend/app/index.tsx
+------index 6e83905..17e61db 100644
+--------- a/frontend/app/index.tsx
+------+++ b/frontend/app/index.tsx
+------@@ -889,6 +889,7 @@ export default function PlantWellnessApp() {
+------         </TouchableOpacity>
+------       </View>
+------     </ScrollView>
+------+    </ImageBackground>
+------   );
+------ 
+------   const renderRecommendationsScreen = () => (
 ------diff --git a/model.patch b/model.patch
-------index e4b8a12..e69de29 100644
+------index 64a5995..e69de29 100644
 --------- a/model.patch
 ------+++ b/model.patch
-------@@ -1,19 +0,0 @@
+------@@ -1,24 +0,0 @@
 -------diff --git a/model.patch b/model.patch
--------index e8808a2..e69de29 100644
+-------index e4b8a12..e69de29 100644
 ---------- a/model.patch
 -------+++ b/model.patch
--------@@ -1,14 +0,0 @@
---------diff --git a/test_result.md b/test_result.md
---------index 3dae199..1d4e8bd 100644
------------ a/test_result.md
---------+++ b/test_result.md
---------@@ -338,4 +338,6 @@ agent_communication:
---------   - agent: "testing"
---------     message: "✅ FRONTEND TESTING COMPLETE: All 6 frontend tasks tested successfully using Playwright automation on mobile viewport (390x844). Authentication UI with login/register forms working perfectly with test account. Bottom tab navigation (5 tabs) fully functional with proper state management. Garden management UI displaying sections and statistics correctly. Premium paywall properly implemented for non-premium users with 9,99€/mois pricing. Community interface showing posts and interactions. Profile screen with user data and logout functionality working. Mobile responsiveness excellent. JWT token management and backend integration working flawlessly. App is production-ready for mobile deployment."
---------   - agent: "main"
----------    message: "USER REPORTED ISSUE: Carousel not displaying + missing background images. FIXES IMPLEMENTED: 1) Fixed React hook violation - moved useState(currentPlantIndex) from renderEncyclopediaScreen() to component level. 2) Added real background images via vision_expert_agent for auth, garden, encyclopedia, and details screens using ImageBackground. 3) Added useEffect to reset plant index when category/filter changes. Backend needs retesting to confirm API still working before frontend test."
---------\ No newline at end of file
---------+    message: "USER REPORTED ISSUE: Carousel not displaying + missing background images. FIXES IMPLEMENTED: 1) Fixed React hook violation - moved useState(currentPlantIndex) from renderEncyclopediaScreen() to component level. 2) Added real background images via vision_expert_agent for auth, garden, encyclopedia, and details screens using ImageBackground. 3) Added useEffect to reset plant index when category/filter changes. Backend needs retesting to confirm API still working before frontend test."
---------+  - agent: "testing"
---------+    message: "✅ BACKEND RE-TESTING COMPLETE AFTER RECENT CHANGES: All backend APIs still functioning correctly after frontend fixes. Comprehensive test suite executed with 100% success rate across all 6 major backend systems. Authentication (register/login/admin-login/protected endpoints), Plant Database (9 plants with category filtering), Garden Management (full CRUD), Premium AI paywall (correctly blocking non-premium users), Community features (posts/likes), and Subscription management (€9.99 plans) all working perfectly. Test user marie.dupont@example.com authenticated successfully. Admin login creates premium user with AI access. Backend server stable at https://garden-buddy-17.preview.emergentagent.com/api with proper CORS and error handling."
---------\ No newline at end of file
+-------@@ -1,19 +0,0 @@
+--------diff --git a/model.patch b/model.patch
+--------index e8808a2..e69de29 100644
+----------- a/model.patch
+--------+++ b/model.patch
+--------@@ -1,14 +0,0 @@
+---------diff --git a/test_result.md b/test_result.md
+---------index 3dae199..1d4e8bd 100644
+------------ a/test_result.md
+---------+++ b/test_result.md
+---------@@ -338,4 +338,6 @@ agent_communication:
+---------   - agent: "testing"
+---------     message: "✅ FRONTEND TESTING COMPLETE: All 6 frontend tasks tested successfully using Playwright automation on mobile viewport (390x844). Authentication UI with login/register forms working perfectly with test account. Bottom tab navigation (5 tabs) fully functional with proper state management. Garden management UI displaying sections and statistics correctly. Premium paywall properly implemented for non-premium users with 9,99€/mois pricing. Community interface showing posts and interactions. Profile screen with user data and logout functionality working. Mobile responsiveness excellent. JWT token management and backend integration working flawlessly. App is production-ready for mobile deployment."
+---------   - agent: "main"
+----------    message: "USER REPORTED ISSUE: Carousel not displaying + missing background images. FIXES IMPLEMENTED: 1) Fixed React hook violation - moved useState(currentPlantIndex) from renderEncyclopediaScreen() to component level. 2) Added real background images via vision_expert_agent for auth, garden, encyclopedia, and details screens using ImageBackground. 3) Added useEffect to reset plant index when category/filter changes. Backend needs retesting to confirm API still working before frontend test."
+---------\ No newline at end of file
+---------+    message: "USER REPORTED ISSUE: Carousel not displaying + missing background images. FIXES IMPLEMENTED: 1) Fixed React hook violation - moved useState(currentPlantIndex) from renderEncyclopediaScreen() to component level. 2) Added real background images via vision_expert_agent for auth, garden, encyclopedia, and details screens using ImageBackground. 3) Added useEffect to reset plant index when category/filter changes. Backend needs retesting to confirm API still working before frontend test."
+---------+  - agent: "testing"
+---------+    message: "✅ BACKEND RE-TESTING COMPLETE AFTER RECENT CHANGES: All backend APIs still functioning correctly after frontend fixes. Comprehensive test suite executed with 100% success rate across all 6 major backend systems. Authentication (register/login/admin-login/protected endpoints), Plant Database (9 plants with category filtering), Garden Management (full CRUD), Premium AI paywall (correctly blocking non-premium users), Community features (posts/likes), and Subscription management (€9.99 plans) all working perfectly. Test user marie.dupont@example.com authenticated successfully. Admin login creates premium user with AI access. Backend server stable at https://garden-buddy-17.preview.emergentagent.com/api with proper CORS and error handling."
+---------\ No newline at end of file
