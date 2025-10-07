@@ -396,10 +396,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Plant Database Issue Investigation"
-    - "Watering Schedule Authentication"
-  stuck_tasks: 
-    - "Plant Database Issue Investigation"
+    - "Plant Carousel with Navigation"
+    - "Background Images"
+    - "Lunar Calendar UI Implementation"
+  stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
