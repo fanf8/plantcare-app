@@ -269,6 +269,41 @@ export default function PlantWellnessApp() {
     }
   };
 
+  // ============= LUNAR CALENDAR FUNCTIONS =============
+  
+  const loadLunarCalendar = async () => {
+    if (!user?.is_premium) {
+      setShowPremiumModal(true);
+      return;
+    }
+
+    try {
+      const token = await AsyncStorage.getItem('access_token');
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/premium/lunar-calendar`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 402) {
+        setShowPremiumModal(true);
+        return;
+      }
+
+      if (response.ok) {
+        const lunarData = await response.json();
+        setLunarCalendarData(lunarData);
+        setShowLunarCalendar(true);
+      } else {
+        Alert.alert('Erreur', 'Impossible de charger le calendrier lunaire');
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement du calendrier lunaire:', error);
+      Alert.alert('Erreur', 'Erreur de connexion');
+    }
+  };
+
   // LEGACY: Old hardcoded database (keep as fallback)
   const legacyPlantsDatabase: PlantInfo[] = [
     // LÉGUMES
