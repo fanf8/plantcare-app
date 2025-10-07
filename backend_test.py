@@ -428,6 +428,246 @@ def test_subscription_management():
     
     return True
 
+def test_lunar_calendar_premium_feature():
+    """Test Lunar Calendar Premium Feature - HIGH PRIORITY (NEW)"""
+    
+    print("=== TESTING LUNAR CALENDAR PREMIUM FEATURE ===")
+    
+    if not auth_token:
+        log_test("Lunar Calendar Setup", "FAIL", "Missing auth token")
+        return False
+    
+    # Test 1: Non-premium user should get 403
+    response = make_request("GET", "/premium/lunar-calendar")
+    if response and response.status_code == 403:
+        log_test("Lunar Calendar Non-Premium Access", "PASS", "Correctly blocked non-premium user")
+    else:
+        log_test("Lunar Calendar Non-Premium Access", "FAIL", f"Expected 403, got {response.status_code if response else 'No response'}")
+    
+    # Test 2: Get admin token for premium access
+    admin_response = make_request("POST", "/auth/admin-login", auth_required=False)
+    if admin_response and admin_response.status_code == 200:
+        admin_data = admin_response.json()
+        admin_token = admin_data["access_token"]
+        is_premium = admin_data["user"].get("is_premium", False)
+        
+        if is_premium:
+            log_test("Admin Login Premium Status", "PASS", "Admin user has premium access")
+            
+            # Test 3: Premium user should get full lunar calendar data
+            admin_headers = {"Authorization": f"Bearer {admin_token}"}
+            response = make_request("GET", "/premium/lunar-calendar", headers=admin_headers)
+            
+            if response and response.status_code == 200:
+                data = response.json()
+                
+                # Validate response structure
+                required_fields = ['period', 'current_phase', 'weekly_calendar', 'monthly_overview', 'tips']
+                missing_fields = [field for field in required_fields if field not in data]
+                
+                if not missing_fields:
+                    log_test("Lunar Calendar Data Structure", "PASS", "All required fields present")
+                    
+                    # Validate weekly calendar
+                    if 'weekly_calendar' in data and len(data['weekly_calendar']) >= 7:
+                        calendar_entry = data['weekly_calendar'][0]
+                        calendar_fields = ['date', 'day', 'phase', 'garden_activities', 'optimal_hours']
+                        missing_calendar_fields = [field for field in calendar_fields if field not in calendar_entry]
+                        
+                        if not missing_calendar_fields:
+                            log_test("Weekly Calendar Structure", "PASS", f"7 days with complete data")
+                        else:
+                            log_test("Weekly Calendar Structure", "FAIL", f"Missing fields: {missing_calendar_fields}")
+                    else:
+                        log_test("Weekly Calendar Structure", "FAIL", "Insufficient calendar entries")
+                    
+                    # Validate tips
+                    if 'tips' in data and isinstance(data['tips'], list) and len(data['tips']) > 0:
+                        log_test("Lunar Calendar Tips", "PASS", f"{len(data['tips'])} tips provided")
+                    else:
+                        log_test("Lunar Calendar Tips", "FAIL", "Tips missing or empty")
+                        
+                    # Validate monthly overview
+                    if 'monthly_overview' in data and isinstance(data['monthly_overview'], dict):
+                        overview = data['monthly_overview']
+                        overview_fields = ['best_sowing_days', 'best_planting_days', 'best_harvest_days']
+                        if all(field in overview for field in overview_fields):
+                            log_test("Monthly Overview Structure", "PASS", "Complete monthly overview")
+                        else:
+                            log_test("Monthly Overview Structure", "FAIL", "Incomplete monthly overview")
+                    else:
+                        log_test("Monthly Overview Structure", "FAIL", "Monthly overview missing")
+                        
+                else:
+                    log_test("Lunar Calendar Data Structure", "FAIL", f"Missing fields: {missing_fields}")
+            else:
+                log_test("Premium Lunar Calendar Access", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+        else:
+            log_test("Admin Login Premium Status", "FAIL", "Admin user does not have premium access")
+    else:
+        log_test("Admin Login for Premium Test", "FAIL", f"Status: {admin_response.status_code if admin_response else 'No response'}")
+    
+    return True
+
+def test_watering_schedule_authentication():
+    """Test Watering Schedule Authentication Fixes - HIGH PRIORITY (NEW)"""
+    
+    print("=== TESTING WATERING SCHEDULE AUTHENTICATION ===")
+    
+    if not auth_token or not test_user_plant_id:
+        # Try to create a user plant first
+        if test_plant_id:
+            plant_data = {
+                "plant_id": test_plant_id,
+                "custom_name": "Test Plant for Watering",
+                "location": "extérieur"
+            }
+            response = make_request("POST", "/my-garden", plant_data)
+            if response and response.status_code == 200:
+                global test_user_plant_id
+                test_user_plant_id = response.json()["id"]
+            else:
+                log_test("Watering Schedule Setup", "FAIL", "Could not create test plant")
+                return False
+        else:
+            log_test("Watering Schedule Setup", "FAIL", "Missing auth token or user plant")
+            return False
+    
+    # Test 1: POST watering schedule
+    schedule_data = {
+        "user_plant_id": test_user_plant_id,
+        "schedule_type": "custom",
+        "custom_days": [1, 3, 5]  # Monday, Wednesday, Friday
+    }
+    
+    response = make_request("POST", "/watering-schedule", schedule_data)
+    if response and response.status_code == 200:
+        schedule = response.json()
+        log_test("POST Watering Schedule", "PASS", "Schedule created successfully")
+        
+        # Test 2: GET watering schedule
+        response = make_request("GET", f"/watering-schedule/{test_user_plant_id}")
+        if response and response.status_code == 200:
+            log_test("GET Watering Schedule", "PASS", "Schedule retrieved successfully")
+        else:
+            log_test("GET Watering Schedule", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+        
+        # Test 3: PUT watering schedule
+        update_data = {"schedule_type": "auto"}
+        response = make_request("PUT", f"/watering-schedule/{test_user_plant_id}", update_data)
+        if response and response.status_code == 200:
+            log_test("PUT Watering Schedule", "PASS", "Schedule updated successfully")
+        else:
+            log_test("PUT Watering Schedule", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+        
+        # Test 4: DELETE watering schedule
+        response = make_request("DELETE", f"/watering-schedule/{test_user_plant_id}")
+        if response and response.status_code == 200:
+            log_test("DELETE Watering Schedule", "PASS", "Schedule deleted successfully")
+        else:
+            log_test("DELETE Watering Schedule", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+            
+    else:
+        log_test("POST Watering Schedule", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+        return False
+    
+    return True
+
+def test_scanner_analyze_authentication():
+    """Test Scanner Analyze Authentication Fixes - HIGH PRIORITY (NEW)"""
+    
+    print("=== TESTING SCANNER ANALYZE AUTHENTICATION ===")
+    
+    if not auth_token:
+        log_test("Scanner Analyze Setup", "FAIL", "Missing auth token")
+        return False
+    
+    # Create a simple test image (1x1 pixel PNG in base64)
+    test_image_base64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+    
+    # Test 1: Scanner analyze with identification (free feature)
+    analysis_data = {
+        "image_base64": test_image_base64,
+        "analysis_type": "identification"
+    }
+    
+    response = make_request("POST", "/scanner/analyze", analysis_data)
+    if response and response.status_code == 200:
+        data = response.json()
+        log_test("Scanner Analyze - Identification", "PASS", "Authentication working for identification")
+    else:
+        log_test("Scanner Analyze - Identification", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+    
+    # Test 2: Scanner analyze with diagnostic (premium feature) - should fail for regular user
+    analysis_data = {
+        "image_base64": test_image_base64,
+        "analysis_type": "diagnostic"
+    }
+    
+    response = make_request("POST", "/scanner/analyze", analysis_data)
+    if response and response.status_code == 402:  # Payment required for premium
+        log_test("Scanner Analyze - Diagnostic (Non-Premium)", "PASS", "Correctly blocked non-premium diagnostic")
+    else:
+        log_test("Scanner Analyze - Diagnostic (Non-Premium)", "FAIL", f"Expected 402, got {response.status_code if response else 'No response'}")
+    
+    # Test 3: Scanner analyze with admin (premium) user
+    admin_response = make_request("POST", "/auth/admin-login", auth_required=False)
+    if admin_response and admin_response.status_code == 200:
+        admin_data = admin_response.json()
+        admin_token = admin_data["access_token"]
+        
+        admin_headers = {"Authorization": f"Bearer {admin_token}"}
+        response = make_request("POST", "/scanner/analyze", analysis_data, headers=admin_headers)
+        
+        if response and response.status_code == 200:
+            data = response.json()
+            log_test("Scanner Analyze - Diagnostic (Premium)", "PASS", "Premium diagnostic access working")
+        else:
+            log_test("Scanner Analyze - Diagnostic (Premium)", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+    else:
+        log_test("Scanner Analyze - Admin Login", "FAIL", "Could not get admin token")
+    
+    return True
+
+def test_existing_premium_endpoints():
+    """Test Existing Premium Endpoints Still Work - MEDIUM PRIORITY (NEW)"""
+    
+    print("=== TESTING EXISTING PREMIUM ENDPOINTS ===")
+    
+    # Get admin token for premium access
+    admin_response = make_request("POST", "/auth/admin-login", auth_required=False)
+    if admin_response and admin_response.status_code == 200:
+        admin_data = admin_response.json()
+        admin_token = admin_data["access_token"]
+        admin_headers = {"Authorization": f"Bearer {admin_token}"}
+        
+        # Test 1: Premium weather endpoint
+        response = make_request("GET", "/premium/weather?location=Paris", headers=admin_headers)
+        if response and response.status_code == 200:
+            log_test("Premium Weather Endpoint", "PASS", "Weather data accessible")
+        else:
+            log_test("Premium Weather Endpoint", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+        
+        # Test 2: Premium advanced care tips
+        response = make_request("GET", "/premium/advanced-care/Tomate", headers=admin_headers)
+        if response and response.status_code == 200:
+            log_test("Premium Advanced Care Tips", "PASS", "Advanced care tips accessible")
+        else:
+            log_test("Premium Advanced Care Tips", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+        
+        # Test 3: Premium plant calendar
+        response = make_request("GET", "/premium/plant-calendar", headers=admin_headers)
+        if response and response.status_code == 200:
+            log_test("Premium Plant Calendar", "PASS", "Plant calendar accessible")
+        else:
+            log_test("Premium Plant Calendar", "FAIL", f"Status: {response.status_code if response else 'No response'}")
+            
+    else:
+        log_test("Existing Premium Endpoints", "FAIL", "Could not get admin token")
+        return False
+    
+    return True
+
 def run_all_tests():
     """Run all backend tests in priority order"""
     print("🌱 PLANT WELLNESS BACKEND API TEST SUITE")
