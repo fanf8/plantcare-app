@@ -154,6 +154,38 @@ export default function PlantWellnessApp() {
     }
   };
 
+  // ============= MY GARDEN FUNCTIONS =============
+  
+  const loadMyGarden = async () => {
+    if (!user) return;
+    
+    try {
+      const token = await AsyncStorage.getItem('access_token');
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/my-garden`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const gardenPlants = await response.json();
+        console.log('✅ My Garden loaded:', gardenPlants.length, 'plants');
+        setMyGardenPlants(gardenPlants);
+      } else {
+        console.error('Failed to load my garden:', response.status);
+      }
+    } catch (error) {
+      console.error('Error loading my garden:', error);
+    }
+  };
+
+  // Load garden when user changes
+  useEffect(() => {
+    if (user) {
+      loadMyGarden();
+    }
+  }, [user]);
+
   // ============= WATERING CALENDAR FUNCTIONS =============
 
   // Générer les 7 jours de la semaine (lundi à dimanche)
