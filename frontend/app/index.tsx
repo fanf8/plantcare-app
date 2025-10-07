@@ -116,6 +116,9 @@ export default function PlantWellnessApp() {
   const [lunarCalendarData, setLunarCalendarData] = useState<any>(null);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showLunarCalendar, setShowLunarCalendar] = useState(false);
+  
+  // My Garden state
+  const [myGardenPlants, setMyGardenPlants] = useState<any[]>([]);
 
   // Plant database with detailed information
   // Fetch plants from API
