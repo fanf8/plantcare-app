@@ -13,7 +13,8 @@ import {
   Image,
   ImageBackground,
   ActivityIndicator,
-  Modal
+  Modal,
+  Pressable
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { StatusBar } from 'expo-status-bar';
