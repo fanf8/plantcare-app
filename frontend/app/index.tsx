@@ -647,6 +647,13 @@ export default function PlantWellnessApp() {
       return;
     }
 
+    // Validate password security requirements
+    const passwordValidationError = validatePassword(password);
+    if (passwordValidationError) {
+      Alert.alert('Mot de passe invalide', passwordValidationError);
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/auth/register`, {
@@ -668,6 +675,7 @@ export default function PlantWellnessApp() {
         setEmail('');
         setPassword('');
         setName('');
+        setPasswordError('');
         
         Alert.alert('Succès', 'Compte créé avec succès !');
       } else {
