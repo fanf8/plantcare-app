@@ -1152,6 +1152,11 @@ async def get_plant_spacing(plant_id: str, current_user: User = Depends(get_prem
             "between_rows": plant["spacing_between_rows"],
             "recommended_layout": f"Plantez vos {plant['name_fr']} en respectant {plant['spacing_between_plants']} entre chaque pied et {plant['spacing_between_rows']} entre les rangées"
         },
+        "planting_depth": {
+            "depth": plant.get("planting_depth", "Profondeur non spécifiée"),
+            "planting_type": plant.get("planting_type", "Type de plantation standard"),
+            "depth_guide": f"Creusez un trou de {plant.get('planting_depth', 'profondeur standard')} pour planter vos {plant['name_fr']}"
+        },
         "optimization_tips": {
             "small_garden": f"Pour un petit potager, respectez au minimum {plant['spacing_between_plants']} entre les plants",
             "large_garden": f"Dans un grand potager, vous pouvez espacer jusqu'à {plant['spacing_between_rows']} pour faciliter l'entretien",
