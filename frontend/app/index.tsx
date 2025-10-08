@@ -188,7 +188,7 @@ export default function PlantWellnessApp() {
     }
   }, [user]);
 
-  const deletePlantFromGarden = async (plantId: string, plantName: string) => {
+  const deletePlantFromGarden = useCallback(async (plantId: string, plantName: string) => {
     console.log('🗑️ DELETE PLANT CALLED:', { plantId, plantName });
     if (!user) {
       console.log('❌ No user, cannot delete');
@@ -233,7 +233,7 @@ export default function PlantWellnessApp() {
         }
       ]
     );
-  };
+  }, [user]);
 
   // ============= WATERING CALENDAR FUNCTIONS =============
 
