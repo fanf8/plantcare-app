@@ -1808,55 +1808,60 @@ export default function PlantWellnessApp() {
           ) : (
             myGardenPlants.map((plant, index) => (
               <View key={plant.id || index}>
-                <TouchableOpacity 
-                  style={styles.myPlantCard}
-                  onPress={async () => {
-                    const plantId = plant.id;
-                    if (showWateringCalendar === plantId) {
-                      setShowWateringCalendar(null);
-                    } else {
-                      setShowWateringCalendar(plantId);
-                      // Charger le calendrier si pas déjà fait
-                      if (!wateringSchedules[plantId]) {
-                        const schedule = await getWateringSchedule(plantId);
-                        if (schedule) {
-                          setWateringSchedules(prev => ({
-                            ...prev,
-                            [plantId]: schedule
-                          }));
+                <View style={styles.myPlantCard}>
+                  <TouchableOpacity 
+                    style={styles.myPlantMainArea}
+                    onPress={async () => {
+                      const plantId = plant.id;
+                      if (showWateringCalendar === plantId) {
+                        setShowWateringCalendar(null);
+                      } else {
+                        setShowWateringCalendar(plantId);
+                        // Charger le calendrier si pas déjà fait
+                        if (!wateringSchedules[plantId]) {
+                          const schedule = await getWateringSchedule(plantId);
+                          if (schedule) {
+                            setWateringSchedules(prev => ({
+                              ...prev,
+                              [plantId]: schedule
+                            }));
+                          }
                         }
                       }
-                    }
-                  }}
-                >
-                  <Image 
-                    source={{ 
-                      uri: plant.image_base64 
-                        ? `data:image/jpeg;base64,${plant.image_base64}` 
-                        : 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop'
-                    }} 
-                    style={styles.myPlantImage} 
-                  />
-                  <View style={styles.myPlantInfo}>
-                    <Text style={styles.myPlantName}>{plant.custom_name || 'Plante'}</Text>
-                    <Text style={styles.myPlantDetails}>
-                      {plant.location ? `Localisation: ${plant.location}` : 'Ajouté récemment'}
-                    </Text>
-                    <Text style={styles.myPlantStatus}>
-                      État: {plant.health_status || 'Bonne'}
-                    </Text>
-                    {plant.notes && (
-                      <Text style={styles.myPlantNotes}>Note: {plant.notes}</Text>
-                    )}
-                  </View>
+                    }}
+                  >
+                    <Image 
+                      source={{ 
+                        uri: plant.image_base64 
+                          ? `data:image/jpeg;base64,${plant.image_base64}` 
+                          : 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop'
+                      }} 
+                      style={styles.myPlantImage} 
+                    />
+                    <View style={styles.myPlantInfo}>
+                      <Text style={styles.myPlantName}>{plant.custom_name || 'Plante'}</Text>
+                      <Text style={styles.myPlantDetails}>
+                        {plant.location ? `Localisation: ${plant.location}` : 'Ajouté récemment'}
+                      </Text>
+                      <Text style={styles.myPlantStatus}>
+                        État: {plant.health_status || 'Bonne'}
+                      </Text>
+                      {plant.notes && (
+                        <Text style={styles.myPlantNotes}>Note: {plant.notes}</Text>
+                      )}
+                    </View>
+                  </TouchableOpacity>
                   
                   <TouchableOpacity 
                     style={styles.deletePlantButton}
-                    onPress={() => deletePlantFromGarden(plant.id, plant.custom_name || 'Plante')}
+                    onPress={(e) => {
+                      e.stopPropagation();
+                      deletePlantFromGarden(plant.id, plant.custom_name || 'Plante');
+                    }}
                   >
                     <Ionicons name="trash" size={20} color="#FF6B35" />
                   </TouchableOpacity>
-                </TouchableOpacity>
+                </View>
 
                 {showWateringCalendar === plant.id && 
                   renderWateringCalendar(plant.id, plant.custom_name || 'Plante')
