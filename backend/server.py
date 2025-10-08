@@ -76,6 +76,8 @@ class Plant(BaseModel):
     watering: Optional[str] = None
     soil_type: Optional[str] = None
     monthly_watering: Optional[str] = None
+    spacing_between_plants: Optional[str] = None  # Premium spacing data
+    spacing_between_rows: Optional[str] = None    # Premium spacing data
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 class UserPlant(BaseModel):
