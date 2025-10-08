@@ -1,8 +1,7 @@
-# Base de données complète des plantes avec variétés et données d'écartement premium
-# 64 variétés avec toutes les spécifications techniques
+# Base de données complète des plantes avec variétés, écartements et profondeurs de plantation
+# 67 variétés avec spécifications complètes pour jardiniers premium
 
 PLANTS_DATABASE = [
-    # TOMATES (10 variétés) - Écartement: 60-75cm entre pieds, 80-95cm entre rangées
     {
         "name_fr": "Tomate Cœur de Bœuf",
         "name_latin": "Solanum lycopersicum 'Cœur de Bœuf'",
@@ -12,13 +11,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Coeur_de_boeuf_vraie.JPG/800px-Coeur_de_boeuf_vraie.JPG",
         "description": "Grosse tomate charnue en forme de cœur, très savoureuse",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil (8h minimum)",
         "watering": "Arrosage régulier au pied",
         "soil_type": "Sol riche et bien drainé",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "70 cm",
-        "spacing_between_rows": "90 cm"
+        "spacing_between_rows": "90 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Marmande",
@@ -29,13 +30,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Tomates_Marmande.jpg/1280px-Tomates_Marmande.jpg",
         "description": "Tomate côtelée, chair ferme, parfaite pour les salades",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré régulier",
         "soil_type": "Sol riche en humus",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "70 cm",
-        "spacing_between_rows": "90 cm"
+        "spacing_between_rows": "90 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Cerise",
@@ -46,13 +49,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Tomates_cerises_Luc_Viatour.jpg/640px-Tomates_cerises_Luc_Viatour.jpg",
         "description": "Petites tomates sucrées, très productives",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier",
         "soil_type": "Sol bien drainé",
         "monthly_watering": "Juin: 3 fois par semaine",
         "spacing_between_plants": "60 cm",
-        "spacing_between_rows": "80 cm"
+        "spacing_between_rows": "80 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Roma",
@@ -63,13 +68,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Roma_tomatoes.jpg/1280px-Roma_tomatoes.jpg",
         "description": "Tomate allongée parfaite pour les sauces",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage au pied",
         "soil_type": "Sol drainé",
         "monthly_watering": "Juin: 3 fois par semaine",
         "spacing_between_plants": "65 cm",
-        "spacing_between_rows": "85 cm"
+        "spacing_between_rows": "85 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Noire de Crimée",
@@ -80,13 +87,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Cherokee_purple_tomato.jpg/1280px-Cherokee_purple_tomato.jpg",
         "description": "Tomate ancienne à la couleur pourpre-noire unique",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol riche",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "75 cm",
-        "spacing_between_rows": "95 cm"
+        "spacing_between_rows": "95 cm",
+        "planting_depth": "15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Cornu des Andes",
@@ -97,13 +106,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cornue_des_andes_tomato.jpg/1280px-Cornue_des_andes_tomato.jpg",
         "description": "Tomate allongée en forme de corne, très charnue",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier",
         "soil_type": "Sol profond et riche",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "70 cm",
-        "spacing_between_rows": "90 cm"
+        "spacing_between_rows": "90 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Buffalo",
@@ -114,13 +125,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Beef_tomato.jpg/1280px-Beef_tomato.jpg",
         "description": "Grosse tomate charnue, idéale pour les salades",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage au pied",
         "soil_type": "Sol bien amendé",
         "monthly_watering": "Juin: 3 fois par semaine",
         "spacing_between_plants": "75 cm",
-        "spacing_between_rows": "95 cm"
+        "spacing_between_rows": "95 cm",
+        "planting_depth": "15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Ananas",
@@ -131,13 +144,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Pineapple_tomato.jpg/1280px-Pineapple_tomato.jpg",
         "description": "Tomate bicolore jaune et rouge, très parfumée",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol fertile",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "70 cm",
-        "spacing_between_rows": "90 cm"
+        "spacing_between_rows": "90 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Saint-Pierre",
@@ -148,13 +163,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tomato_Saint_Pierre.jpg/1280px-Tomato_Saint_Pierre.jpg",
         "description": "Variété française traditionnelle, très productive",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier",
         "soil_type": "Sol ordinaire bien drainé",
         "monthly_watering": "Juin: 3 fois par semaine",
         "spacing_between_plants": "65 cm",
-        "spacing_between_rows": "85 cm"
+        "spacing_between_rows": "85 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Tomate Green Zebra",
@@ -165,16 +182,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Green_zebra_tomato.jpg/1280px-Green_zebra_tomato.jpg",
         "description": "Tomate verte striée de jaune, saveur acidulée",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage au pied",
         "soil_type": "Sol riche et drainé",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "65 cm",
-        "spacing_between_rows": "85 cm"
+        "spacing_between_rows": "85 cm",
+        "planting_depth": "12-15 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
-
-    # CAROTTES (2 variétés) - Écartement: 5cm entre pieds, 25-30cm entre rangées
     {
         "name_fr": "Carotte de Nantes",
         "name_latin": "Daucus carota 'Nantes'",
@@ -184,13 +201,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Carrot_Nantes.jpg/1280px-Carrot_Nantes.jpg",
         "description": "Carotte demi-longue, très tendre et sucrée",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil à mi-ombre",
         "watering": "Arrosage régulier léger",
         "soil_type": "Sol meuble et profond",
         "monthly_watering": "Juillet: 2 fois par semaine",
         "spacing_between_plants": "5 cm",
-        "spacing_between_rows": "25 cm"
+        "spacing_between_rows": "25 cm",
+        "planting_depth": "0.5-1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Carotte de Colmar",
@@ -201,16 +220,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Carotte_Colmar.jpg/1280px-Carotte_Colmar.jpg",
         "description": "Carotte longue à cœur rouge, excellente conservation",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol profond sans cailloux",
         "monthly_watering": "Juillet: 2 fois par semaine",
         "spacing_between_plants": "5 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "0.5-1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
-
-    # SALADES (9 variétés) - Écartement: 15-30cm entre pieds, 20-35cm entre rangées
     {
         "name_fr": "Batavia Blonde",
         "name_latin": "Lactuca sativa 'Batavia Blonde'",
@@ -220,13 +239,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Batavia_lettuce.jpg/1280px-Batavia_lettuce.jpg",
         "description": "Salade croquante aux feuilles blondes et épaisses",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre en été, soleil au printemps",
         "watering": "Arrosage fréquent léger",
         "soil_type": "Sol frais et riche",
         "monthly_watering": "Juin: 4-5 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant) / 0.5 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Batavia Rouge",
@@ -237,13 +258,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Red_batavia_lettuce.jpg/1280px-Red_batavia_lettuce.jpg",
         "description": "Salade aux feuilles rouges, très décorative",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage régulier",
         "soil_type": "Sol humifère",
         "monthly_watering": "Juin: 4-5 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant) / 0.5 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Romaine",
@@ -254,13 +277,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Romaine_lettuce.jpg/1280px-Romaine_lettuce.jpg",
         "description": "Salade aux feuilles allongées, très croquante",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage au pied",
         "soil_type": "Sol fertile et frais",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "30 cm",
-        "spacing_between_rows": "35 cm"
+        "spacing_between_rows": "35 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Feuille de Chêne Blonde",
@@ -271,13 +296,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Oak_leaf_lettuce_blonde.jpg/1280px-Oak_leaf_lettuce_blonde.jpg",
         "description": "Salade aux feuilles découpées, très tendre",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage doux et régulier",
         "soil_type": "Sol léger et frais",
         "monthly_watering": "Juin: 4 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Feuille de Chêne Rouge",
@@ -288,13 +315,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Red_oak_leaf_lettuce.jpg/1280px-Red_oak_leaf_lettuce.jpg",
         "description": "Salade rouge aux feuilles découpées",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage au pied",
         "soil_type": "Sol riche en matière organique",
         "monthly_watering": "Juin: 4 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Lollo Rossa",
@@ -305,13 +334,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Lollo_Rosso_lettuce.jpg/1280px-Lollo_Rosso_lettuce.jpg",
         "description": "Salade italienne aux feuilles très frisées",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage léger quotidien",
         "soil_type": "Sol bien drainé",
         "monthly_watering": "Juin: 5 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Iceberg",
@@ -322,13 +353,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Iceberg_lettuce.jpg/1280px-Iceberg_lettuce.jpg",
         "description": "Salade pommée très croquante et rafraîchissante",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage régulier au pied",
         "soil_type": "Sol riche et bien drainé",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "30 cm",
-        "spacing_between_rows": "35 cm"
+        "spacing_between_rows": "35 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Sucrine",
@@ -339,13 +372,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Sucrine_lettuce.jpg/1280px-Sucrine_lettuce.jpg",
         "description": "Petite salade sucrée, parfaite en une portion",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage doux",
         "soil_type": "Sol fertile",
         "monthly_watering": "Juin: 4 fois par semaine",
         "spacing_between_plants": "20 cm",
-        "spacing_between_rows": "25 cm"
+        "spacing_between_rows": "25 cm",
+        "planting_depth": "8-10 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Roquette",
@@ -356,16 +391,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Eruca_vesicaria_Rocket.jpg/1280px-Eruca_vesicaria_Rocket.jpg",
         "description": "Salade au goût piquant et poivré",
         "difficulty": "Très facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage fréquent léger",
         "soil_type": "Sol ordinaire",
         "monthly_watering": "Juin: 4-5 fois par semaine",
         "spacing_between_plants": "15 cm",
-        "spacing_between_rows": "20 cm"
+        "spacing_between_rows": "20 cm",
+        "planting_depth": "0.5-1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
-
-    # COURGETTES (2 variétés) - Écartement: 100cm entre pieds, 120cm entre rangées
     {
         "name_fr": "Courgette Verte",
         "name_latin": "Cucurbita pepo",
@@ -375,13 +410,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Courgette_verte.jpg/1280px-Courgette_verte.jpg",
         "description": "Courgette verte classique, très productive",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage copieux au pied",
         "soil_type": "Sol riche et bien fumé",
         "monthly_watering": "Juillet: 3-4 fois par semaine",
         "spacing_between_plants": "100 cm",
-        "spacing_between_rows": "120 cm"
+        "spacing_between_rows": "120 cm",
+        "planting_depth": "12-15 cm (plant) / 2-3 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Courgette Ronde de Nice",
@@ -392,16 +429,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Courgette_ronde_de_Nice.jpg/1280px-Courgette_ronde_de_Nice.jpg",
         "description": "Courgette ronde traditionnelle de Nice, parfaite à farcir",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier abondant",
         "soil_type": "Sol profond et riche",
         "monthly_watering": "Juillet: 3-4 fois par semaine",
         "spacing_between_plants": "100 cm",
-        "spacing_between_rows": "120 cm"
+        "spacing_between_rows": "120 cm",
+        "planting_depth": "12-15 cm (plant) / 2-3 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
-
-    # RADIS (2 variétés) - Écartement: 3-8cm entre pieds, 15-20cm entre rangées
     {
         "name_fr": "Radis 18 Jours",
         "name_latin": "Raphanus sativus '18 jours'",
@@ -411,13 +448,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Radis_18_jours.jpg/1280px-Radis_18_jours.jpg",
         "description": "Radis rouge et blanc, croissance très rapide",
         "difficulty": "Très facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage quotidien léger",
         "soil_type": "Sol léger et frais",
         "monthly_watering": "Mai: quotidien",
         "spacing_between_plants": "3 cm",
-        "spacing_between_rows": "15 cm"
+        "spacing_between_rows": "15 cm",
+        "planting_depth": "1-1.5 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Radis Noir",
@@ -428,16 +467,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Black_radish.jpg/1280px-Black_radish.jpg",
         "description": "Radis noir d'hiver, chair blanche et piquante",
         "difficulty": "Facile",
-        "growing_season": ["été", "automne"],
+        "growing_season": ['été', 'automne'],
         "sunlight": "Soleil",
         "watering": "Arrosage régulier",
         "soil_type": "Sol profond et meuble",
         "monthly_watering": "Septembre: 2-3 fois par semaine",
         "spacing_between_plants": "8 cm",
-        "spacing_between_rows": "20 cm"
+        "spacing_between_rows": "20 cm",
+        "planting_depth": "2-3 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
-
-    # FRAISES (3 variétés) - Écartement: 35cm entre pieds, 50cm entre rangées
     {
         "name_fr": "Fraise Mara des Bois",
         "name_latin": "Fragaria × ananassa 'Mara des Bois'",
@@ -447,13 +486,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Mara_des_bois_strawberry.jpg/1280px-Mara_des_bois_strawberry.jpg",
         "description": "Fraise remontante au goût de fraise des bois",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage régulier au pied",
         "soil_type": "Sol riche et bien drainé",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "35 cm",
-        "spacing_between_rows": "50 cm"
+        "spacing_between_rows": "50 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Fraise Gariguette",
@@ -464,13 +505,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gariguette_strawberry.jpg/1280px-Gariguette_strawberry.jpg",
         "description": "Fraise précoce très parfumée et sucrée",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage au pied sans mouiller les feuilles",
         "soil_type": "Sol léger et humifère",
         "monthly_watering": "Mai: 2-3 fois par semaine",
         "spacing_between_plants": "35 cm",
-        "spacing_between_rows": "50 cm"
+        "spacing_between_rows": "50 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Fraise Charlotte",
@@ -481,16 +524,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Charlotte_strawberry.jpg/1280px-Charlotte_strawberry.jpg",
         "description": "Fraise remontante très productive",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil",
         "watering": "Arrosage modéré régulier",
         "soil_type": "Sol fertile et frais",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "35 cm",
-        "spacing_between_rows": "50 cm"
+        "spacing_between_rows": "50 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
-
-    # FRAMBOISES (2 variétés) - Écartement: 80cm entre pieds, 150cm entre rangées
     {
         "name_fr": "Framboise Meeker",
         "name_latin": "Rubus idaeus 'Meeker'",
@@ -500,13 +543,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Raspberries_Meeker.jpg/1280px-Raspberries_Meeker.jpg",
         "description": "Framboise rouge non remontante, très productive",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage régulier en été",
         "soil_type": "Sol frais et humifère",
         "monthly_watering": "Juillet: 2-3 fois par semaine",
         "spacing_between_plants": "80 cm",
-        "spacing_between_rows": "150 cm"
+        "spacing_between_rows": "150 cm",
+        "planting_depth": "30-35 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Framboise Autumn Bliss",
@@ -517,16 +562,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Autumn_Bliss_raspberry.jpg/1280px-Autumn_Bliss_raspberry.jpg",
         "description": "Framboise remontante, récolte jusqu'en automne",
         "difficulty": "Moyen",
-        "growing_season": ["été", "automne"],
+        "growing_season": ['été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage au pied",
         "soil_type": "Sol bien drainé et riche",
         "monthly_watering": "Août: 2 fois par semaine",
         "spacing_between_plants": "80 cm",
-        "spacing_between_rows": "150 cm"
+        "spacing_between_rows": "150 cm",
+        "planting_depth": "30-35 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
-
-    # HERBES AROMATIQUES (14 variétés) - Écartements variables selon la plante
     {
         "name_fr": "Basilic Genovese",
         "name_latin": "Ocimum basilicum 'Genovese'",
@@ -536,13 +581,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Basil-Basilico-Ocimum_basilicum-albahaca.jpg/1280px-Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
         "description": "Basilic italien classique, parfait pour le pesto",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier sans mouiller les feuilles",
         "soil_type": "Sol riche et bien drainé",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant) / 0.5 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Basilic Pourpre",
@@ -553,13 +600,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Purple_basil.jpg/1280px-Purple_basil.jpg",
         "description": "Basilic décoratif aux feuilles pourpres",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol léger et fertile",
         "monthly_watering": "Juin: 3 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "8-10 cm (plant) / 0.5 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Persil Plat",
@@ -570,13 +619,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Petroselinum_crispum_Flat_Leaf.jpg/1280px-Petroselinum_crispum_Flat_Leaf.jpg",
         "description": "Persil à feuilles plates, très aromatique",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage régulier",
         "soil_type": "Sol frais et humifère",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "15 cm",
-        "spacing_between_rows": "25 cm"
+        "spacing_between_rows": "25 cm",
+        "planting_depth": "8-10 cm (plant) / 1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Persil Frisé",
@@ -587,13 +638,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Parsley_curly.jpg/1280px-Parsley_curly.jpg",
         "description": "Persil traditionnel aux feuilles frisées",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage au pied",
         "soil_type": "Sol fertile et frais",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "15 cm",
-        "spacing_between_rows": "25 cm"
+        "spacing_between_rows": "25 cm",
+        "planting_depth": "8-10 cm (plant) / 1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Ciboulette",
@@ -604,13 +657,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Allium_schoenoprasum_LC0119.jpg/1280px-Allium_schoenoprasum_LC0119.jpg",
         "description": "Herbe vivace au goût d'oignon doux",
         "difficulty": "Très facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage modéré",
         "soil_type": "Sol ordinaire bien drainé",
         "monthly_watering": "Juin: 2 fois par semaine",
         "spacing_between_plants": "10 cm",
-        "spacing_between_rows": "20 cm"
+        "spacing_between_rows": "20 cm",
+        "planting_depth": "8-10 cm (plant) / 1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Thym Commun",
@@ -621,13 +676,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Thymus_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-019.jpg/1280px-Thymus_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-019.jpg",
         "description": "Plante vivace méditerranéenne très aromatique",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage parcimonieux",
         "soil_type": "Sol sec et drainant",
         "monthly_watering": "Juin: 1 fois par semaine",
         "spacing_between_plants": "30 cm",
-        "spacing_between_rows": "40 cm"
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "8-10 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Romarin",
@@ -644,7 +701,9 @@ PLANTS_DATABASE = [
         "soil_type": "Sol sec et calcaire",
         "monthly_watering": "Juin: 1 fois tous les 15 jours",
         "spacing_between_plants": "60 cm",
-        "spacing_between_rows": "80 cm"
+        "spacing_between_rows": "80 cm",
+        "planting_depth": "15-20 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Lavande",
@@ -655,13 +714,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Single_lavendar_flower02.jpg/1280px-Single_lavendar_flower02.jpg",
         "description": "Plante vivace aux fleurs parfumées",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage rare",
         "soil_type": "Sol pauvre et drainé",
         "monthly_watering": "Juin: 1 fois par semaine",
         "spacing_between_plants": "50 cm",
-        "spacing_between_rows": "70 cm"
+        "spacing_between_rows": "70 cm",
+        "planting_depth": "15-20 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Menthe Verte",
@@ -672,13 +733,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mentha_spicata_003.JPG/1280px-Mentha_spicata_003.JPG",
         "description": "Menthe classique très rafraîchissante",
         "difficulty": "Très facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage copieux et régulier",
         "soil_type": "Sol humide et riche",
         "monthly_watering": "Juin: 4-5 fois par semaine",
         "spacing_between_plants": "30 cm",
-        "spacing_between_rows": "40 cm"
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Menthe Poivrée",
@@ -689,13 +752,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Mentha_piperita_002.JPG/1280px-Mentha_piperita_002.JPG",
         "description": "Menthe hybride au goût intense et frais",
         "difficulty": "Très facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage abondant",
         "soil_type": "Sol frais et fertile",
         "monthly_watering": "Juin: 4-5 fois par semaine",
         "spacing_between_plants": "30 cm",
-        "spacing_between_rows": "40 cm"
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Origan",
@@ -706,13 +771,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Origanum_vulgare_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-017.jpg/1280px-Origanum_vulgare_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-017.jpg",
         "description": "Herbe vivace indispensable à la cuisine méditerranéenne",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol drainé et léger",
         "monthly_watering": "Juin: 2 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "35 cm"
+        "spacing_between_rows": "35 cm",
+        "planting_depth": "8-10 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Sauge Officinale",
@@ -723,13 +790,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Salvia_officinalis_003.JPG/1280px-Salvia_officinalis_003.JPG",
         "description": "Plante vivace aux propriétés médicinales",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage parcimonieux",
         "soil_type": "Sol sec et calcaire",
         "monthly_watering": "Juin: 1-2 fois par semaine",
         "spacing_between_plants": "40 cm",
-        "spacing_between_rows": "50 cm"
+        "spacing_between_rows": "50 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Coriandre",
@@ -740,13 +809,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A_scene_of_Coriander_leaves.jpg/1280px-A_scene_of_Coriander_leaves.jpg",
         "description": "Herbe annuelle au goût caractéristique",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage régulier léger",
         "soil_type": "Sol frais et fertile",
         "monthly_watering": "Juin: 3 fois par semaine",
         "spacing_between_plants": "15 cm",
-        "spacing_between_rows": "25 cm"
+        "spacing_between_rows": "25 cm",
+        "planting_depth": "1-1.5 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Aneth",
@@ -757,16 +828,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Anethum_graveolens_003.JPG/1280px-Anethum_graveolens_003.JPG",
         "description": "Plante annuelle aux feuilles filiformes",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage modéré régulier",
         "soil_type": "Sol léger et bien drainé",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "20 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "1-2 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
-
-    # PETITS FRUITS (4 variétés) - Écartements pour arbustes
     {
         "name_fr": "Cassis",
         "name_latin": "Ribes nigrum",
@@ -776,13 +847,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Ribes_nigrum_003.JPG/1280px-Ribes_nigrum_003.JPG",
         "description": "Arbuste produisant des baies noires riches en vitamine C",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage régulier en été",
         "soil_type": "Sol frais et humifère",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "120 cm",
-        "spacing_between_rows": "200 cm"
+        "spacing_between_rows": "200 cm",
+        "planting_depth": "35-40 cm (arbuste)",
+        "planting_type": "Plantation d'arbuste"
     },
     {
         "name_fr": "Groseillier Rouge",
@@ -793,13 +866,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ribes_rubrum_003.JPG/1280px-Ribes_rubrum_003.JPG",
         "description": "Arbuste aux grappes de petites baies rouges acidulées",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage modéré",
         "soil_type": "Sol bien drainé",
         "monthly_watering": "Juin: 2 fois par semaine",
         "spacing_between_plants": "120 cm",
-        "spacing_between_rows": "200 cm"
+        "spacing_between_rows": "200 cm",
+        "planting_depth": "35-40 cm (arbuste)",
+        "planting_type": "Plantation d'arbuste"
     },
     {
         "name_fr": "Groseillier à Maquereaux",
@@ -810,13 +885,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ribes_uva-crispa_004.JPG/1280px-Ribes_uva-crispa_004.JPG",
         "description": "Arbuste épineux aux gros fruits verts ou rouges",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage au pied",
         "soil_type": "Sol fertile et drainé",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "120 cm",
-        "spacing_between_rows": "200 cm"
+        "spacing_between_rows": "200 cm",
+        "planting_depth": "35-40 cm (arbuste)",
+        "planting_type": "Plantation d'arbuste"
     },
     {
         "name_fr": "Myrtille",
@@ -827,16 +904,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Vaccinium_corymbosum_003.JPG/1280px-Vaccinium_corymbosum_003.JPG",
         "description": "Arbuste acidophile aux baies bleues antioxydantes",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage à l'eau douce",
         "soil_type": "Sol acide et humifère",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "100 cm",
-        "spacing_between_rows": "150 cm"
+        "spacing_between_rows": "150 cm",
+        "planting_depth": "30-35 cm (arbuste)",
+        "planting_type": "Plantation d'arbuste"
     },
-
-    # ARBRES FRUITIERS (10 variétés) - Écartements pour vergers
     {
         "name_fr": "Cerise",
         "name_latin": "Prunus avium",
@@ -846,13 +923,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Cherry_tree_blossoms_closeup.jpg/1280px-Cherry_tree_blossoms_closeup.jpg",
         "description": "Arbre fruitier aux fleurs blanches et fruits rouge foncé",
         "difficulty": "Moyen",
-        "growing_season": ["printemps"],
+        "growing_season": ['printemps'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage en cas de sécheresse",
         "soil_type": "Sol profond et bien drainé",
         "monthly_watering": "Juin: selon besoin",
         "spacing_between_plants": "400 cm",
-        "spacing_between_rows": "500 cm"
+        "spacing_between_rows": "500 cm",
+        "planting_depth": "50-60 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Pomme",
@@ -863,13 +942,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/1280px-Red_Apple.jpg",
         "description": "Arbre fruitier classique aux multiples variétés",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol fertile et profond",
         "monthly_watering": "Juin: 1-2 fois par semaine",
         "spacing_between_plants": "400 cm",
-        "spacing_between_rows": "500 cm"
+        "spacing_between_rows": "500 cm",
+        "planting_depth": "50-60 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Poire",
@@ -880,13 +961,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Pears_grow_on_tree.jpg/1280px-Pears_grow_on_tree.jpg",
         "description": "Arbre fruitier aux fruits juteux et parfumés",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier jeune plant",
         "soil_type": "Sol profond et frais",
         "monthly_watering": "Juin: 1-2 fois par semaine",
         "spacing_between_plants": "350 cm",
-        "spacing_between_rows": "450 cm"
+        "spacing_between_rows": "450 cm",
+        "planting_depth": "45-55 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Pêche",
@@ -897,13 +980,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Autumn_Red_peaches.jpg/1280px-Autumn_Red_peaches.jpg",
         "description": "Arbre fruitier méditerranéen aux fruits duveteux",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil abrité",
         "watering": "Arrosage copieux en été",
         "soil_type": "Sol bien drainé",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "400 cm",
-        "spacing_between_rows": "500 cm"
+        "spacing_between_rows": "500 cm",
+        "planting_depth": "50-60 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Prune",
@@ -914,13 +999,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Plums_on_tree.jpg/1280px-Plums_on_tree.jpg",
         "description": "Arbre fruitier robuste aux fruits sucrés",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage modéré",
         "soil_type": "Sol ordinaire bien drainé",
         "monthly_watering": "Juin: 1-2 fois par semaine",
         "spacing_between_plants": "350 cm",
-        "spacing_between_rows": "450 cm"
+        "spacing_between_rows": "450 cm",
+        "planting_depth": "45-55 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Abricot",
@@ -931,13 +1018,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Apricots_on_tree.jpg/1280px-Apricots_on_tree.jpg",
         "description": "Arbre fruitier précoce aux fruits orange parfumés",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été"],
+        "growing_season": ['printemps', 'été'],
         "sunlight": "Plein soleil protégé",
         "watering": "Arrosage parcimonieux",
         "soil_type": "Sol drainé et calcaire",
         "monthly_watering": "Juin: 1-2 fois par semaine",
         "spacing_between_plants": "400 cm",
-        "spacing_between_rows": "500 cm"
+        "spacing_between_rows": "500 cm",
+        "planting_depth": "50-60 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Figue",
@@ -948,13 +1037,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Figs_on_tree.jpg/1280px-Figs_on_tree.jpg",
         "description": "Arbre méditerranéen aux fruits sucrés",
         "difficulty": "Facile",
-        "growing_season": ["été", "automne"],
+        "growing_season": ['été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage rare une fois établi",
         "soil_type": "Sol sec et drainé",
         "monthly_watering": "Juin: 1 fois par semaine",
         "spacing_between_plants": "300 cm",
-        "spacing_between_rows": "400 cm"
+        "spacing_between_rows": "400 cm",
+        "planting_depth": "40-50 cm (arbre)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Raisin",
@@ -965,13 +1056,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Grapes_on_vine.jpg/1280px-Grapes_on_vine.jpg",
         "description": "Vigne grimpante aux grappes de raisins",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage modéré",
         "soil_type": "Sol bien drainé et caillouteux",
         "monthly_watering": "Juin: 1-2 fois par semaine",
         "spacing_between_plants": "120 cm",
-        "spacing_between_rows": "200 cm"
+        "spacing_between_rows": "200 cm",
+        "planting_depth": "30-40 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Kiwi",
@@ -982,16 +1075,16 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kiwi_aka.jpg/1280px-Kiwi_aka.jpg",
         "description": "Liane vigoureuse aux fruits verts et poilus",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage copieux en été",
         "soil_type": "Sol frais et humifère",
         "monthly_watering": "Juin: 3-4 fois par semaine",
         "spacing_between_plants": "300 cm",
-        "spacing_between_rows": "400 cm"
+        "spacing_between_rows": "400 cm",
+        "planting_depth": "40-50 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
-
-    # AGRUMES (2 variétés) - Écartements pour climat méditerranéen ou serre
     {
         "name_fr": "Citronnier",
         "name_latin": "Citrus limon",
@@ -1007,7 +1100,9 @@ PLANTS_DATABASE = [
         "soil_type": "Sol drainé et légèrement acide",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "400 cm",
-        "spacing_between_rows": "500 cm"
+        "spacing_between_rows": "500 cm",
+        "planting_depth": "40-50 cm (arbre en pot)",
+        "planting_type": "Plantation d'arbre"
     },
     {
         "name_fr": "Oranger",
@@ -1024,10 +1119,10 @@ PLANTS_DATABASE = [
         "soil_type": "Sol fertile et bien drainé",
         "monthly_watering": "Juin: 2-3 fois par semaine",
         "spacing_between_plants": "400 cm",
-        "spacing_between_rows": "500 cm"
+        "spacing_between_rows": "500 cm",
+        "planting_depth": "40-50 cm (arbre en pot)",
+        "planting_type": "Plantation d'arbre"
     },
-
-    # LÉGUMES RACINES ET FEUILLES (5 variétés) - Écartements variables
     {
         "name_fr": "Betterave Rouge",
         "name_latin": "Beta vulgaris",
@@ -1037,13 +1132,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Beetroot_jm26647.jpg/1280px-Beetroot_jm26647.jpg",
         "description": "Légume racine à la chair rouge intense",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Soleil à mi-ombre",
         "watering": "Arrosage régulier",
         "soil_type": "Sol profond et riche",
         "monthly_watering": "Juillet: 2-3 fois par semaine",
         "spacing_between_plants": "10 cm",
-        "spacing_between_rows": "30 cm"
+        "spacing_between_rows": "30 cm",
+        "planting_depth": "2-3 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Céleri Branche",
@@ -1054,13 +1151,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Apium_graveolens_003.JPG/1280px-Apium_graveolens_003.JPG",
         "description": "Légume aux tiges croquantes et parfumées",
         "difficulty": "Moyen",
-        "growing_season": ["printemps", "été", "automne"],
+        "growing_season": ['printemps', 'été', 'automne'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage copieux et régulier",
         "soil_type": "Sol riche et humide",
         "monthly_watering": "Juillet: 4-5 fois par semaine",
         "spacing_between_plants": "25 cm",
-        "spacing_between_rows": "40 cm"
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "10-12 cm (plant)",
+        "planting_type": "Repiquage de plants"
     },
     {
         "name_fr": "Fenouil Bulbeux",
@@ -1071,13 +1170,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Fennel_bulb.jpg/1280px-Fennel_bulb.jpg",
         "description": "Légume au goût anisé avec un bulbe charnu",
         "difficulty": "Moyen",
-        "growing_season": ["été", "automne"],
+        "growing_season": ['été', 'automne'],
         "sunlight": "Plein soleil",
         "watering": "Arrosage régulier au pied",
         "soil_type": "Sol fertile et frais",
         "monthly_watering": "Août: 3-4 fois par semaine",
         "spacing_between_plants": "30 cm",
-        "spacing_between_rows": "40 cm"
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "10-12 cm (plant) / 1 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Épinard",
@@ -1088,13 +1189,15 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Spinach_leaves.jpg/1280px-Spinach_leaves.jpg",
         "description": "Légume feuille riche en fer et vitamines",
         "difficulty": "Facile",
-        "growing_season": ["printemps", "automne", "hiver"],
+        "growing_season": ['printemps', 'automne', 'hiver'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage fréquent léger",
         "soil_type": "Sol riche en azote",
         "monthly_watering": "Octobre: 3-4 fois par semaine",
         "spacing_between_plants": "15 cm",
-        "spacing_between_rows": "25 cm"
+        "spacing_between_rows": "25 cm",
+        "planting_depth": "1-2 cm (graines)",
+        "planting_type": "Semis direct en graines"
     },
     {
         "name_fr": "Mâche",
@@ -1105,12 +1208,71 @@ PLANTS_DATABASE = [
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Valerianella_locusta_003.JPG/1280px-Valerianella_locusta_003.JPG",
         "description": "Salade d'hiver aux petites feuilles tendres",
         "difficulty": "Facile",
-        "growing_season": ["automne", "hiver"],
+        "growing_season": ['automne', 'hiver'],
         "sunlight": "Mi-ombre",
         "watering": "Arrosage léger",
         "soil_type": "Sol ordinaire",
         "monthly_watering": "Novembre: 1-2 fois par semaine",
         "spacing_between_plants": "10 cm",
-        "spacing_between_rows": "20 cm"
+        "spacing_between_rows": "20 cm",
+        "planting_depth": "0.5-1 cm (graines)",
+        "planting_type": "Semis direct en graines"
+    },
+    {
+        "name_fr": "Haricot Vert Nain",
+        "name_latin": "Phaseolus vulgaris 'Nain'",
+        "variety": "Nain Mangetout",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Haricots_verts.jpg/1280px-Haricots_verts.jpg",
+        "description": "Haricot nain à gousses vertes tendres, semis en graines",
+        "difficulty": "Facile",
+        "growing_season": ['printemps', 'été'],
+        "sunlight": "Plein soleil",
+        "watering": "Arrosage régulier sans excès",
+        "soil_type": "Sol bien drainé et réchauffé",
+        "monthly_watering": "Juin: 2-3 fois par semaine",
+        "spacing_between_plants": "10 cm",
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "3-4 cm (graines)",
+        "planting_type": "Semis direct en graines"
+    },
+    {
+        "name_fr": "Haricot Vert à Rame",
+        "name_latin": "Phaseolus vulgaris 'À rames'",
+        "variety": "Grimpant",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Runner_beans_flowering.jpg/1280px-Runner_beans_flowering.jpg",
+        "description": "Haricot grimpant nécessitant un tuteur, très productif",
+        "difficulty": "Moyen",
+        "growing_season": ['printemps', 'été'],
+        "sunlight": "Plein soleil",
+        "watering": "Arrosage au pied régulier",
+        "soil_type": "Sol riche et bien drainé",
+        "monthly_watering": "Juin: 3 fois par semaine",
+        "spacing_between_plants": "15 cm",
+        "spacing_between_rows": "60 cm",
+        "planting_depth": "4-5 cm (graines)",
+        "planting_type": "Semis direct en graines"
+    },
+    {
+        "name_fr": "Haricot Beurre",
+        "name_latin": "Phaseolus vulgaris 'Beurre'",
+        "variety": "Mangetout Jaune",
+        "category": "potager",
+        "subcategory": "legumes",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Yellow_wax_beans.jpg/1280px-Yellow_wax_beans.jpg",
+        "description": "Haricot aux gousses jaunes très tendres",
+        "difficulty": "Facile",
+        "growing_season": ['printemps', 'été'],
+        "sunlight": "Plein soleil",
+        "watering": "Arrosage modéré régulier",
+        "soil_type": "Sol léger et fertile",
+        "monthly_watering": "Juin: 2-3 fois par semaine",
+        "spacing_between_plants": "12 cm",
+        "spacing_between_rows": "40 cm",
+        "planting_depth": "3-4 cm (graines)",
+        "planting_type": "Semis direct en graines"
     }
 ]
