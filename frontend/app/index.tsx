@@ -1862,9 +1862,7 @@ export default function PlantWellnessApp() {
                       styles.deletePlantButton,
                       { opacity: pressed ? 0.6 : 1 }
                     ]}
-                    onPress={() => {
-                      deletePlantFromGarden(plant.id, plant.custom_name || 'Plante');
-                    }}
+                    onPress={deletePlantFromGarden.bind(null, plant.id, plant.custom_name || 'Plante')}
                   >
                     <Ionicons name="trash" size={20} color="#FF6B35" />
                   </Pressable>
