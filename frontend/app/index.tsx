@@ -1583,23 +1583,17 @@ export default function PlantWellnessApp() {
 
         <TouchableOpacity 
           style={[styles.button, styles.secondaryButton]}
-          onPress={async () => {
-            const result = await ImagePicker.launchImageLibraryAsync({
-              mediaTypes: ImagePicker.MediaTypeOptions.Images,
-              allowsEditing: true,
-              aspect: [1, 1],
-              quality: 0.8,
-              base64: true,
-            });
-            
-            if (!result.canceled && result.assets[0].base64) {
-              setSelectedImage(result.assets[0].base64);
-            }
+          onPress={() => {
+            // Rediriger vers l'encyclopédie des plantes
+            setCurrentSection('legumes'); // Commencer avec les légumes
+            setFilterText(''); // Reset le filtre
+            setCurrentPlantIndex(0); // Reset l'index
+            setCurrentTab('encyclopedia'); // Naviguer vers l'encyclopédie
           }}
         >
-          <Ionicons name="images" size={20} color="#4CAF50" style={{ marginRight: 10 }} />
+          <Ionicons name="library" size={20} color="#4CAF50" style={{ marginRight: 10 }} />
           <Text style={[styles.buttonText, { color: '#4CAF50' }]}>
-            Choisir de la galerie
+            Choisir dans l'encyclopédie
           </Text>
         </TouchableOpacity>
 
