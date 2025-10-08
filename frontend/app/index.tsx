@@ -1857,15 +1857,17 @@ export default function PlantWellnessApp() {
                     </View>
                   </TouchableOpacity>
                   
-                  <TouchableOpacity 
-                    style={styles.deletePlantButton}
-                    onPress={(e) => {
-                      e.stopPropagation();
+                  <Pressable 
+                    style={({ pressed }) => [
+                      styles.deletePlantButton,
+                      { opacity: pressed ? 0.6 : 1 }
+                    ]}
+                    onPress={() => {
                       deletePlantFromGarden(plant.id, plant.custom_name || 'Plante');
                     }}
                   >
                     <Ionicons name="trash" size={20} color="#FF6B35" />
-                  </TouchableOpacity>
+                  </Pressable>
                 </View>
 
                 {showWateringCalendar === plant.id && 
