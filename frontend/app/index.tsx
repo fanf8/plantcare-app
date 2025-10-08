@@ -1698,6 +1698,18 @@ export default function PlantWellnessApp() {
                       {isAddingPlant ? "Ajout en cours..." : "Ajouter à mon potager"}
                     </Text>
                   </TouchableOpacity>
+
+                  {/* Bouton écartement premium */}
+                  <TouchableOpacity 
+                    style={styles.premiumSpacingButton}
+                    onPress={() => chargerEcartementPlante(currentPlant.id)}
+                  >
+                    <Ionicons name="ruler" size={20} color="#FF9800" />
+                    <Text style={styles.premiumSpacingText}>
+                      📏 Écartement Premium
+                    </Text>
+                    <Ionicons name="diamond" size={16} color="#FFD700" />
+                  </TouchableOpacity>
                 </View>
               </View>
 
