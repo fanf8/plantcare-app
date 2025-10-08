@@ -876,6 +876,10 @@ export default function PlantWellnessApp() {
                   autoCapitalize="none"
                 />
 
+                {isRegistering && passwordError ? (
+                  <Text style={styles.errorText}>{passwordError}</Text>
+                ) : null}
+
                 <TouchableOpacity 
                   style={[styles.button, styles.primaryButton]} 
                   onPress={isRegistering ? handleRegister : handleLogin}
