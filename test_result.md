@@ -426,9 +426,9 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Plant Carousel with Navigation"
+    - "Plant Deletion Functionality"
   stuck_tasks:
-    - "Plant Carousel with Navigation"
+    - "Plant Deletion Functionality"
   test_all: false
   test_priority: "high_first"
 
