@@ -3085,6 +3085,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 8,
+    pointerEvents: 'auto', // Force l'interactivité du bouton de suppression
   },
 
   // Modal styles
