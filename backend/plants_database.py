@@ -16,7 +16,9 @@ PLANTS_DATABASE = [
         "sunlight": "Plein soleil (8h minimum)",
         "watering": "Arrosage régulier au pied",
         "soil_type": "Sol riche et bien drainé",
-        "monthly_watering": "Juin: 3-4 fois par semaine"
+        "monthly_watering": "Juin: 3-4 fois par semaine",
+        "spacing_between_plants": "70 cm",
+        "spacing_between_rows": "90 cm"
     },
     {
         "name_fr": "Tomate Marmande",
