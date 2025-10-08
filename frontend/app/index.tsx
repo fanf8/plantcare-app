@@ -194,6 +194,41 @@ export default function PlantWellnessApp() {
     }
   };
 
+  // ============= FONCTIONS D'ÉCARTEMENT PREMIUM =============
+  
+  const chargerEcartementPlante = async (plantId: string) => {
+    if (!user?.is_premium) {
+      setShowPremiumModal(true);
+      return;
+    }
+
+    try {
+      const token = await AsyncStorage.getItem('access_token');
+      const response = await fetch(`${EXPO_PUBLIC_BACKEND_URL}/api/premium/plant-spacing/${plantId}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 403) {
+        setShowPremiumModal(true);
+        return;
+      }
+
+      if (response.ok) {
+        const donneesEcartement = await response.json();
+        setPlantSpacingData(donneesEcartement);
+        setShowSpacingDetails(true);
+      } else {
+        Alert.alert('Erreur', 'Données d\'écartement non disponibles pour cette plante');
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des données d\'écartement:', error);
+      Alert.alert('Erreur', 'Erreur de connexion');
+    }
+  };
+
   // ============= MY GARDEN FUNCTIONS =============
   
   const loadMyGarden = async () => {
