@@ -188,7 +188,11 @@ export default function PlantWellnessApp() {
   }, [user]);
 
   const deletePlantFromGarden = async (plantId: string, plantName: string) => {
-    if (!user) return;
+    console.log('🗑️ DELETE PLANT CALLED:', { plantId, plantName });
+    if (!user) {
+      console.log('❌ No user, cannot delete');
+      return;
+    }
     
     Alert.alert(
       'Supprimer la plante',
