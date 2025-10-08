@@ -3015,6 +3015,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    pointerEvents: 'box-none', // Permet les interactions avec les éléments enfants
   },
   myPlantImage: {
     width: 80,
