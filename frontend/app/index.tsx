@@ -871,7 +871,7 @@ export default function PlantWellnessApp() {
                   placeholder="Mot de passe"
                   placeholderTextColor="#999"
                   value={password}
-                  onChangeText={setPassword}
+                  onChangeText={handlePasswordChange}
                   secureTextEntry
                   autoCapitalize="none"
                 />
