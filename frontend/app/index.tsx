@@ -103,6 +103,7 @@ export default function PlantWellnessApp() {
   // Form states
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [name, setName] = useState('');
 
   // Watering calendar states
