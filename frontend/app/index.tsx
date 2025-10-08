@@ -3089,6 +3089,30 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     pointerEvents: 'auto', // Force l'interactivité du bouton de suppression
   },
+  deleteButtonContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    alignItems: 'flex-end',
+  },
+  deleteButtonAlternative: {
+    backgroundColor: '#FF6B35',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 20,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  deleteButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 6,
+  },
 
   // Modal styles
   modalOverlay: {
