@@ -1856,16 +1856,20 @@ export default function PlantWellnessApp() {
                       )}
                     </View>
                   </TouchableOpacity>
-                  
-                  <Pressable 
-                    style={({ pressed }) => [
-                      styles.deletePlantButton,
-                      { opacity: pressed ? 0.6 : 1 }
-                    ]}
-                    onPress={deletePlantFromGarden.bind(null, plant.id, plant.custom_name || 'Plante')}
+                </View>
+                
+                {/* Bouton de suppression séparé - solution alternative */}
+                <View style={styles.deleteButtonContainer}>
+                  <TouchableOpacity 
+                    style={styles.deleteButtonAlternative}
+                    onPress={() => {
+                      console.log('🗑️ ALTERNATIVE DELETE CLICKED:', plant.id, plant.custom_name);
+                      deletePlantFromGarden(plant.id, plant.custom_name || 'Plante');
+                    }}
                   >
-                    <Ionicons name="trash" size={20} color="#FF6B35" />
-                  </Pressable>
+                    <Ionicons name="trash" size={18} color="#fff" />
+                    <Text style={styles.deleteButtonText}>Supprimer</Text>
+                  </TouchableOpacity>
                 </View>
 
                 {showWateringCalendar === plant.id && 
