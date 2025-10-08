@@ -189,6 +189,44 @@ export default function PlantWellnessApp() {
     }
   }, [user]);
 
+  // Password validation function
+  const validatePassword = (password: string) => {
+    const minLength = 8;
+    const hasLowercase = /[a-z]/.test(password);
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    
+    if (password.length < minLength) {
+      return 'Le mot de passe doit contenir au moins 8 caractères';
+    }
+    if (!hasLowercase) {
+      return 'Le mot de passe doit contenir au moins 1 minuscule';
+    }
+    if (!hasUppercase) {
+      return 'Le mot de passe doit contenir au moins 1 majuscule';
+    }
+    if (!hasNumber) {
+      return 'Le mot de passe doit contenir au moins 1 chiffre';
+    }
+    if (!hasSpecialChar) {
+      return 'Le mot de passe doit contenir au moins 1 caractère spécial (!@#$%^&*...)';
+    }
+    
+    return ''; // Password is valid
+  };
+
+  // Handle password change with validation
+  const handlePasswordChange = (newPassword: string) => {
+    setPassword(newPassword);
+    if (isRegistering && newPassword.length > 0) {
+      const error = validatePassword(newPassword);
+      setPasswordError(error);
+    } else {
+      setPasswordError('');
+    }
+  };
+
   const deletePlantFromGarden = useCallback(async (plantId: string, plantName: string) => {
     console.log('🗑️ DELETE PLANT CALLED:', { plantId, plantName });
     if (!user) {
