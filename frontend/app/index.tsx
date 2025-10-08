@@ -3868,4 +3868,55 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 8,
   },
+
+  // Styles pour la profondeur de plantation
+  depthCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    borderLeftWidth: 4,
+    borderLeftColor: '#8E4EC6',
+  },
+  depthDataRow: {
+    marginBottom: 16,
+  },
+  depthMainInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F3E5F5',
+    borderRadius: 12,
+    padding: 16,
+  },
+  depthContent: {
+    marginLeft: 12,
+    flex: 1,
+  },
+  depthValue: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#8E4EC6',
+    marginBottom: 4,
+  },
+  depthType: {
+    fontSize: 14,
+    color: '#666',
+    fontStyle: 'italic',
+  },
+  depthGuide: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E8F5E8',
+    borderRadius: 8,
+    padding: 12,
+  },
+  depthGuideText: {
+    fontSize: 14,
+    color: '#2E7D32',
+    marginLeft: 8,
+    flex: 1,
+    lineHeight: 18,
+  },
 });
