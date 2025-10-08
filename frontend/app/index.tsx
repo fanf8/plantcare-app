@@ -2157,6 +2157,21 @@ export default function PlantWellnessApp() {
       );
     }
 
+    // Si les détails d'écartement sont affichés
+    if (showSpacingDetails) {
+      return (
+        <ImageBackground 
+          source={{ uri: BACKGROUND_IMAGES.encyclopedia }} 
+          style={styles.container}
+          resizeMode="cover"
+        >
+          <SafeAreaView style={styles.container}>
+            {renduDetailsEcartement()}
+          </SafeAreaView>
+        </ImageBackground>
+      );
+    }
+
     switch (currentTab) {
       case 'garden':
         return renderGardenScreen();
