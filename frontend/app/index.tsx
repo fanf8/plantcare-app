@@ -3065,12 +3065,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 22,
   },
+  myPlantMainArea: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
   deletePlantButton: {
     padding: 12,
     borderRadius: 8,
     backgroundColor: 'rgba(255, 107, 53, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 8,
   },
 
   // Modal styles
