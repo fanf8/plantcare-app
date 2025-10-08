@@ -309,7 +309,7 @@ metadata:
 
   - task: "Plant Carousel with Navigation"
     implemented: true
-    working: false
+    working: true
     file: "/app/frontend/app/index.tsx"
     stuck_count: 2
     priority: "high"
@@ -327,6 +327,24 @@ metadata:
       - working: false
         agent: "testing"
         comment: "❌ CRITICAL ISSUE CONFIRMED: Plant addition flow is NOT working in frontend despite backend API working perfectly. BACKEND TESTING: Admin login works, Cœur de Bœuf plant exists (ID: 60e0918e-4646-40ea-af39-bdaaf405fff2), API calls return 200 OK, plants are successfully added to database (12+ Cœur de Bœuf entries confirmed in admin garden). FRONTEND ISSUE: The 'Ajouter à mon potager' button click is not triggering the addCurrentPlantToGarden function properly, OR the success alert is not showing, OR the Mes Plants section is not refreshing to display newly added plants. User's exact flow 'Mes Plants' → 'Ajouter une nouvelle plante' → 'Cœur de Bœuf' → 'Ajouter à mon potager' fails at the final step - no visual feedback and plants don't appear in Mes Plants list despite successful backend storage."
+      - working: true
+        agent: "testing"
+        comment: "✅ PLANT ADDITION ISSUE RESOLVED: Comprehensive testing confirms plant addition functionality is now working correctly! Admin login successful, encyclopedia navigation working, plant carousel displays properly with high-quality images. Plants are successfully added to 'Mes Plants' section and displayed correctly with proper plant information (name, location, status, notes). The previous issue appears to have been resolved."
+
+  - task: "Plant Deletion Functionality"
+    implemented: true
+    working: false
+    file: "/app/frontend/app/index.tsx"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "user"
+        comment: "User reported: Bouton de suppression de plantes ne fonctionne pas - L'utilisateur peut ajouter des plantes mais ne peut pas les supprimer. L'API backend DELETE fonctionne parfaitement (test confirmé avec status 200)"
+      - working: false
+        agent: "testing"
+        comment: "❌ CRITICAL FRONTEND ISSUE CONFIRMED: Plant deletion buttons are NOT functional despite being visible. DETAILED FINDINGS: 1) 'Mes Plants' section displays correctly with 4 plants (Cœur de Bœuf, Tomate Cœur de Bœuf, Marmande, Cerise), 2) Red trash icons are clearly visible on the right side of each plant card, 3) Delete buttons are NOT clickable - multiple selector attempts failed ([name='trash'], .deletePlantButton, coordinate-based clicks), 4) No console debug messages from deletePlantFromGarden function, confirming function never executes, 5) This appears to be a React Native/Expo web compatibility issue where TouchableOpacity elements with Ionicons are not properly rendered as clickable in web environment. BACKEND API confirmed working perfectly. USER IMPACT: Users cannot delete plants from their garden despite functional backend."
 
   - task: "Background Images"
     implemented: true
