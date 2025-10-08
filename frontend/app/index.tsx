@@ -1064,6 +1064,121 @@ export default function PlantWellnessApp() {
     );
   }
 
+  // ============= COMPOSANT ÉCARTEMENT PREMIUM =============
+  
+  const renduDetailsEcartement = () => {
+    if (!plantSpacingData) return null;
+
+    return (
+      <ScrollView style={styles.spacingContainer}>
+        <View style={styles.spacingHeader}>
+          <TouchableOpacity 
+            style={styles.backButton}
+            onPress={() => setShowSpacingDetails(false)}
+          >
+            <Ionicons name="arrow-back" size={24} color="#4CAF50" />
+            <Text style={styles.backText}>Retour</Text>
+          </TouchableOpacity>
+          <Text style={styles.spacingTitle}>📏 Données d'Écartement Premium</Text>
+        </View>
+
+        {/* Informations de la plante */}
+        <View style={styles.plantInfoCard}>
+          <View style={styles.plantInfoHeader}>
+            <Ionicons name="leaf" size={24} color="#4CAF50" />
+            <View style={styles.plantInfoContent}>
+              <Text style={styles.plantInfoName}>{plantSpacingData.plant_info.name}</Text>
+              <Text style={styles.plantInfoLatin}>{plantSpacingData.plant_info.latin_name}</Text>
+              <Text style={styles.plantInfoVariety}>Variété: {plantSpacingData.plant_info.variety}</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Données d'écartement principales */}
+        <View style={styles.spacingDataCard}>
+          <Text style={styles.sectionTitle}>🌱 Espacement Recommandé</Text>
+          
+          <View style={styles.spacingDataRow}>
+            <View style={styles.spacingDataItem}>
+              <Ionicons name="resize" size={20} color="#2196F3" />
+              <Text style={styles.spacingDataLabel}>Entre pieds</Text>
+              <Text style={styles.spacingDataValue}>{plantSpacingData.spacing_data.between_plants}</Text>
+            </View>
+            
+            <View style={styles.spacingDataItem}>
+              <Ionicons name="grid" size={20} color="#FF9800" />
+              <Text style={styles.spacingDataLabel}>Entre rangées</Text>
+              <Text style={styles.spacingDataValue}>{plantSpacingData.spacing_data.between_rows}</Text>
+            </View>
+          </View>
+
+          <View style={styles.layoutRecommendation}>
+            <Text style={styles.layoutTitle}>💡 Recommandation de plantation :</Text>
+            <Text style={styles.layoutText}>{plantSpacingData.spacing_data.recommended_layout}</Text>
+          </View>
+        </View>
+
+        {/* Conseils d'optimisation */}
+        <View style={styles.optimizationCard}>
+          <Text style={styles.sectionTitle}>🎯 Conseils d'Optimisation</Text>
+          
+          <View style={styles.optimizationTip}>
+            <Ionicons name="home" size={18} color="#4CAF50" />
+            <View style={styles.optimizationContent}>
+              <Text style={styles.optimizationTitle}>Petit jardin :</Text>
+              <Text style={styles.optimizationText}>{plantSpacingData.optimization_tips.small_garden}</Text>
+            </View>
+          </View>
+
+          <View style={styles.optimizationTip}>
+            <Ionicons name="expand" size={18} color="#2196F3" />
+            <View style={styles.optimizationContent}>
+              <Text style={styles.optimizationTitle}>Grand jardin :</Text>
+              <Text style={styles.optimizationText}>{plantSpacingData.optimization_tips.large_garden}</Text>
+            </View>
+          </View>
+
+          <View style={styles.optimizationTip}>
+            <Ionicons name="flower" size={18} color="#9C27B0" />
+            <View style={styles.optimizationContent}>
+              <Text style={styles.optimizationTitle}>Compagnonnage :</Text>
+              <Text style={styles.optimizationText}>{plantSpacingData.optimization_tips.companion_plants}</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Guide de plantation */}
+        <View style={styles.plantingGuideCard}>
+          <Text style={styles.sectionTitle}>📖 Guide de Plantation Complet</Text>
+          
+          <View style={styles.guideItem}>
+            <Ionicons name="earth" size={16} color="#795548" />
+            <Text style={styles.guideLabel}>Sol :</Text>
+            <Text style={styles.guideValue}>{plantSpacingData.planting_guide.soil_preparation}</Text>
+          </View>
+
+          <View style={styles.guideItem}>
+            <Ionicons name="sunny" size={16} color="#FF9800" />
+            <Text style={styles.guideLabel}>Exposition :</Text>
+            <Text style={styles.guideValue}>{plantSpacingData.planting_guide.sunlight_needs}</Text>
+          </View>
+
+          <View style={styles.guideItem}>
+            <Ionicons name="water" size={16} color="#2196F3" />
+            <Text style={styles.guideLabel}>Arrosage :</Text>
+            <Text style={styles.guideValue}>{plantSpacingData.planting_guide.watering_schedule}</Text>
+          </View>
+
+          <View style={styles.guideItem}>
+            <Ionicons name="trending-up" size={16} color="#4CAF50" />
+            <Text style={styles.guideLabel}>Difficulté :</Text>
+            <Text style={styles.guideValue}>{plantSpacingData.planting_guide.difficulty_level}</Text>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  };
+
   // ============= LUNAR CALENDAR COMPONENT =============
   
   const renderLunarCalendar = () => {
