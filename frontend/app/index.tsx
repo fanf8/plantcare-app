@@ -1118,6 +1118,26 @@ export default function PlantWellnessApp() {
           </View>
         </View>
 
+        {/* Données de profondeur de plantation */}
+        <View style={styles.depthCard}>
+          <Text style={styles.sectionTitle}>🕳️ Profondeur de Plantation</Text>
+          
+          <View style={styles.depthDataRow}>
+            <View style={styles.depthMainInfo}>
+              <Ionicons name="layers" size={24} color="#8E4EC6" />
+              <View style={styles.depthContent}>
+                <Text style={styles.depthValue}>{plantSpacingData.planting_depth.depth}</Text>
+                <Text style={styles.depthType}>{plantSpacingData.planting_depth.planting_type}</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.depthGuide}>
+            <Ionicons name="information-circle" size={18} color="#4CAF50" />
+            <Text style={styles.depthGuideText}>{plantSpacingData.planting_depth.depth_guide}</Text>
+          </View>
+        </View>
+
         {/* Conseils d'optimisation */}
         <View style={styles.optimizationCard}>
           <Text style={styles.sectionTitle}>🎯 Conseils d'Optimisation</Text>
