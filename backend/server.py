@@ -1087,6 +1087,82 @@ async def get_lunar_calendar(
     
     return mock_lunar_calendar
 
+@api_router.get("/premium/advanced-tips")
+async def get_advanced_tips(current_user: User = Depends(get_premium_user)):
+    """Get advanced gardening tips - Premium only"""
+    return {
+        "tips": [
+            {
+                "category": "Arrosage",
+                "title": "Technique de l'arrosage au goutte-à-goutte",
+                "description": "Installez un système d'arrosage goutte-à-goutte pour économiser l'eau et maintenir une humidité constante",
+                "difficulty": "Moyen",
+                "benefits": ["Économie d'eau 40%", "Croissance optimale", "Moins de maladies"]
+            },
+            {
+                "category": "Sol",
+                "title": "Rotation des cultures avancée",
+                "description": "Planifiez vos cultures sur 4 ans pour préserver la fertilité du sol",
+                "difficulty": "Avancé", 
+                "benefits": ["Sol plus fertile", "Moins de parasites", "Rendement accru"]
+            },
+            {
+                "category": "Plantation",
+                "title": "Compagnonnage végétal",
+                "description": "Associez basilic et tomates, carottes et poireaux pour une protection naturelle",
+                "difficulty": "Facile",
+                "benefits": ["Protection naturelle", "Optimisation espace", "Biodiversité"]
+            }
+        ],
+        "seasonal_advice": {
+            "current_month": "Octobre",
+            "priority_tasks": [
+                "Préparer le sol pour l'hiver",
+                "Planter les légumes d'hiver", 
+                "Récolter les dernières tomates"
+            ]
+        }
+    }
+
+@api_router.get("/premium/plant-spacing/{plant_id}")
+async def get_plant_spacing(plant_id: str, current_user: User = Depends(get_premium_user)):
+    """Get detailed spacing information for a specific plant - Premium only"""
+    
+    # Find plant in database
+    plant = await db.plants.find_one({"id": plant_id})
+    if not plant:
+        raise HTTPException(status_code=404, detail="Plant not found")
+    
+    # Check if spacing data exists
+    if not plant.get("spacing_between_plants") or not plant.get("spacing_between_rows"):
+        raise HTTPException(status_code=404, detail="Spacing data not available for this plant")
+    
+    return {
+        "plant_info": {
+            "id": plant["id"],
+            "name": plant["name_fr"],
+            "latin_name": plant["name_latin"],
+            "variety": plant["variety"],
+            "category": plant["subcategory"]
+        },
+        "spacing_data": {
+            "between_plants": plant["spacing_between_plants"],
+            "between_rows": plant["spacing_between_rows"],
+            "recommended_layout": f"Plantez vos {plant['name_fr']} en respectant {plant['spacing_between_plants']} entre chaque pied et {plant['spacing_between_rows']} entre les rangées"
+        },
+        "optimization_tips": {
+            "small_garden": f"Pour un petit potager, respectez au minimum {plant['spacing_between_plants']} entre les plants",
+            "large_garden": f"Dans un grand potager, vous pouvez espacer jusqu'à {plant['spacing_between_rows']} pour faciliter l'entretien",
+            "companion_plants": "Consultez notre guide de compagnonnage pour optimiser l'espace"
+        },
+        "planting_guide": {
+            "soil_preparation": f"Préparez un {plant['soil_type'].lower()}",
+            "sunlight_needs": plant["sunlight"],
+            "watering_schedule": plant["monthly_watering"],
+            "difficulty_level": plant["difficulty"]
+        }
+    }
+
 @api_router.post("/subscription/webhook")
 async def stripe_webhook():
     # Handle Stripe webhooks
