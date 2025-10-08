@@ -1812,7 +1812,7 @@ export default function PlantWellnessApp() {
             </View>
           ) : (
             myGardenPlants.map((plant, index) => (
-              <View key={plant.id || index}>
+              <View key={plant.id}>
                 <View style={styles.myPlantCard}>
                   <TouchableOpacity 
                     style={styles.myPlantMainArea}
