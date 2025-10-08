@@ -2203,6 +2203,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E0E0E0',
   },
+  errorText: {
+    color: '#FF5722',
+    fontSize: 14,
+    marginTop: 4,
+    marginBottom: 8,
+    paddingHorizontal: 4,
+  },
   button: {
     borderRadius: 12,
     padding: 16,
